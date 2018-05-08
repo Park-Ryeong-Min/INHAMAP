@@ -52,7 +52,9 @@ public class TestDrawingView extends View {
     private void init(Context context){
         this.context = context;
         Resources res = getResources();
-        this.locationIcon = BitmapFactory.decodeResource(res, R.drawable.node_icon_1);
+        BitmapFactory.Options option = new BitmapFactory.Options();
+        option.inSampleSize = 20;
+        this.locationIcon = BitmapFactory.decodeResource(res, R.drawable.my_location_icon, option);
 
     }
 
@@ -90,7 +92,7 @@ public class TestDrawingView extends View {
             Log.e("TEST_VIEW", "Clear paths.");
         }
         if(drawLocation){
-            canvas.drawBitmap(locationIcon, 100f, 100f, new Paint());
+            canvas.drawBitmap(locationIcon, locationX, locationY, new Paint());
         }
     }
 
@@ -118,9 +120,11 @@ public class TestDrawingView extends View {
         invalidate();
     }
 
-    public void drawLocation(double lat, double lng){
-        Log.e("MY_LOCATION" , Double.toString(lat) + " , " + Double.toString(lng));
+    public void drawLocation(float left, float top){
+        Log.e("MY_LOCATION" , Float.toString(left) + " , " + Float.toString(top));
         this.drawLocation = true;
+        this.locationX = dipToPixels(this.context, left) - 50f;
+        this.locationY = dipToPixels(this.context, top) - 50f;
         invalidate();
     }
 
