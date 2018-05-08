@@ -14,6 +14,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.example.inhamap.Activities.BuildingInfoActivity;
+import com.example.inhamap.Components.LocationDrawingSurfaceView;
 import com.example.inhamap.Components.NodeImageButton;
 import com.example.inhamap.Components.OptionSelectDialog;
 import com.example.inhamap.Components.TestDrawingView;
@@ -98,6 +99,7 @@ public class AllocateImageButtonInFragment {
 
                     // test code
                     final TestDrawingView test = (TestDrawingView)layout.findViewById(R.id.map_fragment_surface_view);
+                    //final LocationDrawingSurfaceView surfaceView = (LocationDrawingSurfaceView)layout.findViewById(R.id.map_fragment_location_surface_view);
 
                     // 팝업 뷰에 배치된 컴포넌트(버튼) 등록
                     Button start = (Button)view.findViewById(R.id.popup_window_button_start_node);
@@ -109,6 +111,7 @@ public class AllocateImageButtonInFragment {
                             if(isStartButtonSet){
                                 startNodeButton.setBackgroundImageByStatus(0);
                                 test.clearEdges();
+                                //surfaceView.clearPath();
                                 if(buttonIndex != pressedStartButtonIndex){
                                     startNodeButton = btnList.get(buttonIndex);
                                     startNodeButton.setBackgroundImageByStatus(3);
@@ -140,6 +143,7 @@ public class AllocateImageButtonInFragment {
                             if(isDestinationButtonSet){
                                 destinationNodeButton.setBackgroundImageByStatus(0);
                                 test.clearEdges();
+                                //surfaceView.clearPath();
                                 if(buttonIndex != pressedDestinationButtonIndex){
                                     destinationNodeButton = btnList.get(buttonIndex);
                                     destinationNodeButton.setBackgroundImageByStatus(4);
@@ -262,8 +266,16 @@ public class AllocateImageButtonInFragment {
         */
     }
 
+
     private void findPathAndDraw(long startID, long destinationID, TestDrawingView view){
         OptionSelectDialog dialog = new OptionSelectDialog(this.context, "경로 찾기", "출발 지점에서 도착 지점까지 경로를 탐색합니다.", view, startID, destinationID);
         dialog.show();
     }
+
+    /*
+    private void findPathAndDraw(long startID, long destinationID, LocationDrawingSurfaceView view){
+        OptionSelectDialog dialog = new OptionSelectDialog(this.context, "경로 찾기", "출발 지점에서 도착 지점까지 경로를 탐색합니다.", view, startID, destinationID);
+        dialog.show();
+    }
+    */
 }

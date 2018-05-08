@@ -18,11 +18,13 @@ import android.view.SurfaceView;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.ScaleAnimation;
+import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.HorizontalScrollView;
 import android.widget.RelativeLayout;
 import android.widget.ScrollView;
 
+import com.example.inhamap.Components.FindMyLocationButton;
 import com.example.inhamap.Components.LocationDrawingSurfaceView;
 import com.example.inhamap.Components.PathDrawingSurfaceView;
 import com.example.inhamap.Components.TestDrawingView;
@@ -46,6 +48,9 @@ public class CustomMapFragment extends Fragment implements View.OnTouchListener{
     private GestureDetector gestureDetector;
     private ScaleGestureDetector scaleGestureDetector;
     private float curScale = 1f;
+
+    private FindMyLocationButton myLocationButton;
+    private TestDrawingView drawingView;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -72,6 +77,7 @@ public class CustomMapFragment extends Fragment implements View.OnTouchListener{
     }
 
     private void initSetting(){
+
         layout = (RelativeLayout)view.findViewById(R.id.map_fragment_frame_layout);
 
         vScroll = (ScrollView)view.findViewById(R.id.map_fragment_vertical_scroll);
@@ -87,8 +93,10 @@ public class CustomMapFragment extends Fragment implements View.OnTouchListener{
         //gestureDetector = new GestureDetector(this.context, new MyGestureListener());
 
         //layout.setWillNotDraw(false);
-        TestDrawingView tv = (TestDrawingView)view.findViewById(R.id.map_fragment_surface_view);
-        LocationDrawingSurfaceView locationSurfaceView = (LocationDrawingSurfaceView)view.findViewById(R.id.map_fragment_location_surface_view);
+        drawingView = (TestDrawingView)view.findViewById(R.id.map_fragment_surface_view);
+        myLocationButton = (FindMyLocationButton) view.findViewById(R.id.map_fragment_find_my_location_button);
+        myLocationButton.setDrawingView(drawingView);
+        //LocationDrawingSurfaceView locationSurfaceView = (LocationDrawingSurfaceView)view.findViewById(R.id.map_fragment_location_surface_view);
         //layout.addView(tv);
         //tv.invalidate();
 
