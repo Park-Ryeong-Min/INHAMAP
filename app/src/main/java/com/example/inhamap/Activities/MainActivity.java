@@ -128,7 +128,7 @@ public class MainActivity extends AppCompatActivity {
                 return true;
             case R.id.action_settings2:
                 Toast.makeText(getApplicationContext(), "항목 1 버튼 클릭됨", Toast.LENGTH_LONG).show();
-                Intent intent2 = new Intent(this, BuildingInfoActivity.class);
+                Intent intent2 = new Intent(this, NoiseDetectActivity.class);
                 startActivity(intent2);
                 return true;
             default:

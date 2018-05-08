@@ -1,890 +1,1704 @@
 {
-  "nodeList" : [
-    {
-      "nodeID" : 1212,
-      "nodeStatus" : 0,
-      "nodeName" : "후문",
-      "latitude" : 37.45102427861271,
-      "longitude" : 126.65646743551514,
-      "screenLeftPosition" : 1167,
-      "screenTopPosition" : 50,
-      "adjacent" : [
+    "nodeList": [
         {
-          "nodeID" : 1378,
-          "edgeStatus" : 0
+            "nodeID": 1212,
+            "nodeStatus": 0,
+            "nodeName": "후문",
+            "latitude": 37.45102427861271,
+            "longitude": 126.65646743551514,
+            "screenLeftPosition": 1167,
+            "screenTopPosition": 50,
+            "adjacent": [
+                {
+                    "nodeID": 1378,
+                    "edgeStatus": 0,
+                    "voice": [
+                        {
+                            "postNodeID": 0,
+                            "voiceText": "정면으로 10미터 직진해주세요."
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "nodeID": 1370,
+            "nodeStatus": 0,
+            "nodeName": "하이테크 센터 저층부 문",
+            "latitude": 37.45073812095617,
+            "longitude": 126.65682960301638,
+            "screenLeftPosition": 1271,
+            "screenTopPosition": 105,
+            "adjacent": [
+                {
+                    "nodeID": 1374,
+                    "edgeStatus": 0,
+                    "voice": [
+                        {
+                            "postNodeID": 0,
+                            "voiceText": "정면으로 10미터 직진해주세요."
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "nodeID": 1167,
+            "nodeStatus": 0,
+            "nodeName": "하이테크 센터 고층부 문",
+            "latitude": 37.45043763,
+            "longitude": 126.65737867,
+            "screenLeftPosition": 1380,
+            "screenTopPosition": 132,
+            "adjacent": [
+                {
+                    "nodeID": 1373,
+                    "edgeStatus": 0,
+                    "voice": [
+                        {
+                            "postNodeID": 0,
+                            "voiceText": "정면으로 10미터 직진해주세요."
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "nodeID": 1194,
+            "nodeStatus": 0,
+            "nodeName": "하이테크 센터 지하 문",
+            "latitude": 37.450222993926864,
+            "longitude": 126.65727441286957,
+            "screenLeftPosition": 1410,
+            "screenTopPosition": 167,
+            "adjacent": [
+                {
+                    "nodeID": 1375,
+                    "edgeStatus": 0,
+                    "voice": [
+                        {
+                            "postNodeID": 0,
+                            "voiceText": "정면으로 10미터 직진해주세요."
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "nodeID": 1217,
+            "nodeStatus": 0,
+            "nodeName": "2호관 북쪽 1문",
+            "latitude": 37.45104225,
+            "longitude": 126.65591424,
+            "screenLeftPosition": 1104,
+            "screenTopPosition": 134,
+            "adjacent": [
+                {
+                    "nodeID": 991,
+                    "edgeStatus": 0,
+                    "voice": [
+                        {
+                            "postNodeID": 0,
+                            "voiceText": "정면으로 10미터 직진해주세요."
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "nodeID": 1223,
+            "nodeStatus": 0,
+            "nodeName": "2호관 북쪽 2문",
+            "latitude": 37.45119645,
+            "longitude": 126.65537988,
+            "screenLeftPosition": 996,
+            "screenTopPosition": 134,
+            "adjacent": [
+                {
+                    "nodeID": 1383,
+                    "edgeStatus": 0,
+                    "voice": [
+                        {
+                            "postNodeID": 0,
+                            "voiceText": "정면으로 10미터 직진해주세요."
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "nodeID": 1233,
+            "nodeStatus": 0,
+            "nodeName": "2호관 북쪽 3문",
+            "latitude": 37.45117352,
+            "longitude": 126.65486722,
+            "screenLeftPosition": 917,
+            "screenTopPosition": 173,
+            "adjacent": [
+                {
+                    "nodeID": 1385,
+                    "edgeStatus": 0,
+                    "voice": [
+                        {
+                            "postNodeID": 0,
+                            "voiceText": "정면으로 10미터 직진해주세요."
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "nodeID": 1372,
+            "nodeStatus": 0,
+            "nodeName": "2호관 북쪽 4문",
+            "latitude": 37.45096037075659,
+            "longitude": 126.65495004504919,
+            "screenLeftPosition": 952,
+            "screenTopPosition": 211,
+            "adjacent": [
+                {
+                    "nodeID": 1387,
+                    "edgeStatus": 0,
+                    "voice": [
+                        {
+                            "postNodeID": 0,
+                            "voiceText": "정면으로 10미터 직진해주세요."
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "nodeID": 1259,
+            "nodeStatus": 0,
+            "nodeName": "2호관 북쪽 5문",
+            "latitude": 37.45082944,
+            "longitude": 126.65580498,
+            "screenLeftPosition": 1097,
+            "screenTopPosition": 173,
+            "adjacent": [
+                {
+                    "nodeID": 1390,
+                    "edgeStatus": 0,
+                    "voice": [
+                        {
+                            "postNodeID": 0,
+                            "voiceText": "정면으로 10미터 직진해주세요."
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "nodeID": 1273,
+            "nodeStatus": 0,
+            "nodeName": "4호관 북쪽 1문",
+            "latitude": 37.45062657,
+            "longitude": 126.65558867,
+            "screenLeftPosition": 1097,
+            "screenTopPosition": 248,
+            "adjacent": [
+                {
+                    "nodeID": 1390,
+                    "edgeStatus": 0,
+                    "voice": [
+                        {
+                            "postNodeID": 0,
+                            "voiceText": "정면으로 10미터 직진해주세요."
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "nodeID": 1281,
+            "nodeStatus": 0,
+            "nodeName": "4호관 북쪽 2문",
+            "latitude": 37.45068077548144,
+            "longitude": 126.65533053763683,
+            "screenLeftPosition": 1044,
+            "screenTopPosition": 253,
+            "adjacent": [
+                {
+                    "nodeID": 1389,
+                    "edgeStatus": 0,
+                    "voice": [
+                        {
+                            "postNodeID": 0,
+                            "voiceText": "정면으로 10미터 직진해주세요."
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "nodeID": 1296,
+            "nodeStatus": 0,
+            "nodeName": "4호관 북쪽 3문",
+            "latitude": 37.450364959418295,
+            "longitude": 126.65492588720456,
+            "screenLeftPosition": 1012,
+            "screenTopPosition": 348,
+            "adjacent": [
+                {
+                    "nodeID": 1388,
+                    "edgeStatus": 0,
+                    "voice": [
+                        {
+                            "postNodeID": 0,
+                            "voiceText": "정면으로 10미터 직진해주세요."
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "nodeID": 1311,
+            "nodeStatus": 0,
+            "nodeName": "2호관 남쪽 1문",
+            "latitude": 37.450396871822676,
+            "longitude": 126.65437213484779,
+            "screenLeftPosition": 920,
+            "screenTopPosition": 374,
+            "adjacent": [
+                {
+                    "nodeID": 1391,
+                    "edgeStatus": 0,
+                    "voice": [
+                        {
+                            "postNodeID": 0,
+                            "voiceText": "정면으로 10미터 직진해주세요."
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "nodeID": 1316,
+            "nodeStatus": 0,
+            "nodeName": "2호관 남쪽 2문",
+            "latitude": 37.45004450061771,
+            "longitude": 126.65482056192268,
+            "screenLeftPosition": 1030,
+            "screenTopPosition": 405,
+            "adjacent": [
+                {
+                    "nodeID": 1393,
+                    "edgeStatus": 0,
+                    "voice": [
+                        {
+                            "postNodeID": 0,
+                            "voiceText": "정면으로 10미터 직진해주세요."
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "nodeID": 1333,
+            "nodeStatus": 0,
+            "nodeName": "2호관 남쪽 3문",
+            "longitude": 126.6555295326848,
+            "latitude": 37.44986153122323,
+            "screenLeftPosition": 1139,
+            "screenTopPosition": 379,
+            "adjacent": [
+                {
+                    "nodeID": 1395,
+                    "edgeStatus": 0,
+                    "voice": [
+                        {
+                            "postNodeID": 0,
+                            "voiceText": "정면으로 10미터 직진해주세요."
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "nodeID": 1345,
+            "nodeStatus": 0,
+            "nodeName": "2호관 남쪽 4문",
+            "longitude": 126.65576959806252,
+            "latitude": 37.450174568830285,
+            "screenLeftPosition": 1141,
+            "screenTopPosition": 301,
+            "adjacent": [
+                {
+                    "nodeID": 1396,
+                    "edgeStatus": 0,
+                    "voice": [
+                        {
+                            "postNodeID": 0,
+                            "voiceText": "정면으로 10미터 직진해주세요."
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "nodeID": 1384,
+            "nodeStatus": 1,
+            "nodeName": "60주년 - 2호관 삼거리",
+            "longitude": 126.65494970977305,
+            "latitude": 37.451403537549126,
+            "screenLeftPosition": 902,
+            "screenTopPosition": 126,
+            "adjacent": [
+                {
+                    "nodeID": 1383,
+                    "edgeStatus": 0,
+                    "voice": [
+                        {
+                            "postNodeID": 1385,
+                            "voiceText": "오른쪽으로 꺾으신후 정면으로 10미터 직진해주세요."
+                        }
+                    ]
+                },
+                {
+                    "nodeID": 1385,
+                    "edgeStatus": 0,
+                    "voice": [
+                        {
+                            "postNodeID": 1383,
+                            "voiceText": "왼쪽으로 꺾으신후 정면으로 10미터 직진해주세요."
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "nodeID": 1385,
+            "nodeStatus": 1,
+            "nodeName": "60주년 - 2호관 사이 길",
+            "longitude": 126.6548001766205,
+            "latitude": 37.45123319146504,
+            "screenLeftPosition": 902,
+            "screenTopPosition": 174,
+            "adjacent": [
+                {
+                    "nodeID": 1384,
+                    "edgeStatus": 0,
+                    "voice": [
+                        {
+                            "postNodeID": 1223,
+                            "voiceText": "오른쪽으로 꺾으신 후 정면으로 10미터 직진해주세요."
+                        },
+                        {
+                            "postNodeID": 1386,
+                            "voiceText": "정면으로 10미터 직진해주세요."
+                        }
+                    ]
+                },
+                {
+                    "nodeID": 1233,
+                    "edgeStatus": 0,
+                    "voice": [
+                        {
+                            "postNodeID": 1384,
+                            "voiceText": "왼쪽으로 꺾으신 후 정면으로 10미터 직진해주세요."
+                        },
+                        {
+                            "postNodeID": 1386,
+                            "voiceText": "오른쪽으로 꺾으신 후 정면으로 10미터 직진해주세요."
+                        }
+                    ]
+                },
+                {
+                    "nodeID": 1386,
+                    "edgeStatus": 0,
+                    "voice": [
+                        {
+                            "postNodeID": 1223,
+                            "voiceText": "왼쪽으로 꺾으신 후 정면으로 10미터 직진해주세요."
+                        },
+                        {
+                            "postNodeID": 1384,
+                            "voiceText": "정면으로 10미터 직진해주세요."
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "nodeID": 1386,
+            "nodeStatus": 1,
+            "nodeName": "4호관 주차장 입구",
+            "longitude": 126.6544846817851,
+            "latitude": 37.45075941437881,
+            "screenLeftPosition": 900,
+            "screenTopPosition": 283,
+            "adjacent": [
+                {
+                    "nodeID": 1385,
+                    "edgeStatus": 0,
+                    "voice": [
+                        {
+                            "postNodeID": 1387,
+                            "voiceText": "오른쪽으로 꺾으신 후 정면으로 10미터 직진해주세요."
+                        },
+                        {
+                            "postNodeID": 1391,
+                            "voiceText": "정면으로 10미터 직진해주세요."
+                        }
+                    ]
+                },
+                {
+                    "nodeID": 1387,
+                    "edgeStatus": 0,
+                    "voice": [
+                        {
+                            "postNodeID": 1385,
+                            "voiceText": "왼쪽으로 꺾으신 후 정면으로 10미터 직진해주세요."
+                        },
+                        {
+                            "postNodeID": 1391,
+                            "voiceText": "오른쪽으로 꺾으신 후 정면으로 10미터 직진해주세요."
+                        }
+                    ]
+                },
+                {
+                    "nodeID": 1391,
+                    "edgeStatus": 0,
+                    "voice": [
+                        {
+                            "postNodeID": 1385,
+                            "voiceText": "정면으로 10미터 직진해주세요."
+                        },
+                        {
+                            "postNodeID": 1387,
+                            "voiceText": "왼쪽으로 꺾으신 후 정면으로 10미터 직진해주세요."
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "nodeID": 1387,
+            "nodeStatus": 1,
+            "nodeName": "4호관 주차장 진입로",
+            "longitude": 126.65482196956873,
+            "latitude": 37.45072534489966,
+            "screenLeftPosition": 952,
+            "screenTopPosition": 260,
+            "adjacent": [
+                {
+                    "nodeID": 1372,
+                    "edgeStatus": 0,
+                    "voice": [
+                        {
+                            "postNodeID": 1386,
+                            "voiceText": "왼쪽으로 꺾으신 후 정면으로 10미터 직진해주세요."
+                        },
+                        {
+                            "postNodeID": 1388,
+                            "voiceText": "오른쪽으로 꺾으신 후 정면으로 10미터 직진해주세요."
+                        }
+                    ]
+                },
+                {
+                    "nodeID": 1386,
+                    "edgeStatus": 0,
+                    "voice": [
+                        {
+                            "postNodeID": 1372,
+                            "voiceText": "왼쪽으로 꺾으신 후 정면으로 10미터 직진해주세요."
+                        },
+                        {
+                            "postNodeID": 1388,
+                            "voiceText": "정면으로 10미터 직진해주세요."
+                        }
+                    ]
+                },
+                {
+                    "nodeID": 1388,
+                    "edgeStatus": 0,
+                    "voice": [
+                        {
+                            "postNodeID": 1372,
+                            "voiceText": "왼쪽으로 꺾으신 후 정면으로 10미터 직진해주세요."
+                        },
+                        {
+                            "postNodeID": 1386,
+                            "voiceText": "정면으로 10미터 직진해주세요."
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "nodeID": 1388,
+            "nodeStatus": 1,
+            "nodeName": "4호관 주차장 1",
+            "longitude": 126.65512472391129,
+            "latitude": 37.45065028552364,
+            "screenLeftPosition": 1010,
+            "screenTopPosition": 257,
+            "adjacent": [
+                {
+                    "nodeID": 1387,
+                    "edgeStatus": 0,
+                    "voice": [
+                        {
+                            "postNodeID": 1296,
+                            "voiceText": "왼쪽으로 꺾으신 후 정면으로 10미터 직진해주세요."
+                        },
+                        {
+                            "postNodeID": 1389,
+                            "voiceText": "왼쪽으로 꺾으신 후 정면으로 10미터 직진해주세요."
+                        }
+                    ]
+                },
+                {
+                    "nodeID": 1296,
+                    "edgeStatus": 0,
+                    "voice": [
+                        {
+                            "postNodeID": 1387,
+                            "voiceText": "오른쪽으로 꺾으신 후 정면으로 10미터 직진해주세요."
+                        },
+                        {
+                            "postNodeID": 1389,
+                            "voiceText": "정면으로 10미터 직진해주세요."
+                        }
+                    ]
+                },
+                {
+                    "nodeID": 1389,
+                    "edgeStatus": 0,
+                    "voice": [
+                        {
+                            "postNodeID": 1387,
+                            "voiceText": "왼쪽으로 꺾으신 후 정면으로 10미터 직진해주세요."
+                        },
+                        {
+                            "postNodeID": 1296,
+                            "voiceText": "정면으로 10미터 직진해주세요."
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "nodeID": 1389,
+            "nodeStatus": 1,
+            "nodeName": "4호관 주차장 2",
+            "longitude": 126.65533494204283,
+            "latitude": 37.45081025240089,
+            "screenLeftPosition": 1043,
+            "screenTopPosition": 230,
+            "adjacent": [
+                {
+                    "nodeID": 1388,
+                    "edgeStatus": 0,
+                    "voice": [
+                        {
+                            "postNodeID": 1281,
+                            "voiceText": "왼쪽으로 꺾으신 후 정면으로 10미터 직진해주세요."
+                        },
+                        {
+                            "postNodeID": 1390,
+                            "voiceText": "왼쪽으로 꺾으신 후 정면으로 10미터 직진해주세요."
+                        }
+                    ]
+                },
+                {
+                    "nodeID": 1281,
+                    "edgeStatus": 0,
+                    "voice": [
+                        {
+                            "postNodeID": 1390,
+                            "voiceText": "왼쪽으로 꺾으신 후 정면으로 10미터 직진해주세요."
+                        },
+                        {
+                            "postNodeID": 1388,
+                            "voiceText": "오른쪽으로 꺾으신 후 정면으로 10미터 직진해주세요."
+                        }
+                    ]
+                },
+                {
+                    "nodeID": 1390,
+                    "edgeStatus": 0,
+                    "voice": [
+                        {
+                            "postNodeID": 1388,
+                            "voiceText": "오른쪽으로 꺾으신 후 정면으로 10미터 직진해주세요."
+                        },
+                        {
+                            "postNodeID": 1281,
+                            "voiceText": "오른쪽으로 꺾으신 후 정면으로 10미터 직진해주세요."
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "nodeID": 1390,
+            "nodeStatus": 1,
+            "nodeName": "2호관, 4호관 입구 앞",
+            "longitude": 126.65563132613897,
+            "latitude": 37.450753558688206,
+            "screenLeftPosition": 1094,
+            "screenTopPosition": 227,
+            "adjacent": [
+                {
+                    "nodeID": 1259,
+                    "edgeStatus": 0,
+                    "voice": [
+                        {
+                            "postNodeID": 1389,
+                            "voiceText": "왼쪽으로 꺾으신 후 정면으로 10미터 직진해주세요."
+                        },
+                        {
+                            "postNodeID": 1273,
+                            "voiceText": "정면으로 10미터 직진해주세요."
+                        }
+                    ]
+                },
+                {
+                    "nodeID": 1389,
+                    "edgeStatus": 0,
+                    "voice": [
+                        {
+                            "postNodeID": 1259,
+                            "voiceText": "오른쪽으로 꺾으신 후 정면으로 10미터 직진해주세요."
+                        },
+                        {
+                            "postNodeID": 1273,
+                            "voiceText": "왼쪽으로 꺾으신 후 정면으로 10미터 직진해주세요."
+                        }
+                    ]
+                },
+                {
+                    "nodeID": 1273,
+                    "edgeStatus": 0,
+                    "voice": [
+                        {
+                            "postNodeID": 1259,
+                            "voiceText": "정면으로 10미터 직진해주세요."
+                        },
+                        {
+                            "postNodeID": 1389,
+                            "voiceText": "오른쪽으로 꺾으신 후 정면으로 10미터 직진해주세요."
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "nodeID": 1391,
+            "nodeStatus": 1,
+            "nodeName": "60주년 - 2호관 사이 길",
+            "longitude": 126.65426004678011,
+            "latitude": 37.450475146686706,
+            "screenLeftPosition": 897,
+            "screenTopPosition": 374,
+            "adjacent": [
+                {
+                    "nodeID": 1386,
+                    "edgeStatus": 0,
+                    "voice": [
+                        {
+                            "postNodeID": 1311,
+                            "voiceText": "오른쪽으로 꺾으신 후 정면으로 10미터 직진해주세요."
+                        },
+                        {
+                            "postNodeID": 1392,
+                            "voiceText": "정면으로 10미터 직진해주세요."
+                        }
+                    ]
+                },
+                {
+                    "nodeID": 1311,
+                    "edgeStatus": 0,
+                    "voice": [
+                        {
+                            "postNodeID": 1386,
+                            "voiceText": "왼쪽으로 꺾으신 후 정면으로 10미터 직진해주세요."
+                        },
+                        {
+                            "postNodeID": 1392,
+                            "voiceText": "오른쪽으로 꺾으신 후 정면으로 10미터 직진해주세요."
+                        }
+                    ]
+                },
+                {
+                    "nodeID": 1392,
+                    "edgeStatus": 0,
+                    "voice": [
+                        {
+                            "postNodeID": 1386,
+                            "voiceText": "정면으로 10미터 직진해주세요."
+                        },
+                        {
+                            "postNodeID": 1311,
+                            "voiceText": "왼쪽으로 꺾으신 후 정면으로 10미터 직진해주세요."
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "nodeID": 1392,
+            "nodeStatus": 1,
+            "nodeName": "그라지에 앞 삼거리",
+            "longitude": 126.65408570319413,
+            "latitude": 37.45019673364898,
+            "screenLeftPosition": 897,
+            "screenTopPosition": 425,
+            "adjacent": [
+                {
+                    "nodeID": 1391,
+                    "edgeStatus": 0,
+                    "voice": [
+                        {
+                            "postNodeID": 1393,
+                            "voiceText": "오른쪽으로 꺾으신 후 정면으로 10미터 직진해주세요."
+                        }
+                    ]
+                },
+                {
+                    "nodeID": 1393,
+                    "edgeStatus": 0,
+                    "voice": [
+                        {
+                            "postNodeID": 1391,
+                            "voiceText": "왼쪽으로 꺾으신 후 정면으로 10미터 직진해주세요."
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "nodeID": 1393,
+            "nodeStatus": 1,
+            "nodeName": "2호관 - 본관 사이 구름다리 입구",
+            "longitude": 126.65471803396942,
+            "latitude": 37.449914859355346,
+            "screenLeftPosition": 1030,
+            "screenTopPosition": 427,
+            "adjacent": [
+                {
+                    "nodeID": 1392,
+                    "edgeStatus": 0,
+                    "voice": [
+                        {
+                            "postNodeID": 1316,
+                            "voiceText": "오른쪽으로 꺾으신 후 정면으로 10미터 직진해주세요."
+                        },
+                        {
+                            "postNodeID": 1394,
+                            "voiceText": "정면으로 10미터 직진해주세요."
+                        }
+                    ]
+                },
+                {
+                    "nodeID": 1316,
+                    "edgeStatus": 0,
+                    "voice": [
+                        {
+                            "postNodeID": 1392,
+                            "voiceText": "왼쪽으로 꺾으신 후 정면으로 10미터 직진해주세요."
+                        },
+                        {
+                            "postNodeID": 1394,
+                            "voiceText": "오른쪽으로 꺾으신 후 정면으로 10미터 직진해주세요."
+                        }
+                    ]
+                },
+                {
+                    "nodeID": 1394,
+                    "edgeStatus": 0,
+                    "voice": [
+                        {
+                            "postNodeID": 1392,
+                            "voiceText": "정면으로 10미터 직진해주세요."
+                        },
+                        {
+                            "postNodeID": 1316,
+                            "voiceText": "왼쪽으로 꺾으신 후 정면으로 10미터 직진해주세요."
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "nodeID": 1394,
+            "nodeStatus": 1,
+            "nodeName": "2호관 - 인경호 사이 삼거리",
+            "longitude": 126.65545664727688,
+            "latitude": 37.449611956428086,
+            "screenLeftPosition": 1161,
+            "screenTopPosition": 427,
+            "adjacent": [
+                {
+                    "nodeID": 1393,
+                    "edgeStatus": 0,
+                    "voice": [
+                        {
+                            "postNodeID": 1395,
+                            "voiceText": "오른쪽으로 꺾으신 후 정면으로 10미터 직진해주세요."
+                        }
+                    ]
+                },
+                {
+                    "nodeID": 1395,
+                    "edgeStatus": 0,
+                    "voice": [
+                        {
+                            "postNodeID": 1393,
+                            "voiceText": "왼쪽으로 꺾으신 후 정면으로 10미터 직진해주세요."
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "nodeID": 1395,
+            "nodeStatus": 1,
+            "nodeName": "2호관 남측 동문2 앞",
+            "longitude": 126.65561456233263,
+            "latitude": 37.44984299321822,
+            "screenLeftPosition": 1161,
+            "screenTopPosition": 379,
+            "adjacent": [
+                {
+                    "nodeID": 1333,
+                    "edgeStatus": 0,
+                    "voice": [
+                        {
+                            "postNodeID": 1394,
+                            "voiceText": "왼쪽으로 꺾으신 후 정면으로 10미터 직진해주세요."
+                        },
+                        {
+                            "postNodeID": 1396,
+                            "voiceText": "오른쪽으로 꺾으신 후 정면으로 10미터 직진해주세요."
+                        }
+                    ]
+                },
+                {
+                    "nodeID": 1394,
+                    "edgeStatus": 0,
+                    "voice": [
+                        {
+                            "postNodeID": 1333,
+                            "voiceText": "오른쪽으로 꺾으신 후 정면으로 10미터 직진해주세요."
+                        },
+                        {
+                            "postNodeID": 1396,
+                            "voiceText": "정면으로 10미터 직진해주세요."
+                        }
+                    ]
+                },
+                {
+                    "nodeID": 1396,
+                    "edgeStatus": 0,
+                    "voice": [
+                        {
+                            "postNodeID": 1333,
+                            "voiceText": "왼쪽으로 꺾으신 후 정면으로 10미터 직진해주세요."
+                        },
+                        {
+                            "postNodeID": 1394,
+                            "voiceText": "정면으로 10미터 직진해주세요."
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "nodeID": 1396,
+            "nodeStatus": 1,
+            "nodeName": "2호관 남측 동문1 앞",
+            "longitude": 126.65584120899437,
+            "latitude": 37.450158405195516,
+            "screenLeftPosition": 1161,
+            "screenTopPosition": 303,
+            "adjacent": [
+                {
+                    "nodeID": 1345,
+                    "edgeStatus": 0,
+                    "voice": [
+                        {
+                            "postNodeID": 1395,
+                            "voiceText": "왼쪽으로 꺾으신 후 정면으로 10미터 직진해주세요."
+                        },
+                        {
+                            "postNodeID": 1397,
+                            "voiceText": "오른쪽으로 꺾으신 후 정면으로 10미터 직진해주세요."
+                        }
+                    ]
+                },
+                {
+                    "nodeID": 1395,
+                    "edgeStatus": 0,
+                    "voice": [
+                        {
+                            "postNodeID": 1345,
+                            "voiceText": "오른쪽으로 꺾으신 후 정면으로 10미터 직진해주세요."
+                        },
+                        {
+                            "postNodeID": 1397,
+                            "voiceText": "정면으로 10미터 직진해주세요."
+                        }
+                    ]
+                },
+                {
+                    "nodeID": 1397,
+                    "edgeStatus": 0,
+                    "voice": [
+                        {
+                            "postNodeID": 1345,
+                            "voiceText": "왼쪽으로 꺾으신 후 정면으로 10미터 직진해주세요."
+                        },
+                        {
+                            "postNodeID": 1395,
+                            "voiceText": "정면으로 10미터 직진해주세요."
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "nodeID": 1397,
+            "nodeStatus": 1,
+            "nodeName": "인경호 공원 입구",
+            "longitude": 126.6559263691306,
+            "latitude": 37.450289094494316,
+            "screenLeftPosition": 1162,
+            "screenTopPosition": 268,
+            "adjacent": [
+                {
+                    "nodeID": 1396,
+                    "edgeStatus": 0,
+                    "voice": [
+                        {
+                            "postNodeID": 1398,
+                            "voiceText": "왼쪽으로 꺾으신 후 정면으로 10미터 직진해주세요."
+                        },
+                        {
+                            "postNodeID": 1399,
+                            "voiceText": "정면으로 10미터 직진해주세요."
+                        }
+                    ]
+                },
+                {
+                    "nodeID": 1398,
+                    "edgeStatus": 1,
+                    "voice": [
+                        {
+                            "postNodeID": 1396,
+                            "voiceText": "오른쪽으로 꺾으신 후 정면으로 10미터 직진해주세요."
+                        },
+                        {
+                            "postNodeID": 1399,
+                            "voiceText": "왼쪽으로 꺾으신 후 정면으로 10미터 직진해주세요."
+                        }
+                    ]
+                },
+                {
+                    "nodeID": 1399,
+                    "edgeStatus": 0,
+                    "voice": [
+                        {
+                            "postNodeID": 1396,
+                            "voiceText": "정면으로 10미터 직진해주세요."
+                        },
+                        {
+                            "postNodeID": 1398,
+                            "voiceText": "오른쪽으로 꺾으신 후 정면으로 10미터 직진해주세요."
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "nodeID": 1398,
+            "nodeStatus": 1,
+            "nodeName": "인경호 공원",
+            "longitude": 126.65617514401673,
+            "latitude": 37.45020871128665,
+            "screenLeftPosition": 1217,
+            "screenTopPosition": 263,
+            "adjacent": [
+                {
+                    "nodeID": 1397,
+                    "edgeStatus": 1,
+                    "voice": [
+                        {
+                            "postNodeID": 1400,
+                            "voiceText": "왼쪽으로 꺾으신 후 정면으로 10미터 직진해주세요."
+                        }
+                    ]
+                },
+                {
+                    "nodeID": 1400,
+                    "edgeStatus": 1,
+                    "voice": [
+                        {
+                            "postNodeID": 1397,
+                            "voiceText": "오른쪽으로 꺾으신 후 정면으로 10미터 직진해주세요."
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "nodeID": 1400,
+            "nodeStatus": 1,
+            "nodeName": "학생회관 위쪽 사거리 1",
+            "longitude": 126.65642760694027,
+            "latitude": 37.450113688641665,
+            "screenLeftPosition": 1268,
+            "screenTopPosition": 262,
+            "adjacent": [
+                {
+                    "nodeID": 1377,
+                    "edgeStatus": 0,
+                    "voice": [
+                        {
+                            "postNodeID": 1398,
+                            "voiceText": "왼쪽으로 꺾으신 후 정면으로 10미터 직진해주세요."
+                        }
+                    ]
+                },
+                {
+                    "nodeID": 1398,
+                    "edgeStatus": 1,
+                    "voice": [
+                        {
+                            "postNodeID": 1377,
+                            "voiceText": "오른쪽으로 꺾으신 후 정면으로 10미터 직진해주세요."
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "nodeID": 1377,
+            "nodeStatus": 1,
+            "nodeName": "학생회관 위쪽 사거리 2",
+            "longitude": 126.65641922503708,
+            "latitude": 37.45032502735725,
+            "screenLeftPosition": 1264,
+            "screenTopPosition": 238,
+            "adjacent": [
+                {
+                    "nodeID": 1400,
+                    "edgeStatus": 0,
+                    "voice": [
+                        {
+                            "postNodeID": 1378,
+                            "voiceText": "오른쪽으로 꺾으신 후 정면으로 10미터 직진해주세요."
+                        },
+                        {
+                            "postNodeID": 1376,
+                            "voiceText": "왼쪽으로 꺾으신 후 정면으로 10미터 직진해주세요."
+                        }
+                    ]
+                },
+                {
+                    "nodeID": 1378,
+                    "edgeStatus": 0,
+                    "voice": [
+                        {
+                            "postNodeID": 1400,
+                            "voiceText": "왼쪽으로 꺾으신 후 정면으로 10미터 직진해주세요."
+                        },
+                        {
+                            "postNodeID": 1376,
+                            "voiceText": "오른쪽으로 꺾으신 후 정면으로 10미터 직진해주세요."
+                        }
+                    ]
+                },
+                {
+                    "nodeID": 1376,
+                    "edgeStatus": 0,
+                    "voice": [
+                        {
+                            "postNodeID": 1400,
+                            "voiceText": "오른쪽으로 꺾으신 후 정면으로 10미터 직진해주세요."
+                        },
+                        {
+                            "postNodeID": 1378,
+                            "voiceText": "왼쪽으로 꺾으신 후 정면으로 10미터 직진해주세요."
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "nodeID": 1376,
+            "nodeStatus": 1,
+            "nodeName": "하이테크 센터 주차장 입구",
+            "longitude": 126.65641922503708,
+            "latitude": 37.45032502735725,
+            "screenLeftPosition": 1277,
+            "screenTopPosition": 220,
+            "adjacent": [
+                {
+                    "nodeID": 1377,
+                    "edgeStatus": 0,
+                    "voice": [
+                        {
+                            "postNodeID": 1374,
+                            "voiceText": "오른쪽으로 꺾으신 후 정면으로 10미터 직진해주세요."
+                        },
+                        {
+                            "postNodeID": 990,
+                            "voiceText": "왼쪽으로 꺾으신 후 정면으로 10미터 직진해주세요."
+                        }
+                    ]
+                },
+                {
+                    "nodeID": 1374,
+                    "edgeStatus": 0,
+                    "voice": [
+                        {
+                            "postNodeID": 1377,
+                            "voiceText": "왼쪽으로 꺾으신 후 정면으로 10미터 직진해주세요."
+                        },
+                        {
+                            "postNodeID": 990,
+                            "voiceText": "정면으로 10미터 직진해주세요."
+                        }
+                    ]
+                },
+                {
+                    "nodeID": 990,
+                    "edgeStatus": 0,
+                    "voice": [
+                        {
+                            "postNodeID": 1377,
+                            "voiceText": "오른쪽으로 꺾으신 후 정면으로 10미터 직진해주세요."
+                        },
+                        {
+                            "postNodeID": 1374,
+                            "voiceText": "정면으로 10미터 직진해주세요."
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "nodeID": 990,
+            "nodeStatus": 1,
+            "nodeName": "하이테크 센터 주차장 1",
+            "longitude": 126.6569583490491,
+            "latitude": 37.45018182814162,
+            "screenLeftPosition": 1297,
+            "screenTopPosition": 203,
+            "adjacent": [
+                {
+                    "nodeID": 1376,
+                    "edgeStatus": 0,
+                    "voice": [
+                        {
+                            "postNodeID": 1375,
+                            "voiceText": "오른쪽으로 꺾으신 후 정면으로 10미터 직진해주세요."
+                        }
+                    ]
+                },
+                {
+                    "nodeID": 1375,
+                    "edgeStatus": 0,
+                    "voice": [
+                        {
+                            "postNodeID": 1376,
+                            "voiceText": "왼쪽으로 꺾으신 후 정면으로 10미터 직진해주세요."
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "nodeID": 1375,
+            "nodeStatus": 1,
+            "nodeName": "하이테크 센터 주차장 2",
+            "longitude": 126.65715582668783,
+            "latitude": 37.450101977158866,
+            "screenLeftPosition": 1401,
+            "screenTopPosition": 187,
+            "adjacent": [
+                {
+                    "nodeID": 990,
+                    "edgeStatus": 0,
+                    "voice": [
+                        {
+                            "postNodeID": 1194,
+                            "voiceText": "오른쪽으로 꺾으신 후 정면으로 10미터 직진해주세요."
+                        }
+                    ]
+                },
+                {
+                    "nodeID": 1194,
+                    "edgeStatus": 0,
+                    "voice": [
+                        {
+                            "postNodeID": 990,
+                            "voiceText": "왼쪽으로 꺾으신 후 정면으로 10미터 직진해주세요."
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "nodeID": 1374,
+            "nodeStatus": 1,
+            "nodeName": "하이테크 센터 내려가는 길",
+            "longitude": 126.65677696466446,
+            "latitude": 37.450639106461196,
+            "screenLeftPosition": 1271,
+            "screenTopPosition": 127,
+            "adjacent": [
+                {
+                    "nodeID": 1376,
+                    "edgeStatus": 0,
+                    "voice": [
+                        {
+                            "postNodeID": 1370,
+                            "voiceText": "정면으로 10미터 직진해주세요."
+                        },
+                        {
+                            "postNodeID": 1380,
+                            "voiceText": "오른쪽으로 꺾으신 후 정면으로 10미터 직진해주세요."
+                        },
+                        {
+                            "postNodeID": 1373,
+                            "voiceText": "왼쪽으로 꺾으신 후 정면으로 10미터 직진해주세요."
+                        }
+                    ]
+                },
+                {
+                    "nodeID": 1373,
+                    "edgeStatus": 0,
+                    "voice": [
+                        {
+                            "postNodeID": 1376,
+                            "voiceText": "오른쪽으로 꺾으신 후 정면으로 10미터 직진해주세요."
+                        },
+                        {
+                            "postNodeID": 1380,
+                            "voiceText": "정면으로 10미터 직진해주세요."
+                        },
+                        {
+                            "postNodeID": 1370,
+                            "voiceText": "왼쪽으로 꺾으신 후 정면으로 10미터 직진해주세요."
+                        }
+                    ]
+                },
+                {
+                    "nodeID": 1380,
+                    "edgeStatus": 0,
+                    "voice": [
+                        {
+                            "postNodeID": 1376,
+                            "voiceText": "왼쪽으로 꺾으신 후 정면으로 10미터 직진해주세요."
+                        },
+                        {
+                            "postNodeID": 1373,
+                            "voiceText": "정면으로 10미터 직진해주세요."
+                        },
+                        {
+                            "postNodeID": 1370,
+                            "voiceText": "오른쪽으로 꺾으신 후 정면으로 10미터 직진해주세요."
+                        }
+                    ]
+                },
+                {
+                    "nodeID": 1370,
+                    "edgeStatus": 0,
+                    "voice": [
+                        {
+                            "postNodeID": 1376,
+                            "voiceText": "정면으로 10미터 직진해주세요."
+                        },
+                        {
+                            "postNodeID": 1373,
+                            "voiceText": "오른쪽으로 꺾으신 후 정면으로 10미터 직진해주세요."
+                        },
+                        {
+                            "postNodeID": 1380,
+                            "voiceText": "왼쪽으로 꺾으신 후 정면으로 10미터 직진해주세요."
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "nodeID": 1373,
+            "nodeStatus": 1,
+            "nodeName": "하이테크 센터 고층부 입구 앞",
+            "longitude": 126.65727820247413,
+            "latitude": 37.45044001240255,
+            "screenLeftPosition": 1366,
+            "screenTopPosition": 125,
+            "adjacent": [
+                {
+                    "nodeID": 1374,
+                    "edgeStatus": 0,
+                    "voice": [
+                        {
+                            "postNodeID": 1167,
+                            "voiceText": "정면으로 10미터 직진해주세요."
+                        }
+                    ]
+                },
+                {
+                    "nodeID": 1167,
+                    "edgeStatus": 0,
+                    "voice": [
+                        {
+                            "postNodeID": 1374,
+                            "voiceText": "정면으로 10미터 직진해주세요."
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "nodeID": 1380,
+            "nodeStatus": 1,
+            "nodeName": "하이테크 센터 앞 흡연장",
+            "longitude": 126.6566140204668,
+            "latitude": 37.45071602902375,
+            "screenLeftPosition": 1243,
+            "screenTopPosition": 122,
+            "adjacent": [
+                {
+                    "nodeID": 1379,
+                    "edgeStatus": 0,
+                    "voice": [
+                        {
+                            "postNodeID": 1374,
+                            "voiceText": "오른쪽으로 꺾으신 후 정면으로 10미터 직진해주세요."
+                        }
+                    ]
+                },
+                {
+                    "nodeID": 1374,
+                    "edgeStatus": 0,
+                    "voice": [
+                        {
+                            "postNodeID": 1379,
+                            "voiceText": "왼쪽으로 꺾으신 후 정면으로 10미터 직진해주세요."
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "nodeID": 1379,
+            "nodeStatus": 1,
+            "nodeName": "하이테크 센터 - 후문 사이",
+            "longitude": 126.65662676095963,
+            "latitude": 37.45095345041348,
+            "screenLeftPosition": 1218,
+            "screenTopPosition": 77,
+            "adjacent": [
+                {
+                    "nodeID": 1378,
+                    "edgeStatus": 0,
+                    "voice": [
+                        {
+                            "postNodeID": 1380,
+                            "voiceText": "왼쪽으로 꺾으신 후 정면으로 10미터 직진해주세요."
+                        }
+                    ]
+                },
+                {
+                    "nodeID": 1380,
+                    "edgeStatus": 0,
+                    "voice": [
+                        {
+                            "postNodeID": 1378,
+                            "voiceText": "오른쪽으로 꺾으신 후 정면으로 10미터 직진해주세요."
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "nodeID": 1378,
+            "nodeStatus": 1,
+            "nodeName": "후문 앞",
+            "longitude": 126.6564457118511,
+            "latitude": 37.45098193028293,
+            "screenLeftPosition": 1178,
+            "screenTopPosition": 77,
+            "adjacent": [
+                {
+                    "nodeID": 1212,
+                    "edgeStatus": 0,
+                    "voice": [
+                        {
+                            "postNodeID": 1381,
+                            "voiceText": "왼쪽으로 꺾으신 후 정면으로 10미터 직진해주세요."
+                        },
+                        {
+                            "postNodeID": 1379,
+                            "voiceText": "오른쪽으로 꺾으신 후 정면으로 10미터 직진해주세요."
+                        },
+                        {
+                            "postNodeID": 1377,
+                            "voiceText": "정면으로 10미터 직진해주세요."
+                        }
+                    ]
+                },
+                {
+                    "nodeID": 1381,
+                    "edgeStatus": 0,
+                    "voice": [
+                        {
+                            "postNodeID": 1212,
+                            "voiceText": "오른쪽으로 꺾으신 후 정면으로 10미터 직진해주세요."
+                        },
+                        {
+                            "postNodeID": 1379,
+                            "voiceText": "정면으로 10미터 직진해주세요."
+                        },
+                        {
+                            "postNodeID": 1377,
+                            "voiceText": "왼쪽으로 꺾으신 후 정면으로 10미터 직진해주세요."
+                        }
+                    ]
+                },
+                {
+                    "nodeID": 1379,
+                    "edgeStatus": 0,
+                    "voice": [
+                        {
+                            "postNodeID": 1212,
+                            "voiceText": "왼쪽으로 꺾으신 후 정면으로 10미터 직진해주세요."
+                        },
+                        {
+                            "postNodeID": 1381,
+                            "voiceText": "정면으로 10미터 직진해주세요."
+                        },
+                        {
+                            "postNodeID": 1377,
+                            "voiceText": "오른쪽으로 꺾으신 후 정면으로 10미터 직진해주세요."
+                        }
+                    ]
+                },
+                {
+                    "nodeID": 1377,
+                    "edgeStatus": 0,
+                    "voice": [
+                        {
+                            "postNodeID": 1212,
+                            "voiceText": "정면으로 10미터 직진해주세요."
+                        },
+                        {
+                            "postNodeID": 1381,
+                            "voiceText": "오른쪽으로 꺾으신 후 정면으로 10미터 직진해주세요."
+                        },
+                        {
+                            "postNodeID": 1379,
+                            "voiceText": "왼쪽으로 꺾으신 후 정면으로 10미터 직진해주세요."
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "nodeID": 1381,
+            "nodeStatus": 1,
+            "nodeName": "후문 - 2호관 사이 삼거리",
+            "longitude": 126.65633305907251,
+            "latitude": 37.45100402213678,
+            "screenLeftPosition": 1159,
+            "screenTopPosition": 84,
+            "adjacent": [
+                {
+                    "nodeID": 1378,
+                    "edgeStatus": 0,
+                    "voice": [
+                        {
+                            "postNodeID": 1399,
+                            "voiceText": "오른쪽으로 꺾으신 후 정면으로 10미터 직진해주세요."
+                        },
+                        {
+                            "postNodeID": 1382,
+                            "voiceText": "정면으로 10미터 직진해주세요."
+                        }
+                    ]
+                },
+                {
+                    "nodeID": 1399,
+                    "edgeStatus": 0,
+                    "voice": [
+                        {
+                            "postNodeID": 1378,
+                            "voiceText": "왼쪽으로 꺾으신 후 정면으로 10미터 직진해주세요."
+                        },
+                        {
+                            "postNodeID": 1382,
+                            "voiceText": "오른쪽으로 꺾으신 후 정면으로 10미터 직진해주세요."
+                        }
+                    ]
+                },
+                {
+                    "nodeID": 1382,
+                    "edgeStatus": 0,
+                    "voice": [
+                        {
+                            "postNodeID": 1378,
+                            "voiceText": "정면으로 10미터 직진해주세요."
+                        },
+                        {
+                            "postNodeID": 1399,
+                            "voiceText": "왼쪽으로 꺾으신 후 정면으로 10미터 직진해주세요."
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "nodeID": 1399,
+            "nodeStatus": 1,
+            "nodeName": "2호관 북쪽 흡연장",
+            "longitude": 126.65631394833326,
+            "latitude": 37.45092310736305,
+            "screenLeftPosition": 1165,
+            "screenTopPosition": 121,
+            "adjacent": [
+                {
+                    "nodeID": 1381,
+                    "edgeStatus": 0,
+                    "voice": [
+                        {
+                            "postNodeID": 1397,
+                            "voiceText": "정면으로 10미터 직진해주세요."
+                        }
+                    ]
+                },
+                {
+                    "nodeID": 1397,
+                    "edgeStatus": 0,
+                    "voice": [
+                        {
+                            "postNodeID": 1381,
+                            "voiceText": "정면으로 10미터 직진해주세요."
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "nodeID": 1382,
+            "nodeStatus": 1,
+            "nodeName": "2호관 북쪽 길 1",
+            "longitude": 126.65595587342976,
+            "latitude": 37.45116159276078,
+            "screenLeftPosition": 1103,
+            "screenTopPosition": 95,
+            "adjacent": [
+                {
+                    "nodeID": 1383,
+                    "edgeStatus": 0,
+                    "voice": [
+                        {
+                            "postNodeID": 991,
+                            "voiceText": "왼쪽으로 꺾으신 후 정면으로 10미터 직진해주세요."
+                        }
+                    ]
+                },
+                {
+                    "nodeID": 991,
+                    "edgeStatus": 0,
+                    "voice": [
+                        {
+                            "postNodeID": 1383,
+                            "voiceText": "오른쪽으로 꺾으신 후 정면으로 10미터 직진해주세요."
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "nodeID": 1383,
+            "nodeStatus": 1,
+            "nodeName": "2호관 북쪽 길 2",
+            "longitude": 126.65539998561144,
+            "latitude": 37.45131650139526,
+            "screenLeftPosition": 996,
+            "screenTopPosition": 110,
+            "adjacent": [
+                {
+                    "nodeID": 1382,
+                    "edgeStatus": 0,
+                    "voice": [
+                        {
+                            "postNodeID": 1223,
+                            "voiceText": "오른쪽으로 꺾으신 후 정면으로 10미터 직진해주세요."
+                        },
+                        {
+                            "postNodeID": 1384,
+                            "voiceText": "정면으로 10미터 직진해주세요."
+                        }
+                    ]
+                },
+                {
+                    "nodeID": 1223,
+                    "edgeStatus": 0,
+                    "voice": [
+                        {
+                            "postNodeID": 1382,
+                            "voiceText": "왼쪽으로 꺾으신 후 정면으로 10미터 직진해주세요."
+                        },
+                        {
+                            "postNodeID": 1384,
+                            "voiceText": "오른쪽으로 꺾으신 후 정면으로 10미터 직진해주세요."
+                        }
+                    ]
+                },
+                {
+                    "nodeID": 1384,
+                    "edgeStatus": 0,
+                    "voice": [
+                        {
+                            "postNodeID": 1382,
+                            "voiceText": "정면으로 10미터 직진해주세요."
+                        },
+                        {
+                            "postNodeID": 1223,
+                            "voiceText": "왼쪽으로 꺾으신 후 정면으로 10미터 직진해주세요."
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "nodeID": 991,
+            "nodeStatus": 1,
+            "nodeName": "2호관 입구 앞 계단",
+            "longitude": 126.65594447404145,
+            "latitude": 37.45111820763898,
+            "screenLeftPosition": 1103,
+            "screenTopPosition": 120,
+            "adjacent": [
+                {
+                    "nodeID": 1217,
+                    "edgeStatus": 0,
+                    "voice": [
+                        {
+                            "postNodeID": 1382,
+                            "voiceText": "오른쪽으로 꺾으신 후 정면으로 10미터 직진해주세요."
+                        }
+                    ]
+                },
+                {
+                    "nodeID": 1382,
+                    "edgeStatus": 0,
+                    "voice": [
+                        {
+                            "postNodeID": 1217,
+                            "voiceText": "왼쪽으로 꺾으신 후 정면으로 10미터 직진해주세요."
+                        }
+                    ]
+                }
+            ]
         }
-      ]
-    },
-    {
-      "nodeID" : 1370,
-      "nodeStatus" : 0,
-      "nodeName" : "하이테크 센터 저층부 문",
-      "latitude" : 37.45073812095617,
-      "longitude" : 126.65682960301638,
-      "screenLeftPosition" : 1271,
-      "screenTopPosition" : 105,
-      "adjacent" : [
-        {
-          "nodeID" : 1374,
-          "edgeStatus" : 0
-        }
-      ]
-    },
-    {
-      "nodeID" : 1167,
-      "nodeStatus" : 0,
-      "nodeName" : "하이테크 센터 고층부 문",
-      "latitude" : 37.45043763,
-      "longitude" : 126.65737867,
-      "screenLeftPosition" : 1380,
-      "screenTopPosition" : 132,
-      "adjacent" : [
-        {
-          "nodeID" : 1373,
-          "edgeStatus" : 0
-        }
-      ]
-    },
-    {
-      "nodeID" : 1194,
-      "nodeStatus" : 0,
-      "nodeName" : "하이테크 센터 지하 문",
-      "latitude" : 37.450222993926864,
-      "longitude" : 126.65727441286957,
-      "screenLeftPosition" : 1410,
-      "screenTopPosition" : 167,
-      "adjacent" : [
-        {
-          "nodeID" : 1375,
-          "edgeStatus" : 0
-        }
-      ]
-    },
-    {
-      "nodeID" : 1217,
-      "nodeStatus" : 0,
-      "nodeName" : "2호관 북쪽 1문",
-      "latitude" : 37.45104225,
-      "longitude" : 126.65591424,
-      "screenLeftPosition" : 1104,
-      "screenTopPosition" : 134,
-      "adjacent" : [
-        {
-          "nodeID" : 991,
-          "edgeStatus" : 0
-        }
-      ]
-    },
-    {
-      "nodeID" : 1223,
-      "nodeStatus" : 0,
-      "nodeName" : "2호관 북쪽 2문",
-      "latitude" : 37.45119645,
-      "longitude" : 126.65537988,
-      "screenLeftPosition" : 996,
-      "screenTopPosition" : 134,
-      "adjacent" : [
-        {
-          "nodeID" : 1383,
-          "edgeStatus" : 0
-        }
-      ]
-    },
-    {
-      "nodeID" : 1233,
-      "nodeStatus" : 0,
-      "nodeName" : "2호관 북쪽 3문",
-      "latitude" : 37.45117352,
-      "longitude" : 126.65486722,
-      "screenLeftPosition" : 917,
-      "screenTopPosition" : 173,
-      "adjacent" : [
-        {
-          "nodeID" : 1385,
-          "edgeStatus" : 0
-        }
-      ]
-    },
-    {
-      "nodeID" : 1372,
-      "nodeStatus" : 0,
-      "nodeName" : "2호관 북쪽 4문",
-      "latitude" : 37.45096037075659,
-      "longitude" : 126.65495004504919,
-      "screenLeftPosition" : 952,
-      "screenTopPosition" : 211,
-      "adjacent" : [
-        {
-          "nodeID" : 1387,
-          "edgeStatus" : 0
-        }
-      ]
-    },
-    {
-      "nodeID" : 1259,
-      "nodeStatus" : 0,
-      "nodeName" : "2호관 북쪽 5문",
-      "latitude" : 37.45082944,
-      "longitude" : 126.65580498,
-      "screenLeftPosition" : 1097,
-      "screenTopPosition" : 173,
-      "adjacent" : [
-        {
-          "nodeID" : 1390,
-          "edgeStatus" : 0
-        }
-      ]
-    },
-    {
-      "nodeID" : 1273,
-      "nodeStatus" : 0,
-      "nodeName" : "4호관 북쪽 1문",
-      "latitude" : 37.45062657,
-      "longitude" : 126.65558867,
-      "screenLeftPosition" : 1097,
-      "screenTopPosition" : 248,
-      "adjacent" : [
-        {
-          "nodeID" : 1390,
-          "edgeStatus" : 0
-        }
-      ]
-    },
-    {
-      "nodeID" : 1281,
-      "nodeStatus" : 0,
-      "nodeName" : "4호관 북쪽 2문",
-      "latitude" : 37.45068077548144,
-      "longitude" : 126.65533053763683,
-      "screenLeftPosition" : 1044,
-      "screenTopPosition" : 253,
-      "adjacent" : [
-        {
-          "nodeID" : 1389,
-          "edgeStatus" : 0
-        }
-      ]
-    },
-    {
-      "nodeID" : 1296,
-      "nodeStatus" : 0,
-      "nodeName" : "4호관 북쪽 3문",
-      "latitude" : 37.450364959418295,
-      "longitude" : 126.65492588720456,
-      "screenLeftPosition" : 1012,
-      "screenTopPosition" : 348,
-      "adjacent" : [
-        {
-          "nodeID" : 1388,
-          "edgeStatus" : 0
-        }
-      ]
-    },
-    {
-      "nodeID" : 1311,
-      "nodeStatus" : 0,
-      "nodeName" : "2호관 남쪽 1문",
-      "latitude" : 37.450396871822676,
-      "longitude" : 126.65437213484779,
-      "screenLeftPosition" : 920,
-      "screenTopPosition" : 374,
-      "adjacent" : [
-        {
-          "nodeID" : 1391,
-          "edgeStatus" : 0
-        }
-      ]
-    },
-    {
-      "nodeID" : 1316,
-      "nodeStatus" : 0,
-      "nodeName" : "2호관 남쪽 2문",
-      "latitude" : 37.45004450061771,
-      "longitude" : 126.65482056192268,
-      "screenLeftPosition" : 1030,
-      "screenTopPosition" : 405,
-      "adjacent" : [
-        {
-          "nodeID" : 1393,
-          "edgeStatus" : 0
-        }
-      ]
-    },
-    {
-      "nodeID" : 1333,
-      "nodeStatus" : 0,
-      "nodeName" : "2호관 남쪽 3문",
-      "longitude" : 126.6555295326848,
-      "latitude" : 37.44986153122323,
-      "screenLeftPosition" : 1139,
-      "screenTopPosition" : 379,
-      "adjacent" : [
-        {
-          "nodeID" : 1395,
-          "edgeStatus" : 0
-        }
-      ]
-    },
-    {
-      "nodeID" : 1345,
-      "nodeStatus" : 0,
-      "nodeName" : "2호관 남쪽 4문",
-      "longitude" : 126.65576959806252,
-      "latitude" : 37.450174568830285,
-      "screenLeftPosition" : 1141,
-      "screenTopPosition" : 301,
-      "adjacent" : [
-        {
-          "nodeID" : 1396,
-          "edgeStatus" : 0
-        }
-      ]
-    },
-    {
-      "nodeID" : 1384,
-      "nodeStatus" : 1,
-      "nodeName" : "60주년 - 2호관 삼거리",
-      "longitude" : 126.65494970977305,
-      "latitude" : 37.451403537549126,
-      "screenLeftPosition" : 902,
-      "screenTopPosition" : 126,
-      "adjacent" : [
-        {
-          "nodeID" : 1383,
-          "edgeStatus" : 0
-        },
-        {
-          "nodeID" : 1385,
-          "edgeStatus" : 0
-        }
-      ]
-    },
-    {
-      "nodeID" : 1385,
-      "nodeStatus" : 1,
-      "nodeName" : "60주년 - 2호관 사이 길",
-      "longitude" : 126.6548001766205,
-      "latitude" : 37.45123319146504,
-      "screenLeftPosition" : 902,
-      "screenTopPosition" : 174,
-      "adjacent" : [
-        {
-          "nodeID" : 1384,
-          "edgeStatus" : 0
-        },
-        {
-          "nodeID" : 1233,
-          "edgeStatus" : 0
-        },
-        {
-          "nodeID" : 1386,
-          "edgeStatus" : 0
-        }
-      ]
-    },
-    {
-      "nodeID" : 1386,
-      "nodeStatus" : 1,
-      "nodeName" : "4호관 주차장 입구",
-      "longitude" : 126.6544846817851,
-      "latitude" : 37.45075941437881,
-      "screenLeftPosition" : 900,
-      "screenTopPosition" : 283,
-      "adjacent" : [
-        {
-          "nodeID" : 1385,
-          "edgeStatus" : 0
-        },
-        {
-          "nodeID" : 1387,
-          "edgeStatus" : 0
-        },
-        {
-          "nodeID" : 1391,
-          "edgeStatus" : 0
-        }
-      ]
-    },
-    {
-      "nodeID" : 1387,
-      "nodeStatus" : 1,
-      "nodeName" : "4호관 주차장 진입로",
-      "longitude" : 126.65482196956873,
-      "latitude" : 37.45072534489966,
-      "screenLeftPosition" : 952,
-      "screenTopPosition" : 260,
-      "adjacent" : [
-        {
-          "nodeID" : 1372,
-          "edgeStatus" : 0
-        },
-        {
-          "nodeID" : 1386,
-          "edgeStatus" : 0
-        },
-        {
-          "nodeID" : 1388,
-          "edgeStatus" : 0
-        }
-      ]
-    },
-    {
-      "nodeID" : 1388,
-      "nodeStatus" : 1,
-      "nodeName" : "4호관 주차장 1",
-      "longitude" : 126.65512472391129,
-      "latitude" : 37.45065028552364,
-      "screenLeftPosition" : 1010,
-      "screenTopPosition" : 257,
-      "adjacent" : [
-        {
-          "nodeID" : 1387,
-          "edgeStatus" : 0
-        },
-        {
-          "nodeID" : 1296,
-          "edgeStatus" : 0
-        },
-        {
-          "nodeID" : 1389,
-          "edgeStatus" : 0
-        }
-      ]
-    },
-    {
-      "nodeID" : 1389,
-      "nodeStatus" : 1,
-      "nodeName" : "4호관 주차장 2",
-      "longitude" : 126.65533494204283,
-      "latitude" : 37.45081025240089,
-      "screenLeftPosition" : 1043,
-      "screenTopPosition" : 230,
-      "adjacent" : [
-        {
-          "nodeID" : 1388,
-          "edgeStatus" : 0
-        },
-        {
-          "nodeID" : 1281,
-          "edgeStatus" : 0
-        },
-        {
-          "nodeID" : 1390,
-          "edgeStatus" : 0
-        }
-      ]
-    },
-    {
-      "nodeID" : 1390,
-      "nodeStatus" : 1,
-      "nodeName" : "2호관, 4호관 입구 앞",
-      "longitude" : 126.65563132613897,
-      "latitude" : 37.450753558688206,
-      "screenLeftPosition" : 1094,
-      "screenTopPosition" : 227,
-      "adjacent" : [
-        {
-          "nodeID" : 1259,
-          "edgeStatus" : 0
-        },
-        {
-          "nodeID" : 1389,
-          "edgeStatus" : 0
-        },
-        {
-          "nodeID" : 1273,
-          "edgeStatus" : 0
-        }
-      ]
-    },
-    {
-      "nodeID" : 1391,
-      "nodeStatus" : 1,
-      "nodeName" : "60주년 - 2호관 사이 길",
-      "longitude" : 126.65426004678011,
-      "latitude" : 37.450475146686706,
-      "screenLeftPosition" : 897,
-      "screenTopPosition" : 374,
-      "adjacent" : [
-        {
-          "nodeID" : 1386,
-          "edgeStatus" : 0
-        },
-        {
-          "nodeID" : 1391,
-          "edgeStatus" : 0
-        },
-        {
-          "nodeID" : 1392,
-          "edgeStatus" : 0
-        }
-      ]
-    },
-    {
-      "nodeID" : 1392,
-      "nodeStatus" : 1,
-      "nodeName" : "그라지에 앞 삼거리",
-      "longitude" : 126.65408570319413,
-      "latitude" : 37.45019673364898,
-      "screenLeftPosition" : 897,
-      "screenTopPosition" : 425,
-      "adjacent" : [
-        {
-          "nodeID" : 1391,
-          "edgeStatus" : 0
-        },
-        {
-          "nodeID" : 1393,
-          "edgeStatus" : 0
-        }
-      ]
-    },
-    {
-      "nodeID" : 1393,
-      "nodeStatus" : 1,
-      "nodeName" : "2호관 - 본관 사이 구름다리 입구",
-      "longitude" : 126.65471803396942,
-      "latitude" : 37.449914859355346,
-      "screenLeftPosition" : 1030,
-      "screenTopPosition" : 427,
-      "adjacent" : [
-        {
-          "nodeID" : 1392,
-          "edgeStatus" : 0
-        },
-        {
-          "nodeID" : 1316,
-          "edgeStatus" : 0
-        },
-        {
-          "nodeID" : 1394,
-          "edgeStatus" : 0
-        }
-      ]
-    },
-    {
-      "nodeID" : 1394,
-      "nodeStatus" : 1,
-      "nodeName" : "2호관 - 인경호 사이 삼거리",
-      "longitude" : 126.65545664727688,
-      "latitude" : 37.449611956428086,
-      "screenLeftPosition" : 1161,
-      "screenTopPosition" : 427,
-      "adjacent" : [
-        {
-          "nodeID" : 1393,
-          "edgeStatus" : 0
-        },
-        {
-          "nodeID" : 1395,
-          "edgeStatus" : 0
-        }
-      ]
-    },
-    {
-      "nodeID" : 1395,
-      "nodeStatus" : 1,
-      "nodeName" : "2호관 남측 동문2 앞",
-      "longitude" : 126.65561456233263,
-      "latitude" : 37.44984299321822,
-      "screenLeftPosition" : 1161,
-      "screenTopPosition" : 379,
-      "adjacent" : [
-        {
-          "nodeID" : 1333,
-          "edgeStatus" : 0
-        },
-        {
-          "nodeID" : 1394,
-          "edgeStatus" : 0
-        },
-        {
-          "nodeID" : 1396,
-          "edgeStatus" : 0
-        }
-      ]
-    },
-    {
-      "nodeID" : 1396,
-      "nodeStatus" : 1,
-      "nodeName" : "2호관 남측 동문1 앞",
-      "longitude" : 126.65584120899437,
-      "latitude" : 37.450158405195516,
-      "screenLeftPosition" : 1161,
-      "screenTopPosition" : 303,
-      "adjacent" : [
-        {
-          "nodeID" : 1345,
-          "edgeStatus" : 0
-        },
-        {
-          "nodeID" : 1395,
-          "edgeStatus" : 0
-        },
-        {
-          "nodeID" : 1397,
-          "edgeStatus" : 0
-        }
-      ]
-    },
-    {
-      "nodeID" : 1397,
-      "nodeStatus" : 1,
-      "nodeName" : "인경호 공원 입구",
-      "longitude" : 126.6559263691306,
-      "latitude" : 37.450289094494316,
-      "screenLeftPosition" : 1162,
-      "screenTopPosition" : 268,
-      "adjacent" : [
-        {
-          "nodeID" : 1396,
-          "edgeStatus" : 0
-        },
-        {
-          "nodeID" : 1398,
-          "edgeStatus" : 1
-        },
-        {
-          "nodeID" : 1399,
-          "edgeStatus" : 0
-        }
-      ]
-    },
-    {
-      "nodeID" : 1398,
-      "nodeStatus" : 1,
-      "nodeName" : "인경호 공원",
-      "longitude" : 126.65617514401673,
-      "latitude" : 37.45020871128665,
-      "screenLeftPosition" : 1217,
-      "screenTopPosition" : 263,
-      "adjacent" : [
-        {
-          "nodeID" : 1397,
-          "edgeStatus" : 1
-        },
-        {
-          "nodeID" : 1400,
-          "edgeStatus" : 1
-        }
-      ]
-    },
-    {
-      "nodeID" : 1400,
-      "nodeStatus" : 1,
-      "nodeName" : "학생회관 위쪽 사거리 1",
-      "longitude" : 126.65642760694027,
-      "latitude" : 37.450113688641665,
-      "screenLeftPosition" : 1268,
-      "screenTopPosition" : 262,
-      "adjacent" : [
-        {
-          "nodeID" : 1377,
-          "edgeStatus" : 0
-        },
-        {
-          "nodeID" : 1398,
-          "edgeStatus" : 1
-        }
-      ]
-    },
-    {
-      "nodeID" : 1377,
-      "nodeStatus" : 1,
-      "nodeName" : "학생회관 위쪽 사거리 2",
-      "longitude" : 126.65641922503708,
-      "latitude" : 37.45032502735725,
-      "screenLeftPosition" : 1264,
-      "screenTopPosition" : 238,
-      "adjacent" : [
-        {
-          "nodeID" : 1400,
-          "edgeStatus" : 0
-        },
-        {
-          "nodeID" : 1378,
-          "edgeStatus" : 0
-        },
-        {
-          "nodeID" : 1376,
-          "edgeStatus" : 0
-        }
-      ]
-    },
-    {
-      "nodeID" : 1376,
-      "nodeStatus" : 1,
-      "nodeName" : "하이테크 센터 주차장 입구",
-      "longitude" : 126.65641922503708,
-      "latitude" : 37.45032502735725,
-      "screenLeftPosition" : 1277,
-      "screenTopPosition" : 220,
-      "adjacent" : [
-        {
-          "nodeID" : 1377,
-          "edgeStatus" : 0
-        },
-        {
-          "nodeID" : 1374,
-          "edgeStatus" : 0
-        },
-        {
-          "nodeID" : 990,
-          "edgeStatus" : 0
-        }
-      ]
-    },
-    {
-      "nodeID" : 990,
-      "nodeStatus" : 1,
-      "nodeName" : "하이테크 센터 주차장 1",
-      "longitude" : 126.6569583490491,
-      "latitude" : 37.45018182814162,
-      "screenLeftPosition" : 1297,
-      "screenTopPosition" : 203,
-      "adjacent" : [
-        {
-          "nodeID" : 1376,
-          "edgeStatus" : 0
-        },
-        {
-          "nodeID" : 1375,
-          "edgeStatus" : 0
-        }
-      ]
-    },
-    {
-      "nodeID" : 1375,
-      "nodeStatus" : 1,
-      "nodeName" : "하이테크 센터 주차장 2",
-      "longitude" : 126.65715582668783,
-      "latitude" : 37.450101977158866,
-      "screenLeftPosition" : 1401,
-      "screenTopPosition" : 187,
-      "adjacent" : [
-        {
-          "nodeID" : 990,
-          "edgeStatus" : 0
-        },
-        {
-          "nodeID" : 1194,
-          "edgeStatus" : 0
-        }
-      ]
-    },
-    {
-      "nodeID" : 1374,
-      "nodeStatus" : 1,
-      "nodeName" : "하이테크 센터 내려가는 길",
-      "longitude" : 126.65677696466446,
-      "latitude" : 37.450639106461196,
-      "screenLeftPosition" : 1271,
-      "screenTopPosition" : 127,
-      "adjacent" : [
-        {
-          "nodeID" : 1376,
-          "edgeStatus" : 0
-        },
-        {
-          "nodeID" : 1373,
-          "edgeStatus" : 0
-        },
-        {
-          "nodeID" : 1380,
-          "edgeStatus" : 0
-        },
-        {
-          "nodeID" : 1370,
-          "edgeStatus" : 0
-        }
-      ]
-    },
-    {
-      "nodeID" : 1373,
-      "nodeStatus" : 1,
-      "nodeName" : "하이테크 센터 고층부 입구 앞",
-      "longitude" : 126.65727820247413,
-      "latitude" : 37.45044001240255,
-      "screenLeftPosition" : 1366,
-      "screenTopPosition" : 125,
-      "adjacent" : [
-        {
-          "nodeID" : 1374,
-          "edgeStatus" : 0
-        },
-        {
-          "nodeID" : 1167,
-          "edgeStatus" : 0
-        }
-      ]
-    },
-    {
-      "nodeID" : 1380,
-      "nodeStatus" : 1,
-      "nodeName" : "하이테크 센터 앞 흡연장",
-      "longitude" : 126.6566140204668,
-      "latitude" : 37.45071602902375,
-      "screenLeftPosition" : 1243,
-      "screenTopPosition" : 122,
-      "adjacent" : [
-        {
-          "nodeID" : 1379,
-          "edgeStatus" : 0
-        },
-        {
-          "nodeID" : 1374,
-          "edgeStatus" : 0
-        }
-      ]
-    },
-    {
-      "nodeID" : 1379,
-      "nodeStatus" : 1,
-      "nodeName" : "하이테크 센터 - 후문 사이",
-      "longitude" : 126.65662676095963,
-      "latitude" : 37.45095345041348,
-      "screenLeftPosition" : 1218,
-      "screenTopPosition" : 77,
-      "adjacent" : [
-        {
-          "nodeID" : 1378,
-          "edgeStatus" : 0
-        },
-        {
-          "nodeID" : 1380,
-          "edgeStatus" : 0
-        }
-      ]
-    },
-    {
-      "nodeID" : 1378,
-      "nodeStatus" : 1,
-      "nodeName" : "후문 앞",
-      "longitude" : 126.6564457118511,
-      "latitude" : 37.45098193028293,
-      "screenLeftPosition" : 1178,
-      "screenTopPosition" : 77,
-      "adjacent" : [
-        {
-          "nodeID" : 1212,
-          "edgeStatus" : 0
-        },
-        {
-          "nodeID" : 1381,
-          "edgeStatus" : 0
-        },
-        {
-          "nodeID" : 1379,
-          "edgeStatus" : 0
-        },
-        {
-          "nodeID" : 1377,
-          "edgeStatus" : 0
-        }
-      ]
-    },
-    {
-      "nodeID" : 1381,
-      "nodeStatus" : 1,
-      "nodeName" : "후문 - 2호관 사이 삼거리",
-      "longitude" : 126.65633305907251,
-      "latitude" : 37.45100402213678,
-      "screenLeftPosition" : 1159,
-      "screenTopPosition" : 84,
-      "adjacent" : [
-        {
-          "nodeID" : 1378,
-          "edgeStatus" : 0
-        },
-        {
-          "nodeID" : 1399,
-          "edgeStatus" : 0
-        },
-        {
-          "nodeID" : 1382,
-          "edgeStatus" : 0
-        }
-      ]
-    },
-    {
-      "nodeID" : 1399,
-      "nodeStatus" : 1,
-      "nodeName" : "2호관 북쪽 흡연장",
-      "longitude" : 126.65631394833326,
-      "latitude" : 37.45092310736305,
-      "screenLeftPosition" : 1165,
-      "screenTopPosition" : 121,
-      "adjacent" : [
-        {
-          "nodeID" : 1381,
-          "edgeStatus" : 0
-        },
-        {
-          "nodeID" : 1397,
-          "edgeStatus" : 0
-        }
-      ]
-    },
-    {
-      "nodeID" : 1382,
-      "nodeStatus" : 1,
-      "nodeName" : "2호관 북쪽 길 1",
-      "longitude" : 126.65595587342976,
-      "latitude" : 37.45116159276078,
-      "screenLeftPosition" : 1103,
-      "screenTopPosition" : 95,
-      "adjacent" : [
-        {
-          "nodeID" : 1383,
-          "edgeStatus" : 0
-        },
-        {
-          "nodeID" : 991,
-          "edgeStatus" : 0
-        }
-      ]
-    },
-    {
-      "nodeID" : 1383,
-      "nodeStatus" : 1,
-      "nodeName" : "2호관 북쪽 길 2",
-      "longitude" : 126.65539998561144,
-      "latitude" : 37.45131650139526,
-      "screenLeftPosition" : 996,
-      "screenTopPosition" : 110,
-      "adjacent" : [
-        {
-          "nodeID" : 1382,
-          "edgeStatus" : 0
-        },
-        {
-          "nodeID" : 1223,
-          "edgeStatus" : 0
-        },
-        {
-          "nodeID" : 1384,
-          "edgeStatus" : 0
-        }
-      ]
-    },
-    {
-      "nodeID" : 991,
-      "nodeStatus" : 1,
-      "nodeName" : "2호관 입구 앞 계단",
-      "longitude" : 126.65594447404145,
-      "latitude" : 37.45111820763898,
-      "screenLeftPosition" : 1103,
-      "screenTopPosition" : 120,
-      "adjacent" : [
-        {
-          "nodeID" : 1217,
-          "edgeStatus" : 0
-        },
-        {
-          "nodeID" : 1382,
-          "edgeStatus" : 0
-        }
-      ]
-    }
-  ]
+    ]
 }
