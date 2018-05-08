@@ -28,12 +28,14 @@ public class FindPath {
     private int[] check;
     private int[] track;
     private ArrayList<ArrayList<Integer>> pathNode;
+    private ArrayList<NodeItem> passingNodes;
 
     // this class not support default constructor
     // required params 'nodes' : All node data to construct map
     // required params 'edges' : All edge between two nodes in map
     // required params 'start' and 'dest' : Node ID about start node and destination node
     public FindPath(ArrayList<NodeItem> nodes, EdgeList edges, long start, long dest){
+        this.passingNodes = new ArrayList<NodeItem>();
         this.nodes = nodes;
         this.size = this.nodes.size();
         this.adj = new double[this.size][this.size];
@@ -117,7 +119,8 @@ public class FindPath {
 
     private void findRoute(int x){
         // build path by reverse recursive search to destination node until start node.
-        //Log.e("FIND_ROUTE", Long.toString(this.memo[x].nodeID));
+        Log.e("FIND_ROUTE", Long.toString(this.memo[x].nodeID));
+        this.passingNodes.add(findByNodeID(this.memo[x].nodeID));
         if(this.memo[x].nodeID == startNodeID){
             return;
         }
