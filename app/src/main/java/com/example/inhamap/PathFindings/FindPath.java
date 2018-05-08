@@ -155,4 +155,12 @@ public class FindPath {
             this.nodeID = id;
         }
     }
+
+    public ArrayList<NodeItem> getPassingNodes() {
+        return passingNodes;
+    }
+
+    public void setPassingNodes(ArrayList<NodeItem> passingNodes) {
+        this.passingNodes = passingNodes;
+    }
 }

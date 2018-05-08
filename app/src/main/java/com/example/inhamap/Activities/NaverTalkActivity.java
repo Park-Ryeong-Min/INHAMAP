@@ -13,7 +13,9 @@ import android.widget.Button;
 import com.example.inhamap.Models.AdjacentEdge;
 import com.example.inhamap.Models.EdgeList;
 import com.example.inhamap.Models.NodeItem;
+import com.example.inhamap.Models.VoicePathElement;
 import com.example.inhamap.PathFindings.FindPath;
+import com.example.inhamap.PathFindings.PassingNodeListMaker;
 import com.example.inhamap.R;
 import com.example.inhamap.Utils.AudioWriterPCM;
 import com.example.inhamap.Utils.EdgeListMaker;
@@ -33,6 +35,7 @@ import java.util.Locale;
 import java.util.StringTokenizer;
 
 import static android.speech.tts.TextToSpeech.ERROR;
+import static android.speech.tts.TextToSpeech.QUEUE_FLUSH;
 
 public class NaverTalkActivity extends Activity {
 
@@ -241,7 +244,13 @@ public class NaverTalkActivity extends Activity {
                 FindPath find = new FindPath(list, edges, sourceId, destId);
                 EdgeList path = find.getPaths();
 
-
+                // 경로를 찾아 음성을 출력해야 하는 부분
+                PassingNodeListMaker pathNodes = new PassingNodeListMaker(getApplicationContext(), find.getPassingNodes());
+                ArrayList<VoicePathElement> voiceElements = pathNodes.getVoiceElements();
+                for(int i = 0; i < voiceElements.size(); i++){
+                    Log.e("VOICE", Integer.toString(i) + " , " + voiceElements.get(i).getVoiceText());
+                    myTTS.speak(voiceElements.get(i).getVoiceText(), QUEUE_FLUSH, null);
+                }
             }
         });
 
