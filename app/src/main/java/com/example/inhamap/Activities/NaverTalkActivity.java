@@ -96,6 +96,7 @@ public class NaverTalkActivity extends Activity {
             		strBuf.append("\n");
             	}
                 mResult = strBuf.toString();
+                btnConfirm.setText(mResult);
             	String temp1 = cutTalk(mResult, 0);
             	String temp2 = cutTalk(mResult, 1);
             	if(statFlag==0){
@@ -124,7 +125,6 @@ public class NaverTalkActivity extends Activity {
                 }
 
                 mResult = "Error code : " + msg.obj.toString();
-                btnConfirm.setText(mResult);
 
                 //txtResult.setText(mResult);
                 if(statFlag==0){
@@ -158,7 +158,7 @@ public class NaverTalkActivity extends Activity {
                     btnStart.setEnabled(true);
                     btnStart2.setEnabled(true);
                 }
-                btnConfirm.setText("확인");
+                //btnConfirm.setText("확인");
                 break;
         }
     }
@@ -225,8 +225,9 @@ public class NaverTalkActivity extends Activity {
             @Override
             public void onClick(View v){
                 Intent returnIntent = new Intent();
-                long[] result = new long[2];
+                long[] result = {sourceId, destId};
                 returnIntent.putExtra("resultId", result);
+                setResult(Activity.RESULT_OK,returnIntent);
                 finish();
             }
         });
@@ -269,6 +270,11 @@ public class NaverTalkActivity extends Activity {
     	super.onStop();
     	// NOTE : release() must be called on stop time.
     	naverRecognizer.getSpeechRecognizer().release();
+        if(myTTS !=null){
+            myTTS.stop();
+            myTTS.shutdown();
+            myTTS = null;
+        }
     }
 
     // Declare handler for handling SpeechRecognizer thread's Messages.
@@ -375,10 +381,11 @@ public class NaverTalkActivity extends Activity {
         else if(s.contains("남")) result+="남";
         else if(s.contains("북")) result+="북";
 
-        if(s.contains("고")|s.contains("포")) result+="고";
-        else if(s.contains("저")) result+="저";
+        if(s.contains("고")|s.contains("포")|s.contains("코")) result+="고";
+        else if(s.contains("저")|s.contains("처")) result+="저";
+        else if(s.contains("지")|s.contains("치")|s.contains("시")) result+="지";
 
-        if(s.contains("1")|s.contains("일")) result+= "1";
+        if(s.contains("1")|s.contains("일")|s.contains("입")) result+= "1";
         else if(s.contains("2")|s.contains("이")) result+= "2";
         else if(s.contains("3")|s.contains("삼")) result+= "3";
         else if(s.contains("4")|s.contains("사")) result+= "4";
@@ -410,7 +417,7 @@ public class NaverTalkActivity extends Activity {
         ArrayList<NodeItem> items = list.getItems();
         ArrayList<NodeItem> tempList = new ArrayList<>();
         for(int i = 0; i < items.size(); i++){
-            if(items.get(i).getNodeName().contains(build)){
+            if(items.get(i).getNodeName().contains(build)&&items.get(i).getNodeStatus()==0){
                 result = items.get(i).getNodeID();
                 tempList.add(items.get(i));
             }

@@ -34,7 +34,7 @@ public class LocationDrawingSurfaceView extends SurfaceView implements SurfaceHo
     @Override
     public void surfaceCreated(SurfaceHolder holder) {
         Log.e("SURFACE_VIEW", "Surface created.");
-        this.thread.start();
+        //this.thread.start();
     }
 
     @Override
