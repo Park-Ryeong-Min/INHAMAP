@@ -18,7 +18,7 @@
     {
       "nodeID" : 1370,
       "nodeStatus" : 0,
-      "nodeName" : "하이테크 센터 저층부 입구",
+      "nodeName" : "하이테크 센터 저층부 문",
       "latitude" : 37.45073812095617,
       "longitude" : 126.65682960301638,
       "screenLeftPosition" : 1271,
@@ -33,7 +33,7 @@
     {
       "nodeID" : 1167,
       "nodeStatus" : 0,
-      "nodeName" : "하이테크 센터 고층부 입구",
+      "nodeName" : "하이테크 센터 고층부 문",
       "latitude" : 37.45043763,
       "longitude" : 126.65737867,
       "screenLeftPosition" : 1380,
@@ -48,7 +48,7 @@
     {
       "nodeID" : 1194,
       "nodeStatus" : 0,
-      "nodeName" : "하이테크 센터 지하 입구",
+      "nodeName" : "하이테크 센터 지하 문",
       "latitude" : 37.450222993926864,
       "longitude" : 126.65727441286957,
       "screenLeftPosition" : 1410,
@@ -93,7 +93,7 @@
     {
       "nodeID" : 1233,
       "nodeStatus" : 0,
-      "nodeName" : "2호관 북쪽 서문",
+      "nodeName" : "2호관 북쪽 3문",
       "latitude" : 37.45117352,
       "longitude" : 126.65486722,
       "screenLeftPosition" : 917,
@@ -108,7 +108,7 @@
     {
       "nodeID" : 1372,
       "nodeStatus" : 0,
-      "nodeName" : "2호관 북쪽 남1문",
+      "nodeName" : "2호관 북쪽 4문",
       "latitude" : 37.45096037075659,
       "longitude" : 126.65495004504919,
       "screenLeftPosition" : 952,
@@ -123,7 +123,7 @@
     {
       "nodeID" : 1259,
       "nodeStatus" : 0,
-      "nodeName" : "2호관 북쪽 남2문",
+      "nodeName" : "2호관 북쪽 5문",
       "latitude" : 37.45082944,
       "longitude" : 126.65580498,
       "screenLeftPosition" : 1097,
@@ -138,7 +138,7 @@
     {
       "nodeID" : 1273,
       "nodeStatus" : 0,
-      "nodeName" : "4호관 북1문",
+      "nodeName" : "4호관 북쪽 1문",
       "latitude" : 37.45062657,
       "longitude" : 126.65558867,
       "screenLeftPosition" : 1097,
@@ -153,7 +153,7 @@
     {
       "nodeID" : 1281,
       "nodeStatus" : 0,
-      "nodeName" : "4호관 북2문",
+      "nodeName" : "4호관 북쪽 2문",
       "latitude" : 37.45068077548144,
       "longitude" : 126.65533053763683,
       "screenLeftPosition" : 1044,
@@ -168,7 +168,7 @@
     {
       "nodeID" : 1296,
       "nodeStatus" : 0,
-      "nodeName" : "4호관 북3문",
+      "nodeName" : "4호관 북쪽 3문",
       "latitude" : 37.450364959418295,
       "longitude" : 126.65492588720456,
       "screenLeftPosition" : 1012,
@@ -183,7 +183,7 @@
     {
       "nodeID" : 1311,
       "nodeStatus" : 0,
-      "nodeName" : "2호관 남쪽 서문",
+      "nodeName" : "2호관 남쪽 1문",
       "latitude" : 37.450396871822676,
       "longitude" : 126.65437213484779,
       "screenLeftPosition" : 920,
@@ -198,7 +198,7 @@
     {
       "nodeID" : 1316,
       "nodeStatus" : 0,
-      "nodeName" : "2호관 남쪽 남문",
+      "nodeName" : "2호관 남쪽 2문",
       "latitude" : 37.45004450061771,
       "longitude" : 126.65482056192268,
       "screenLeftPosition" : 1030,
@@ -213,7 +213,7 @@
     {
       "nodeID" : 1333,
       "nodeStatus" : 0,
-      "nodeName" : "2호관 남쪽 동1문",
+      "nodeName" : "2호관 남쪽 3문",
       "longitude" : 126.6555295326848,
       "latitude" : 37.44986153122323,
       "screenLeftPosition" : 1139,
@@ -228,7 +228,7 @@
     {
       "nodeID" : 1345,
       "nodeStatus" : 0,
-      "nodeName" : "2호관 남쪽 동2문",
+      "nodeName" : "2호관 남쪽 4문",
       "longitude" : 126.65576959806252,
       "latitude" : 37.450174568830285,
       "screenLeftPosition" : 1141,
