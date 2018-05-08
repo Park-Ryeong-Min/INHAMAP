@@ -1,10 +1,14 @@
 package com.example.inhamap.Components;
 
 import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Path;
+import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 import android.util.Log;
@@ -14,6 +18,7 @@ import android.view.View;
 import com.example.inhamap.Models.AdjacentEdge;
 import com.example.inhamap.Models.EdgeList;
 import com.example.inhamap.Models.NodeItem;
+import com.example.inhamap.R;
 
 /**
  * Created by myown on 2018. 4. 29..
@@ -25,10 +30,14 @@ public class TestDrawingView extends View {
     private float startY;
     private float endX;
     private float endY;
+    private float locationX;
+    private float locationY;
     private boolean isDrawing = true;
     private boolean drawEdges = false;
+    private boolean drawLocation = false;
     private Context context;
     private EdgeList edges;
+    private Bitmap locationIcon;
 
     public TestDrawingView(Context context){
         super(context);
@@ -42,6 +51,9 @@ public class TestDrawingView extends View {
 
     private void init(Context context){
         this.context = context;
+        Resources res = getResources();
+        this.locationIcon = BitmapFactory.decodeResource(res, R.drawable.node_icon_1);
+
     }
 
     @Override
@@ -77,6 +89,9 @@ public class TestDrawingView extends View {
         }else{
             Log.e("TEST_VIEW", "Clear paths.");
         }
+        if(drawLocation){
+            canvas.drawBitmap(locationIcon, 100f, 100f, new Paint());
+        }
     }
 
     public void drawLine(float startX, float startY, float endX, float endY){
@@ -100,6 +115,12 @@ public class TestDrawingView extends View {
 
     public void clearEdges(){
         this.drawEdges = false;
+        invalidate();
+    }
+
+    public void drawLocation(double lat, double lng){
+        Log.e("MY_LOCATION" , Double.toString(lat) + " , " + Double.toString(lng));
+        this.drawLocation = true;
         invalidate();
     }
 

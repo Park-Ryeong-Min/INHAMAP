@@ -1,8 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<RelativeLayout
     android:orientation="vertical"
     xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
     android:layout_height="match_parent">
+
+    <com.example.inhamap.Components.FindMyLocationButton
+        android:layout_alignParentRight="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="내 위치"
+        android:id="@+id/map_fragment_find_my_location_button"
+        />
 
     <HorizontalScrollView
         android:fillViewport="true"
@@ -22,18 +30,19 @@
                 android:layout_height="wrap_content">
 
                 <!-- 라인 그리기 위해 사용하는 SurfaceView -->
-
                 <com.example.inhamap.Components.TestDrawingView
                     android:id="@+id/map_fragment_surface_view"
                     android:background="@drawable/inhamap"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"/>
 
+                <!--
                 <com.example.inhamap.Components.LocationDrawingSurfaceView
                     android:id="@+id/map_fragment_location_surface_view"
                     android:background="@drawable/inhamap"
                     android:layout_width="1458dp"
                     android:layout_height="1074dp" />
+                    -->
 
             </RelativeLayout>
 
@@ -41,4 +50,4 @@
 
     </HorizontalScrollView>
 
-</LinearLayout>
+</RelativeLayout>
