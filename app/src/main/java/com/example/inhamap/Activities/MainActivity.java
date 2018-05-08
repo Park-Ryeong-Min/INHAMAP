@@ -31,9 +31,6 @@ public class MainActivity extends AppCompatActivity {
     Toolbar myToolbar;
     ImageButton voiceBtn;
 
-    private long source;
-    private long dest;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -81,13 +78,13 @@ public class MainActivity extends AppCompatActivity {
                     }
                     else{
                         Intent voiceRec = new Intent(v.getContext(), NaverTalkActivity.class);
-                        startActivityForResult(voiceRec, 111);
+                        startActivity(voiceRec);
                     }
 
                 }
                 else{
                     Intent voiceRec = new Intent(v.getContext(), NaverTalkActivity.class);
-                    startActivityForResult(voiceRec, 111);
+                    startActivity(voiceRec);
                 }
 
             }
@@ -136,20 +133,6 @@ public class MainActivity extends AppCompatActivity {
                 // Invoke the superclass to handle it.
                 Toast.makeText(getApplicationContext(), "나머지 버튼 클릭됨", Toast.LENGTH_LONG).show();
                 return super.onOptionsItemSelected(item);
-        }
-    }
-
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-
-        if(requestCode==111){
-            if(resultCode==RESULT_OK){
-                long[] temp = data.getLongArrayExtra("resultId");
-                source = temp[0];
-                dest = temp[1];
-            }
         }
     }
 }

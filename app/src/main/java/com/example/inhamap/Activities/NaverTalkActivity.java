@@ -1,7 +1,6 @@
 package com.example.inhamap.Activities;
 
 import android.app.Activity;
-import android.content.Intent;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
@@ -10,19 +9,24 @@ import android.speech.tts.TextToSpeech;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.TextView;
 
+import com.example.inhamap.Models.AdjacentEdge;
+import com.example.inhamap.Models.EdgeList;
 import com.example.inhamap.Models.NodeItem;
+import com.example.inhamap.PathFindings.FindPath;
 import com.example.inhamap.R;
 import com.example.inhamap.Utils.AudioWriterPCM;
+import com.example.inhamap.Utils.EdgeListMaker;
 import com.example.inhamap.Utils.JSONFileParser;
 import com.example.inhamap.Utils.NodeListMaker;
 import com.naver.speech.clientapi.SpeechRecognitionResult;
 
 import org.json.JSONObject;
+import org.w3c.dom.Node;
 import org.w3c.dom.Text;
 
 import java.lang.ref.WeakReference;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
@@ -57,6 +61,9 @@ public class NaverTalkActivity extends Activity {
     private JSONObject mapData;
     private long sourceId;
     private long destId;
+    private EdgeList edges;
+    private NodeListMaker list;
+    private ArrayList<NodeItem> allNode;
 
     // Handle speech recognition Messages.
     private void handleMessage(Message msg) {
@@ -96,7 +103,7 @@ public class NaverTalkActivity extends Activity {
             		strBuf.append("\n");
             	}
                 mResult = strBuf.toString();
-                btnConfirm.setText(mResult);
+                //btnConfirm.setText(mResult);
             	String temp1 = cutTalk(mResult, 0);
             	String temp2 = cutTalk(mResult, 1);
             	if(statFlag==0){
@@ -113,7 +120,7 @@ public class NaverTalkActivity extends Activity {
                 }
 
                 btnConfirm.setText(mResult);
-                if(!source.equals("")&&!dest.equals("")){
+                if(sourceId!=0&&destId!=0){
                     btnConfirm.setEnabled(true);
                 }
 
@@ -158,7 +165,7 @@ public class NaverTalkActivity extends Activity {
                     btnStart.setEnabled(true);
                     btnStart2.setEnabled(true);
                 }
-                //btnConfirm.setText("확인");
+                btnConfirm.setText("확인");
                 break;
         }
     }
@@ -172,6 +179,11 @@ public class NaverTalkActivity extends Activity {
         btnStart = (Button) findViewById(R.id.btn_start);
         btnStart2 = (Button) findViewById(R.id.btn_start2);
         btnConfirm = (Button) findViewById(R.id.btn_confirm);
+
+        JSONFileParser json = new JSONFileParser(this, "node_data");
+        this.mapData = json.getJSON();
+        list = new NodeListMaker(this.mapData);
+        allNode = new ArrayList<NodeItem>();
 
         handler = new RecognitionHandler(this);
         naverRecognizer = new NaverRecognizer(this, handler, CLIENT_ID);
@@ -224,11 +236,12 @@ public class NaverTalkActivity extends Activity {
 
             @Override
             public void onClick(View v){
-                Intent returnIntent = new Intent();
-                long[] result = {sourceId, destId};
-                returnIntent.putExtra("resultId", result);
-                setResult(Activity.RESULT_OK,returnIntent);
-                finish();
+                edges = new EdgeListMaker(mapData, 0).getEdges();
+                ArrayList<NodeItem> list = addNodes(edges);
+                FindPath find = new FindPath(list, edges, sourceId, destId);
+                EdgeList path = find.getPaths();
+
+
             }
         });
 
@@ -411,9 +424,6 @@ public class NaverTalkActivity extends Activity {
 
     public long findNodeId(String build, String door){
         long result = 0;
-        JSONFileParser json = new JSONFileParser(this, "node_data");
-        this.mapData = json.getJSON();
-        NodeListMaker list = new NodeListMaker(this.mapData);
         ArrayList<NodeItem> items = list.getItems();
         ArrayList<NodeItem> tempList = new ArrayList<>();
         for(int i = 0; i < items.size(); i++){
@@ -439,25 +449,56 @@ public class NaverTalkActivity extends Activity {
                 break;
             }
         }
-
         return result;
     }
 
     public String findDoorName(long nodeId){
-
         String result="";
         if(nodeId!=0){
-            JSONFileParser json = new JSONFileParser(this, "node_data");
-            this.mapData = json.getJSON();
-            NodeListMaker list = new NodeListMaker(this.mapData);
             ArrayList<NodeItem> items = list.getItems();
+            allNode = list.getItems();
             for(int i = 0; i < items.size(); i++){
                 if(items.get(i).getNodeID()==nodeId){
                     result = items.get(i).getNodeName();
                     break;
                 }
             }}
-
         return result;
+    }
+
+    private ArrayList<NodeItem> addNodes(EdgeList edges){
+        ArrayList<NodeItem> list = new ArrayList<NodeItem>();
+        for(int i = 0; i < edges.size(); i++){
+            AdjacentEdge e = edges.getEdge(i);
+            long n1 = e.getNodes()[0].getNodeID();
+            long n2 = e.getNodes()[1].getNodeID();
+            boolean c1 = false;
+            boolean c2 = false;
+            for(int j = 0; j < list.size(); j++){
+                if(list.get(j).getNodeID() == n1){
+                    c1 = true;
+                }
+            }
+            for(int j = 0; j < list.size(); j++){
+                if(list.get(j).getNodeID() == n2){
+                    c2 = true;
+                }
+            }
+            if(!c1){
+                for(int j = 0; j < allNode.size(); j++){
+                    if(allNode.get(j).getNodeID() == n1){
+                        list.add(allNode.get(j));
+                    }
+                }
+            }
+            if(!c2){
+                for(int j = 0; j < allNode.size(); j++){
+                    if(allNode.get(j).getNodeID() == n2){
+                        list.add(allNode.get(j));
+                    }
+                }
+            }
+        }
+        return list;
     }
 }
