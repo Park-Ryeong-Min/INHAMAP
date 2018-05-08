@@ -1,7 +1,6 @@
 package com.example.inhamap.Activities;
 
 import android.app.Activity;
-import android.content.Intent;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
@@ -10,19 +9,24 @@ import android.speech.tts.TextToSpeech;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.TextView;
 
+import com.example.inhamap.Models.AdjacentEdge;
+import com.example.inhamap.Models.EdgeList;
 import com.example.inhamap.Models.NodeItem;
+import com.example.inhamap.PathFindings.FindPath;
 import com.example.inhamap.R;
 import com.example.inhamap.Utils.AudioWriterPCM;
+import com.example.inhamap.Utils.EdgeListMaker;
 import com.example.inhamap.Utils.JSONFileParser;
 import com.example.inhamap.Utils.NodeListMaker;
 import com.naver.speech.clientapi.SpeechRecognitionResult;
 
 import org.json.JSONObject;
+import org.w3c.dom.Node;
 import org.w3c.dom.Text;
 
 import java.lang.ref.WeakReference;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
@@ -57,6 +61,9 @@ public class NaverTalkActivity extends Activity {
     private JSONObject mapData;
     private long sourceId;
     private long destId;
+    private EdgeList edges;
+    private NodeListMaker list;
+    private ArrayList<NodeItem> allNode;
 
     // Handle speech recognition Messages.
     private void handleMessage(Message msg) {
@@ -96,6 +103,7 @@ public class NaverTalkActivity extends Activity {
             		strBuf.append("\n");
             	}
                 mResult = strBuf.toString();
+                //btnConfirm.setText(mResult);
             	String temp1 = cutTalk(mResult, 0);
             	String temp2 = cutTalk(mResult, 1);
             	if(statFlag==0){
@@ -112,7 +120,7 @@ public class NaverTalkActivity extends Activity {
                 }
 
                 btnConfirm.setText(mResult);
-                if(!source.equals("")&&!dest.equals("")){
+                if(sourceId!=0&&destId!=0){
                     btnConfirm.setEnabled(true);
                 }
 
@@ -124,7 +132,6 @@ public class NaverTalkActivity extends Activity {
                 }
 
                 mResult = "Error code : " + msg.obj.toString();
-                btnConfirm.setText(mResult);
 
                 //txtResult.setText(mResult);
                 if(statFlag==0){
@@ -172,6 +179,11 @@ public class NaverTalkActivity extends Activity {
         btnStart = (Button) findViewById(R.id.btn_start);
         btnStart2 = (Button) findViewById(R.id.btn_start2);
         btnConfirm = (Button) findViewById(R.id.btn_confirm);
+
+        JSONFileParser json = new JSONFileParser(this, "node_data");
+        this.mapData = json.getJSON();
+        list = new NodeListMaker(this.mapData);
+        allNode = new ArrayList<NodeItem>();
 
         handler = new RecognitionHandler(this);
         naverRecognizer = new NaverRecognizer(this, handler, CLIENT_ID);
@@ -224,10 +236,12 @@ public class NaverTalkActivity extends Activity {
 
             @Override
             public void onClick(View v){
-                Intent returnIntent = new Intent();
-                long[] result = new long[2];
-                returnIntent.putExtra("resultId", result);
-                finish();
+                edges = new EdgeListMaker(mapData, 0).getEdges();
+                ArrayList<NodeItem> list = addNodes(edges);
+                FindPath find = new FindPath(list, edges, sourceId, destId);
+                EdgeList path = find.getPaths();
+
+
             }
         });
 
@@ -269,6 +283,11 @@ public class NaverTalkActivity extends Activity {
     	super.onStop();
     	// NOTE : release() must be called on stop time.
     	naverRecognizer.getSpeechRecognizer().release();
+        if(myTTS !=null){
+            myTTS.stop();
+            myTTS.shutdown();
+            myTTS = null;
+        }
     }
 
     // Declare handler for handling SpeechRecognizer thread's Messages.
@@ -375,10 +394,11 @@ public class NaverTalkActivity extends Activity {
         else if(s.contains("남")) result+="남";
         else if(s.contains("북")) result+="북";
 
-        if(s.contains("고")|s.contains("포")) result+="고";
-        else if(s.contains("저")) result+="저";
+        if(s.contains("고")|s.contains("포")|s.contains("코")) result+="고";
+        else if(s.contains("저")|s.contains("처")) result+="저";
+        else if(s.contains("지")|s.contains("치")|s.contains("시")) result+="지";
 
-        if(s.contains("1")|s.contains("일")) result+= "1";
+        if(s.contains("1")|s.contains("일")|s.contains("입")) result+= "1";
         else if(s.contains("2")|s.contains("이")) result+= "2";
         else if(s.contains("3")|s.contains("삼")) result+= "3";
         else if(s.contains("4")|s.contains("사")) result+= "4";
@@ -404,13 +424,10 @@ public class NaverTalkActivity extends Activity {
 
     public long findNodeId(String build, String door){
         long result = 0;
-        JSONFileParser json = new JSONFileParser(this, "node_data");
-        this.mapData = json.getJSON();
-        NodeListMaker list = new NodeListMaker(this.mapData);
         ArrayList<NodeItem> items = list.getItems();
         ArrayList<NodeItem> tempList = new ArrayList<>();
         for(int i = 0; i < items.size(); i++){
-            if(items.get(i).getNodeName().contains(build)){
+            if(items.get(i).getNodeName().contains(build)&&items.get(i).getNodeStatus()==0){
                 result = items.get(i).getNodeID();
                 tempList.add(items.get(i));
             }
@@ -432,25 +449,56 @@ public class NaverTalkActivity extends Activity {
                 break;
             }
         }
-
         return result;
     }
 
     public String findDoorName(long nodeId){
-
         String result="";
         if(nodeId!=0){
-            JSONFileParser json = new JSONFileParser(this, "node_data");
-            this.mapData = json.getJSON();
-            NodeListMaker list = new NodeListMaker(this.mapData);
             ArrayList<NodeItem> items = list.getItems();
+            allNode = list.getItems();
             for(int i = 0; i < items.size(); i++){
                 if(items.get(i).getNodeID()==nodeId){
                     result = items.get(i).getNodeName();
                     break;
                 }
             }}
-
         return result;
+    }
+
+    private ArrayList<NodeItem> addNodes(EdgeList edges){
+        ArrayList<NodeItem> list = new ArrayList<NodeItem>();
+        for(int i = 0; i < edges.size(); i++){
+            AdjacentEdge e = edges.getEdge(i);
+            long n1 = e.getNodes()[0].getNodeID();
+            long n2 = e.getNodes()[1].getNodeID();
+            boolean c1 = false;
+            boolean c2 = false;
+            for(int j = 0; j < list.size(); j++){
+                if(list.get(j).getNodeID() == n1){
+                    c1 = true;
+                }
+            }
+            for(int j = 0; j < list.size(); j++){
+                if(list.get(j).getNodeID() == n2){
+                    c2 = true;
+                }
+            }
+            if(!c1){
+                for(int j = 0; j < allNode.size(); j++){
+                    if(allNode.get(j).getNodeID() == n1){
+                        list.add(allNode.get(j));
+                    }
+                }
+            }
+            if(!c2){
+                for(int j = 0; j < allNode.size(); j++){
+                    if(allNode.get(j).getNodeID() == n2){
+                        list.add(allNode.get(j));
+                    }
+                }
+            }
+        }
+        return list;
     }
 }
