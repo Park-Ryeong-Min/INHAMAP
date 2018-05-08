@@ -35,6 +35,5 @@ dependencies {
     implementation 'com.github.nkzawa:socket.io-client:0.3.0'
     implementation 'com.android.support:recyclerview-v7:26.0.0'
     implementation 'com.naver.speech.clientapi:naverspeech-sdk-android:1.1.3'
-
 }
 

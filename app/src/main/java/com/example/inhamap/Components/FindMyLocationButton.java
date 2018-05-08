@@ -10,7 +10,14 @@ import android.util.AttributeSet;
 import android.util.Log;
 import android.view.View;
 
+import com.example.inhamap.Models.NodeItem;
+import com.example.inhamap.Utils.JSONFileParser;
+import com.example.inhamap.Utils.NodeListMaker;
 import com.example.inhamap.Utils.ValueConverter;
+
+import org.json.JSONObject;
+
+import java.util.ArrayList;
 
 public class FindMyLocationButton extends AppCompatButton implements View.OnClickListener, LocationListener{
 
@@ -18,6 +25,7 @@ public class FindMyLocationButton extends AppCompatButton implements View.OnClic
     private Context context;
     private double latitude;
     private double longitude;
+    private ArrayList<NodeItem> items;
 
     public FindMyLocationButton(Context context){
         super(context);
@@ -36,6 +44,8 @@ public class FindMyLocationButton extends AppCompatButton implements View.OnClic
     private void init(Context context){
         this.setOnClickListener(this);
         this.context = context;
+        JSONObject json = new JSONFileParser(this.context, "node_data").getJSON();
+        this.items = new NodeListMaker(json).getItems();
     }
 
     @Override
@@ -47,7 +57,8 @@ public class FindMyLocationButton extends AppCompatButton implements View.OnClic
             if(myLocation != null){
                 this.latitude = myLocation.getLatitude();
                 this.longitude = myLocation.getLongitude();
-                drawingView.drawLocation(this.latitude, this.longitude);
+                float[] pos = ValueConverter.latlngToDip(this.latitude, this.longitude, items);
+                drawingView.drawLocation(pos[0], pos[1]);
             }
             locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER,10, 100f, this);
         }catch (SecurityException ex){
@@ -60,9 +71,9 @@ public class FindMyLocationButton extends AppCompatButton implements View.OnClic
         Log.e("LOCATION_MANAGER", "Location changed.");
         this.latitude = location.getLatitude();
         this.longitude = location.getLongitude();
-        float[] pos = ValueConverter.latlngToDip(this.latitude, this.longitude);
+        float[] pos = ValueConverter.latlngToDip(this.latitude, this.longitude, items);
         Log.e("DIP", Float.toString(pos[0]) + " , " + Float.toString(pos[1]));
-        drawingView.drawLocation(this.latitude, this.longitude);
+        drawingView.drawLocation(pos[0], pos[1]);
     }
 
     @Override
