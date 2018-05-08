@@ -10,7 +10,7 @@ import android.util.Log;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 
-import com.example.inhamap.Threads.DrawOnSurfaceViewThread;
+import com.example.inhamap.Threads.DrawPathOnSurfaceViewThread;
 
 /**
  * Created by myown on 2018. 4. 28..
@@ -21,7 +21,7 @@ public class PathDrawingSurfaceView extends SurfaceView implements SurfaceHolder
     private Context context;
     private SurfaceHolder holder;
     private Canvas canvas;
-    private DrawOnSurfaceViewThread thread;
+    private DrawPathOnSurfaceViewThread thread;
 
     public PathDrawingSurfaceView(Context context){
         super(context);
@@ -40,7 +40,7 @@ public class PathDrawingSurfaceView extends SurfaceView implements SurfaceHolder
         getHolder().addCallback(this);
         this.setZOrderOnTop(true);
         this.holder.setFormat(PixelFormat.TRANSPARENT);
-        this.thread = new DrawOnSurfaceViewThread();
+        //this.thread = new DrawPathOnSurfaceViewThread(this.holder, this);
     }
 
     @Override

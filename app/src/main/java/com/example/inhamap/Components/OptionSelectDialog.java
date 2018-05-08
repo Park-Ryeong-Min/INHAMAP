@@ -92,6 +92,7 @@ public class OptionSelectDialog extends Dialog {
                 addNodes(edges);
                 FindPath find = new FindPath(list, edges, startNodeID, destinationNodeID);
                 EdgeList path = find.getPaths();
+                //mapDrawingView.drawingPath(path);
                 mapDrawingView.drawEdges(path);
                 dismiss();
             }
@@ -107,6 +108,7 @@ public class OptionSelectDialog extends Dialog {
                 FindPath find = new FindPath(list, edges, startNodeID, destinationNodeID);
 
                 EdgeList path = find.getPaths();
+                //mapDrawingView.drawingPath(path);
                 mapDrawingView.drawEdges(path);
                 dismiss();
             }
