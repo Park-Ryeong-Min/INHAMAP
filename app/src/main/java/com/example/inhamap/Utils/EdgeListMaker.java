@@ -61,6 +61,9 @@ public class EdgeListMaker {
                 for(int j = 0; j < adj.length(); j++){
                     JSONObject adjNode = adj.getJSONObject(j);
                     int status = adjNode.getInt("edgeStatus");
+                    if(status == -1){
+                        continue;
+                    }
                     if(findStatus == 1){
                         if(status == 1){
                             continue;

@@ -6,17 +6,19 @@ public class VoicePathElement {
     private double latitude;
     private double longitude;
     private long postNodeID;
+    private long nextNodeID;
     private String voiceText;
 
     public VoicePathElement(){
         // default constructor
     }
 
-    public VoicePathElement(long id, double lat, double lng, long postID, String text){
+    public VoicePathElement(long id, double lat, double lng, long postID, long nextID, String text){
         this.nodeID = id;
         this.latitude = lat;
         this.longitude = lng;
         this.postNodeID = postID;
+        this.nextNodeID = nextID;
         this.voiceText = text;
     }
 
@@ -58,5 +60,13 @@ public class VoicePathElement {
 
     public void setVoiceText(String voiceText) {
         this.voiceText = voiceText;
+    }
+
+    public long getNextNodeID() {
+        return nextNodeID;
+    }
+
+    public void setNextNodeID(long nextNodeID) {
+        this.nextNodeID = nextNodeID;
     }
 }

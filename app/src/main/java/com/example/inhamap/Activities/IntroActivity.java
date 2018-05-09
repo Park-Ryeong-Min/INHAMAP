@@ -27,7 +27,7 @@ public class IntroActivity extends AppCompatActivity {
         setContentView(R.layout.activity_intro);
 
         requestPermission();
-        startMainActivity();
+        //startMainActivity();
     }
 
     @TargetApi(Build.VERSION_CODES.M)
