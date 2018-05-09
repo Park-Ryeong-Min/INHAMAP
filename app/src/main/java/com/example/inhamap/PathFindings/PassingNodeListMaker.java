@@ -131,7 +131,7 @@ public class PassingNodeListMaker {
                         this.items.get(this.items.size() - 1).getNodeLongitude(),
                         last,
                         0,
-                        "음성 안내를 종료합니다."
+                        "목적지에 도착하였습니다. 음성 안내를 종료합니다."
                 ));
             }
         }
