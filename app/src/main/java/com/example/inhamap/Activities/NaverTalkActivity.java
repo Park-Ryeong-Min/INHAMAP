@@ -191,6 +191,16 @@ public class NaverTalkActivity extends Activity {
         handler = new RecognitionHandler(this);
         naverRecognizer = new NaverRecognizer(this, handler, CLIENT_ID);
 
+        myTTS = new TextToSpeech(this, new TextToSpeech.OnInitListener() {
+            @Override
+            public void onInit(int status) {
+                if (status != ERROR) {
+                    myTTS.setLanguage(Locale.KOREAN);
+                }
+                informUser();
+            }
+        });
+        
         btnStart.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -254,15 +264,7 @@ public class NaverTalkActivity extends Activity {
             }
         });
 
-        myTTS = new TextToSpeech(this, new TextToSpeech.OnInitListener() {
-            @Override
-            public void onInit(int status) {
-                if (status != ERROR) {
-                    myTTS.setLanguage(Locale.KOREAN);
-                }
-                informUser();
-            }
-        });
+
 
     }
 
