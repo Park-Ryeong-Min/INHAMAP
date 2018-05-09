@@ -77,30 +77,74 @@ public class PassingNodeListMaker {
             Log.e("NODE_MAKER", "ArrayList items is null.");
             return;
         }else{
-            long tmpNodeID = items.get(0).getNodeID();
-            VoicePathElement first = new VoicePathElement();
-            first.setNodeID(items.get(0).getNodeID());
-            first.setLatitude(items.get(0).getNodeLatitude());
-            first.setLongitude(items.get(0).getNodeLongitude());
-            first.setPostNodeID(0);
-            first.setVoiceText("경로 탐색을 시작합니다.");
-            voiceElements.add(first);
-            for(int i = 1; i < items.size(); i++){
-                long curNodeID = items.get(i).getNodeID();
-                double curNodeLat = items.get(i).getNodeLatitude();
-                double curNodeLng = items.get(i).getNodeLongitude();
-                long postNodeID = tmpNodeID;
-                tmpNodeID = curNodeID;
-                String text = "";
-                for(int j = 0; j < this.voices.size(); j++){
-                    if(curNodeID == this.voices.get(j).getCurNodeID() && postNodeID == this.voices.get(j).getPostNodeID()){
-                        text = this.voices.get(j).getVoiceText();
-                        break;
-                    }
+            long last = 0;
+            VoicePathElement first = new VoicePathElement(0,
+                    this.items.get(0).getNodeLatitude(),
+                    this.items.get(0).getNodeLongitude(),
+                    0,
+                    this.items.get(0).getNodeID(),
+                    "경로 안내를 시작합니다.");
+            this.voiceElements.add(first);
+            for(int i = 0; i < this.items.size(); i++){
+                if(i == 0){
+                    this.voiceElements.add(
+                            new VoicePathElement(
+                                    this.items.get(0).getNodeID(), // 현재 Node ID
+                                    this.items.get(0).getNodeLatitude(), // Latitude
+                                    this.items.get(0).getNodeLongitude(), // Longitude
+                                    0, // Post
+                                    this.items.get(1).getNodeID(), // Next
+                                    getVoiceText(0, this.items.get(0).getNodeID()) // Text
+                            )
+                    );
+                    last = this.items.get(i).getNodeID();
+                }else if(i == this.items.size() - 1){
+                    this.voiceElements.add(
+                            new VoicePathElement(
+                                    this.items.get(i).getNodeID(),
+                                    this.items.get(i).getNodeLatitude(),
+                                    this.items.get(i).getNodeLongitude(),
+                                    last,
+                                    0,
+                                    getVoiceText(last, this.items.get(i).getNodeID())
+                            )
+                    );
+                    last = this.items.get(i).getNodeID();
+                }else{
+                    this.voiceElements.add(
+                            new VoicePathElement(
+                                    this.items.get(i).getNodeID(),
+                                    this.items.get(i).getNodeLatitude(),
+                                    this.items.get(i).getNodeLongitude(),
+                                    last,
+                                    this.items.get(i+1).getNodeID(),
+                                    getVoiceText(last, this.items.get(i).getNodeID())
+                            )
+                    );
+                    last = this.items.get(i).getNodeID();
                 }
-                this.voiceElements.add(new VoicePathElement(curNodeID, curNodeLat, curNodeLng, postNodeID, text));
+            }
+            if(last != 0) {
+                this.voiceElements.add(new VoicePathElement(
+                        0,
+                        this.items.get(this.items.size() - 1).getNodeLatitude(),
+                        this.items.get(this.items.size() - 1).getNodeLongitude(),
+                        last,
+                        0,
+                        "음성 안내를 종료합니다."
+                ));
             }
         }
+    }
+
+    private String getVoiceText(long post, long cur){
+        for(int i = 0; i < this.voices.size(); i++){
+            VoiceText tmp = this.voices.get(i);
+            if(tmp.getPostNodeID() == post && tmp.getCurNodeID() == cur){
+                return tmp.getVoiceText();
+            }
+        }
+        return null;
     }
 
     public ArrayList<VoicePathElement> getVoiceElements() {

@@ -39,6 +39,16 @@
                             "voiceText": "정면으로 10미터 직진해주세요."
                         }
                     ]
+                },
+                {
+                    "nodeID" : 0,
+                    "edgeStatus" : -1,
+                    "voice" : [
+                        {
+                            "postNodeID" : 1374,
+                            "voiceText" : "정면으로 10미터 직진해주세요."
+                        }
+                    ]
                 }
             ]
         },
