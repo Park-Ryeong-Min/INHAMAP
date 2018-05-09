@@ -200,7 +200,7 @@ public class NaverTalkActivity extends Activity {
                 informUser();
             }
         });
-        
+
         btnStart.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -260,6 +260,9 @@ public class NaverTalkActivity extends Activity {
                 for(int i = 0; i < voiceElements.size(); i++){
                     Log.e("VOICE", Integer.toString(i) + " , " + voiceElements.get(i).getVoiceText());
                     myTTS.speak(voiceElements.get(i).getVoiceText(), QUEUE_FLUSH, null);
+                    while (myTTS.isSpeaking()){
+                        Log.d("Voice", "busy looping");
+                    }
                 }
             }
         });
@@ -429,8 +432,14 @@ public class NaverTalkActivity extends Activity {
     }
 
     public void informPoint(String point){
-        String askDoor1 = "로 인식했습니다. 잘못 인식되었다면 다시 인식시켜 주십시오.";
-        myTTS.speak(point+askDoor1, TextToSpeech.QUEUE_FLUSH,null);
+        String askDoor1 = "으로 인식했습니다. 잘못 인식되었다면 다시 인식시켜 주십시오.";
+        String ask2 = "인식하지 못하였습니다. 다시 확인하여 주십시오.";
+        if(point.equals("")){
+            myTTS.speak(ask2, TextToSpeech.QUEUE_FLUSH, null);
+        }
+        else{
+            myTTS.speak(point+askDoor1, TextToSpeech.QUEUE_FLUSH,null);
+        }
     }
 
     public long findNodeId(String build, String door){
