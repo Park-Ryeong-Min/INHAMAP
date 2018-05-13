@@ -15,6 +15,7 @@ import android.util.Log;
 import android.util.TypedValue;
 import android.view.View;
 
+import com.example.inhamap.Commons.GlobalApplication;
 import com.example.inhamap.Models.AdjacentEdge;
 import com.example.inhamap.Models.EdgeList;
 import com.example.inhamap.Models.NodeItem;
@@ -93,6 +94,8 @@ public class TestDrawingView extends View {
         }
         if(drawLocation){
             canvas.drawBitmap(locationIcon, locationX, locationY, new Paint());
+        }else{
+            canvas.drawBitmap(locationIcon, dipToPixels(this.context, GlobalApplication.myLocationLeft), dipToPixels(this.context, GlobalApplication.myLocationTop), new Paint());
         }
     }
 

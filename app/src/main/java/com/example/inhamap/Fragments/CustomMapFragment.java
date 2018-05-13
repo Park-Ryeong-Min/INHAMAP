@@ -49,7 +49,7 @@ public class CustomMapFragment extends Fragment implements View.OnTouchListener{
     private ScaleGestureDetector scaleGestureDetector;
     private float curScale = 1f;
 
-    private FindMyLocationButton myLocationButton;
+    //private FindMyLocationButton myLocationButton;
     private TestDrawingView drawingView;
 
     @Override
@@ -94,8 +94,8 @@ public class CustomMapFragment extends Fragment implements View.OnTouchListener{
 
         //layout.setWillNotDraw(false);
         drawingView = (TestDrawingView)view.findViewById(R.id.map_fragment_surface_view);
-        myLocationButton = (FindMyLocationButton) view.findViewById(R.id.map_fragment_find_my_location_button);
-        myLocationButton.setDrawingView(drawingView);
+        //myLocationButton = (FindMyLocationButton) view.findViewById(R.id.map_fragment_find_my_location_button);
+        //myLocationButton.setDrawingView(drawingView);
         //LocationDrawingSurfaceView locationSurfaceView = (LocationDrawingSurfaceView)view.findViewById(R.id.map_fragment_location_surface_view);
         //layout.addView(tv);
         //tv.invalidate();
