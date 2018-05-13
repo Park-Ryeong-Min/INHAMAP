@@ -9,6 +9,7 @@ import android.support.v7.widget.AppCompatButton;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.View;
+import android.widget.Toast;
 
 import com.example.inhamap.Models.NodeItem;
 import com.example.inhamap.Utils.JSONFileParser;
@@ -69,6 +70,7 @@ public class FindMyLocationButton extends AppCompatButton implements View.OnClic
     @Override
     public void onLocationChanged(Location location) {
         Log.e("LOCATION_MANAGER", "Location changed.");
+        Toast.makeText(this.context, "Location changed.", Toast.LENGTH_LONG).show();
         this.latitude = location.getLatitude();
         this.longitude = location.getLongitude();
         float[] pos = ValueConverter.latlngToDip(this.latitude, this.longitude, items);

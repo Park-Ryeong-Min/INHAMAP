@@ -30,8 +30,7 @@ public class ValueConverter {
         int w = 0;
         int h = 0;
 
-        double distLat = DefaultValue.INFINITE_DISTANCE_DOUBLE_VALUE;
-        double distLng = DefaultValue.INFINITE_DISTANCE_DOUBLE_VALUE;
+        double minDistValue = DefaultValue.INFINITE_DISTANCE_DOUBLE_VALUE;
 
         for(int i = 0; i < DefaultValue.MAP_WIDTH; i++){
             for(int j = 0; j < DefaultValue.MAP_HEIGHT; j++){
@@ -45,19 +44,11 @@ public class ValueConverter {
                 //Log.e("CALC", Double.toString(curLat));
                 //Log.e("CALC", Double.toString(curLng));
 
-                double dLat = lat - curLat;
-                double dLng = lng - curLng;
-                if(dLat < 0){
-                    dLat *= -1D;
-                }
-                if(dLng < 0){
-                    dLng *= -1D;
-                }
-                if(distLat > dLat && distLng > dLng){
+                double dist = distance(lat, curLat, lng, curLng);
+                if(dist <= minDistValue){
+                    minDistValue = dist;
                     w = i;
                     h = j;
-                    distLat = dLat;
-                    distLng = dLng;
                 }
             }
         }
@@ -67,7 +58,6 @@ public class ValueConverter {
 
         return ret;
         */
-
         double d = DefaultValue.INFINITE_DISTANCE_DOUBLE_VALUE;
         int left = -1;
         int top = -1;
@@ -88,6 +78,7 @@ public class ValueConverter {
         ret[0] = (float) left;
         ret[1] = (float) top;
         return ret;
+
     }
 
     public static double distance(double lat1, double lat2,
