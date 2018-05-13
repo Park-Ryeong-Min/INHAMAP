@@ -32,10 +32,16 @@ public class MainActivity extends AppCompatActivity {
     Toolbar myToolbar;
     ImageButton voiceBtn;
 
+    private long source;
+    private long dest;
+    private boolean voiceFlag;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        voiceFlag=false;
 
         /* toolbar */
         myToolbar = (Toolbar) findViewById(R.id.my_toolbar);
@@ -79,13 +85,13 @@ public class MainActivity extends AppCompatActivity {
                     }
                     else{
                         Intent voiceRec = new Intent(v.getContext(), NaverTalkActivity.class);
-                        startActivity(voiceRec);
+                        startActivityForResult(voiceRec,111);
                     }
 
                 }
                 else{
                     Intent voiceRec = new Intent(v.getContext(), NaverTalkActivity.class);
-                    startActivity(voiceRec);
+                    startActivityForResult(voiceRec,111);
                 }
 
             }
@@ -95,6 +101,20 @@ public class MainActivity extends AppCompatActivity {
         PhotoView photoView = (PhotoView) findViewById(R.id.photo_view);
         photoView.setImageResource(R.drawable.test3);
         */
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if(requestCode==111){
+            if(resultCode==RESULT_OK){
+                long[] result = data.getLongArrayExtra("resultId");
+                source = result[0];
+                dest = result[1];
+                voiceFlag = true;
+            }
+        }
     }
 
     @Override

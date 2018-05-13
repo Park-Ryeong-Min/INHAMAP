@@ -1,6 +1,7 @@
 package com.example.inhamap.Activities;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
@@ -249,21 +250,11 @@ public class NaverTalkActivity extends Activity {
 
             @Override
             public void onClick(View v){
-                edges = new EdgeListMaker(mapData, 0).getEdges();
-                ArrayList<NodeItem> list = addNodes(edges);
-                FindPath find = new FindPath(list, edges, sourceId, destId);
-                EdgeList path = find.getPaths();
-
-                // 경로를 찾아 음성을 출력해야 하는 부분
-                PassingNodeListMaker pathNodes = new PassingNodeListMaker(getApplicationContext(), find.getPassingNodes());
-                ArrayList<VoicePathElement> voiceElements = pathNodes.getVoiceElements();
-                for(int i = 0; i < voiceElements.size(); i++){
-                    Log.e("VOICE", Integer.toString(i) + " , " + voiceElements.get(i).getVoiceText());
-                    myTTS.speak(voiceElements.get(i).getVoiceText(), QUEUE_FLUSH, null);
-                    while (myTTS.isSpeaking()){
-                        Log.d("Voice", "busy looping");
-                    }
-                }
+                Intent reIntent = new Intent();
+                long[] result = {sourceId, destId};
+                reIntent.putExtra("resultId", result);
+                setResult(Activity.RESULT_OK, reIntent);
+                finish();
             }
         });
 
@@ -297,6 +288,11 @@ public class NaverTalkActivity extends Activity {
     	super.onStop();
     	// NOTE : release() must be called on stop time.
     	naverRecognizer.getSpeechRecognizer().release();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
         if(myTTS !=null){
             myTTS.stop();
             myTTS.shutdown();
