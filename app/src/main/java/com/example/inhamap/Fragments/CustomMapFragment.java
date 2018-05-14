@@ -214,4 +214,8 @@ public class CustomMapFragment extends Fragment implements View.OnTouchListener{
             return true;
         }
     }
+
+    public TestDrawingView getDrawingView(){
+        return this.drawingView;
+    }
 }
