@@ -18,21 +18,16 @@
         android:orientation="horizontal"
         android:layout_weight="7">
 
-        <Button
-            android:id="@+id/btn_start"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true"
-            android:layout_weight="1"
-            android:text="출발지" />
+            <Button
+                android:id="@+id/btn_start2"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:background="@android:color/holo_blue_dark"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:layout_weight="1"
+                android:text="목적지" />
 
-        <Button
-            android:id="@+id/btn_start2"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:text="목적지" />
     </LinearLayout>
 
     <LinearLayout
@@ -45,6 +40,8 @@
             android:id="@+id/btn_confirm"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:background="@android:color/holo_green_dark"
             android:text="확인" />
+
     </LinearLayout>
 </LinearLayout>

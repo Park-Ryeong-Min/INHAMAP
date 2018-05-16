@@ -49,7 +49,6 @@ public class NaverTalkActivity extends Activity {
     private NaverRecognizer naverRecognizer;
 
    // private TextView txtResult;
-    private Button btnStart;
     private Button btnStart2;
     private Button btnConfirm;
     private String mResult;
@@ -63,7 +62,6 @@ public class NaverTalkActivity extends Activity {
     private TextToSpeech myTTS;
 
     private JSONObject mapData;
-    private long sourceId;
     private long destId;
     private EdgeList edges;
     private NodeListMaker list;
@@ -75,10 +73,7 @@ public class NaverTalkActivity extends Activity {
             case R.id.clientReady:
                 // Now an user can speak.
                 //txtResult.setText("Connected");
-                if(statFlag==0){
-                    btnStart.setText("Connected");
-                }
-                else if(statFlag==1){
+                if(statFlag==1){
                     btnStart2.setText("Connected");
                 }
                 writer = new AudioWriterPCM(
@@ -110,13 +105,8 @@ public class NaverTalkActivity extends Activity {
                 //btnConfirm.setText(mResult);
             	String temp1 = cutTalk(mResult, 0);
             	String temp2 = cutTalk(mResult, 1);
-            	if(statFlag==0){
-            	    sourceId = findNodeId(temp1, temp2);
-            	    source = findDoorName(sourceId);
-                    btnStart.setText(source);
-                    informPoint(source);
-                }
-                else if(statFlag==1){
+
+                if(statFlag==1){
             	    destId = findNodeId(temp1, temp2);
             	    dest = findDoorName(destId);
                     btnStart2.setText(dest);
@@ -124,7 +114,7 @@ public class NaverTalkActivity extends Activity {
                 }
 
                 btnConfirm.setText(mResult);
-                if(sourceId!=0&&destId!=0){
+                if(destId!=0){
                     btnConfirm.setEnabled(true);
                 }
 
@@ -138,11 +128,8 @@ public class NaverTalkActivity extends Activity {
                 mResult = "Error code : " + msg.obj.toString();
 
                 //txtResult.setText(mResult);
-                if(statFlag==0){
-                    btnStart.setText("출발지");
-                    btnStart.setEnabled(true);
-                }
-                else if(statFlag==1){
+
+                if(statFlag==1){
                     btnStart2.setText("목적지");
                     btnStart2.setEnabled(true);
                 }
@@ -153,20 +140,12 @@ public class NaverTalkActivity extends Activity {
                 if (writer != null) {
                     writer.close();
                 }
-                if(statFlag==0){
-                    btnStart.setText(source);
-                    if(source.equals("")){
-                        btnStart.setText("출발지");
-                    }
-                    btnStart.setEnabled(true);
-                    btnStart2.setEnabled(true);
-                }
-                else if(statFlag==1){
+
+                if(statFlag==1){
                     btnStart2.setText(dest);
                     if(dest.equals("")){
                         btnStart2.setText("목적지");
                     }
-                    btnStart.setEnabled(true);
                     btnStart2.setEnabled(true);
                 }
                 btnConfirm.setText("확인");
@@ -180,7 +159,6 @@ public class NaverTalkActivity extends Activity {
         setContentView(R.layout.activity_voice);
 
         //txtResult = (TextView) findViewById(R.id.txt_result);
-        btnStart = (Button) findViewById(R.id.btn_start);
         btnStart2 = (Button) findViewById(R.id.btn_start2);
         btnConfirm = (Button) findViewById(R.id.btn_confirm);
 
@@ -199,28 +177,6 @@ public class NaverTalkActivity extends Activity {
                     myTTS.setLanguage(Locale.KOREAN);
                 }
                 informUser();
-            }
-        });
-
-        btnStart.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View v) {
-                if(!naverRecognizer.getSpeechRecognizer().isRunning()) {
-                    // Start button is pushed when SpeechRecognizer's state is inactive.
-                    // Run SpeechRecongizer by calling recognize().
-                    mResult = "";
-                    statFlag=0;
-                    btnStart.setText("Connecting...");
-                    //txtResult.setText("Connecting...");
-                    //btnStart.setText(R.string.str_stop);
-                    naverRecognizer.recognize();
-                } else {
-                    Log.d(TAG, "stop and wait Final Result");
-                    btnStart.setEnabled(false);
-
-                    naverRecognizer.getSpeechRecognizer().stop();
-                }
             }
         });
 
@@ -251,8 +207,7 @@ public class NaverTalkActivity extends Activity {
             @Override
             public void onClick(View v){
                 Intent reIntent = new Intent();
-                long[] result = {sourceId, destId};
-                reIntent.putExtra("resultId", result);
+                reIntent.putExtra("resultId", destId);
                 setResult(Activity.RESULT_OK, reIntent);
                 finish();
             }
@@ -275,8 +230,6 @@ public class NaverTalkActivity extends Activity {
 
         mResult = "";
         //txtResult.setText("");
-        btnStart.setText("출발지");
-        btnStart.setEnabled(true);
         btnStart2.setText("목적지");
         btnStart2.setEnabled(true);
         btnConfirm.setText("확인");
@@ -422,8 +375,7 @@ public class NaverTalkActivity extends Activity {
     }
 
     public void informUser(){
-        String askDoor1 = "왼쪽 버튼은 출발지 인식, 오른쪽 버튼은 목적지 인식입니다. 버튼을 선택 후 건물과" +
-                "문을 같이 말해주십시오. 출발지와 목적지를 인식 후에 아래 확인 버튼을 누르십시오.";
+        String askDoor1 = "위쪽 파란버튼이 목적지 인식 버튼입니다. 목적지를 인식 후에 아래 확인 버튼을 누르십시오.";
         myTTS.speak(askDoor1, TextToSpeech.QUEUE_FLUSH, null);
     }
 
