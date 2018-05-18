@@ -2,6 +2,7 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
+    <!--
     <item
         android:id="@+id/action_search"
         android:icon="@android:drawable/ic_menu_search"
@@ -9,11 +10,12 @@
         app:actionViewClass="android.support.v7.widget.SearchView"
         app:showAsAction="always"
     />
+    -->
 
     <item android:id="@+id/action_settings2"
-        android:title="항목1"
+        android:title="경로 초기화"
         app:showAsAction="never"/>
     <item android:id="@+id/action_settings3"
-        android:title="항목2"
+        android:title="옵션"
         app:showAsAction="never"/>
 </menu>

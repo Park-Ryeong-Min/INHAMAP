@@ -15,12 +15,15 @@ import com.example.inhamap.R;
 
 public class NodeImageButton extends AppCompatImageButton {
 
+    private long nodeID;
+
     public NodeImageButton(Context context) {
         super(context);
     }
 
     public NodeImageButton(Context context, NodeItem item){
         super(context);
+        this.nodeID = item.getNodeID();
         boolean isEdge = false;
         switch (item.getNodeStatus()){
             case 0:{
@@ -94,5 +97,9 @@ public class NodeImageButton extends AppCompatImageButton {
                 break;
             }
         }
+    }
+
+    public long getNodeID(){
+        return this.nodeID;
     }
 }

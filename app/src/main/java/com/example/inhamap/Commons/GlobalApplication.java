@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.widget.Toast;
 
+import com.example.inhamap.Components.NodeImageButton;
 import com.example.inhamap.Models.NodeItem;
 import com.example.inhamap.Utils.JSONFileParser;
 import com.example.inhamap.Utils.NodeListMaker;
@@ -20,6 +21,7 @@ import org.json.JSONObject;
 
 import java.net.URISyntaxException;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by myown on 2018. 4. 18..
@@ -31,8 +33,9 @@ public class GlobalApplication extends Application implements LocationListener{
     public static double myLocationLongitude;
     public static float myLocationLeft;
     public static float myLocationTop;
+    public static long myLocationNodeID;
 
-    private ArrayList<NodeItem> items;
+    public static ArrayList<NodeItem> items;
 
     // 어플리케이션이 최초 실행되면 호출되는 함수
     // 사용 전 AndroidManifest.xml 에 등록해서 (android:name) 사용해야함.
@@ -56,11 +59,12 @@ public class GlobalApplication extends Application implements LocationListener{
         Log.e("GLOBAL", "Location changed.");
         myLocationLatitude = location.getLatitude();
         myLocationLongitude = location.getLongitude();
-        Toast.makeText(getApplicationContext(), "Location Changed." + Double.toString(myLocationLatitude) + " , " + Double.toString(myLocationLongitude), Toast.LENGTH_LONG).show();
+        //Toast.makeText(getApplicationContext(), "Location Changed." + Double.toString(myLocationLatitude) + " , " + Double.toString(myLocationLongitude), Toast.LENGTH_LONG).show();
 
         double d = DefaultValue.INFINITE_DISTANCE_DOUBLE_VALUE;
         int left = -1;
         int top = -1;
+        long id = -1;
 
         for(int i = 0; i < items.size(); i++){
             double nodeLat = items.get(i).getNodeLatitude();
@@ -71,11 +75,15 @@ public class GlobalApplication extends Application implements LocationListener{
                 d = dist;
                 left = items.get(i).getMarginLeft();
                 top = items.get(i).getMarginTop();
+                id = items.get(i).getNodeID();
             }
         }
 
         myLocationLeft = (float) left;
         myLocationTop = (float) top;
+        if(id != -1){
+            myLocationNodeID = id;
+        }
         //Log.e("GLOBAL", Float.toString(myLocationLeft) + " , " + Float.toString(myLocationTop));
     }
 
@@ -103,10 +111,32 @@ public class GlobalApplication extends Application implements LocationListener{
         try{
             myLocation = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
             locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER,1000, 0.3f, this);
+            locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 1000, 30f, this);
         }catch (SecurityException ex){
             ex.printStackTrace();
         }
         JSONObject json = new JSONFileParser(getApplicationContext(), "node_data").getJSON();
         this.items = new NodeListMaker(json).getItems();
+        myLocationNodeID = 0;
     }
+
+    private Location getBestLocation(LocationManager lm){
+        List<String> providers = lm.getProviders(true);
+        Location bestLocation = null;
+        for(String provider : providers){
+            try {
+                Location l = lm.getLastKnownLocation(provider);
+                if(l == null){
+                    continue;
+                }
+                if(bestLocation == null || l.getAccuracy() < bestLocation.getAccuracy()){
+                    bestLocation = l;
+                }
+            }catch (SecurityException ex){
+                ex.printStackTrace();
+            }
+        }
+        return bestLocation;
+    }
+
 }

@@ -14,6 +14,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.example.inhamap.Activities.BuildingInfoActivity;
+import com.example.inhamap.Activities.MainActivity;
 import com.example.inhamap.Components.LocationDrawingSurfaceView;
 import com.example.inhamap.Components.NodeImageButton;
 import com.example.inhamap.Components.OptionSelectDialog;
@@ -67,6 +68,7 @@ public class AllocateImageButtonInFragment {
             }
             final NodeImageButton btn = new NodeImageButton(this.context, this.list.get(i));
             this.btnList.add(btn);
+            MainActivity.imageButtons.add(btn);
             btn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
