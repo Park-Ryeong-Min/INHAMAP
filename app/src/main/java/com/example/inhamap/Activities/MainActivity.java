@@ -46,7 +46,6 @@ public class MainActivity extends AppCompatActivity {
     Toolbar myToolbar;
     ImageButton voiceBtn;
 
-    private long source;
     private long dest;
     private boolean voiceFlag;
 
@@ -153,9 +152,7 @@ public class MainActivity extends AppCompatActivity {
 
         if(requestCode==111){
             if(resultCode==RESULT_OK){
-                long[] result = data.getLongArrayExtra("resultId");
-                source = result[0];
-                dest = result[1];
+                dest = data.getLongExtra("resultId", 0);
                 voiceFlag = true;
             }
         }
