@@ -23,9 +23,23 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
+import com.example.inhamap.Commons.GlobalApplication;
+import com.example.inhamap.Components.NodeImageButton;
+import com.example.inhamap.Components.TestDrawingView;
 import com.example.inhamap.Fragments.CustomMapFragment;
+import com.example.inhamap.Models.AdjacentEdge;
+import com.example.inhamap.Models.EdgeList;
+import com.example.inhamap.Models.NodeItem;
+import com.example.inhamap.PathFindings.FindPath;
 import com.example.inhamap.R;
+import com.example.inhamap.Threads.VoiceNavigatingThread;
+import com.example.inhamap.Utils.EdgeListMaker;
+import com.example.inhamap.Utils.JSONFileParser;
+import com.example.inhamap.Utils.NodeListMaker;
+import com.example.inhamap.Utils.ValueConverter;
 import com.github.chrisbanes.photoview.PhotoView;
+
+import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -35,18 +49,47 @@ public class MainActivity extends AppCompatActivity {
     private long dest;
     private boolean voiceFlag;
 
+    private ArrayList<NodeItem> allNodes;
+    private EdgeList edges;
+    private CustomMapFragment fragment;
+
+    public static ArrayList<NodeImageButton> imageButtons;
+    public static NodeImageButton startButton;
+    public static NodeImageButton destinationButton;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        voiceFlag=false;
+        source = 0;
+        dest = 0;
+        voiceFlag = false;
+
+        allNodes = new ArrayList<NodeItem>();
+        JSONFileParser json = new JSONFileParser(getApplicationContext(), "node_data");
+        NodeListMaker list = new NodeListMaker(json.getJSON());
+        edges = new EdgeListMaker(json.getJSON(), 1).getEdges();
+        //EdgeListMaker edges = new EdgeListMaker(this.mapData);
+        //this.edges = edges.getEdges();
+        ArrayList<NodeItem> items = list.getItems();
+        for(int i = 0; i < items.size(); i++){
+            this.allNodes.add(items.get(i));
+        }
+        imageButtons = new ArrayList<NodeImageButton>();
+
+        // 지도 Fragment 불러오기
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragment = new CustomMapFragment();
+        fragmentTransaction.replace(R.id.main_map_view, fragment);
+        fragmentTransaction.commit();
 
         /* toolbar */
         myToolbar = (Toolbar) findViewById(R.id.my_toolbar);
         setSupportActionBar(myToolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setTitle("출발지 검색");
+        //getSupportActionBar().setDisplayHomeAsUpEnabled(true); // 이게 네비쪽 버튼 관련된 함수인듯
+        //getSupportActionBar().setTitle("출발지 검색");
 
         /*음성인식 버튼의 초기화 및 권한의 획득*/
         voiceBtn = (ImageButton) findViewById(R.id.imageButton);
@@ -100,6 +143,7 @@ public class MainActivity extends AppCompatActivity {
         PhotoView photoView = (PhotoView) findViewById(R.id.photo_view);
         photoView.setImageResource(R.drawable.test3);
         */
+
     }
 
     @Override
@@ -118,11 +162,30 @@ public class MainActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         Log.e("MAIN", "On Resume.");
-        // 지도 Fragment 불러오기
-        FragmentManager fragmentManager = getSupportFragmentManager();
-        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.replace(R.id.main_map_view, new CustomMapFragment());
-        fragmentTransaction.commit();
+        if(voiceFlag){
+            Log.e("MAIN", Long.toString(source) + " , " + Long.toString(dest));
+            TestDrawingView view = fragment.getDrawingView();
+            // Find my location to start.
+            NodeItem cur = ValueConverter.getNearestNodeItem(GlobalApplication.myLocationLatitude, GlobalApplication.myLocationLongitude);
+            source = cur.getNodeID();
+
+            // Re - drawing
+            ArrayList<NodeItem> node = addNodes(edges);
+            FindPath find = new FindPath(node, edges, source, dest);
+            EdgeList path = find.getPaths();
+            getNodeImageButtonByID(source).setBackgroundImageByStatus(3);
+            getNodeImageButtonByID(dest).setBackgroundImageByStatus(4);
+            view.drawEdges(path);
+            voiceFlag = false;
+            VoiceNavigatingThread thread = new VoiceNavigatingThread(getApplicationContext(), node, path);
+            thread.start();
+        }
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        Log.e("MAIN", "On start");
     }
 
     /* toolbar 생성하는 함수 */
@@ -140,12 +203,15 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         //return super.onOptionsItemSelected(item);
         switch (item.getItemId()) {
+            // 액션바 메뉴 재구성으로 인해 더 이상 필요가 없는 코드
+            /*
             case R.id.action_search:
                 // User chose the "Settings" item, show the app settings UI...
                 Toast.makeText(getApplicationContext(), "찾기 버튼 클릭됨", Toast.LENGTH_LONG).show();
                 //Intent intent = new Intent(this, StartingDoorActivity.class);
                 //startActivity(intent);
                 return true;
+                */
             case R.id.action_settings2:
                 Toast.makeText(getApplicationContext(), "항목 1 버튼 클릭됨", Toast.LENGTH_LONG).show();
                 Intent intent2 = new Intent(this, NoiseDetectActivity.class);
@@ -157,5 +223,50 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(), "나머지 버튼 클릭됨", Toast.LENGTH_LONG).show();
                 return super.onOptionsItemSelected(item);
         }
+    }
+
+    private ArrayList<NodeItem> addNodes(EdgeList edges){
+        ArrayList<NodeItem> items = new ArrayList<NodeItem>();
+        for(int i = 0; i < edges.size(); i++){
+            AdjacentEdge e = edges.getEdge(i);
+            long n1 = e.getNodes()[0].getNodeID();
+            long n2 = e.getNodes()[1].getNodeID();
+            boolean c1 = false;
+            boolean c2 = false;
+            for(int j = 0; j < items.size(); j++){
+                if(items.get(j).getNodeID() == n1){
+                    c1 = true;
+                }
+            }
+            for(int j = 0; j < items.size(); j++){
+                if(items.get(j).getNodeID() == n2){
+                    c2 = true;
+                }
+            }
+            if(!c1){
+                for(int j = 0; j < allNodes.size(); j++){
+                    if(allNodes.get(j).getNodeID() == n1){
+                        items.add(allNodes.get(j));
+                    }
+                }
+            }
+            if(!c2){
+                for(int j = 0; j < allNodes.size(); j++){
+                    if(allNodes.get(j).getNodeID() == n2){
+                        items.add(allNodes.get(j));
+                    }
+                }
+            }
+        }
+        return items;
+    }
+
+    private NodeImageButton getNodeImageButtonByID(long id){
+        for(int i = 0; i < imageButtons.size(); i++){
+            if(imageButtons.get(i).getNodeID() == id){
+                return imageButtons.get(i);
+            }
+        }
+        return null;
     }
 }

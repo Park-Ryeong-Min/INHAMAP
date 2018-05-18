@@ -3,6 +3,7 @@ package com.example.inhamap.Utils;
 import android.util.Log;
 
 import com.example.inhamap.Commons.DefaultValue;
+import com.example.inhamap.Commons.GlobalApplication;
 import com.example.inhamap.Models.NodeItem;
 
 import org.json.JSONObject;
@@ -100,5 +101,27 @@ public class ValueConverter {
                 -0.0033668574*Math.pow(lat, 3)
                 +0.4601181791*lat*lat
                 -1.4558127346*lat+110579.25662316;
+    }
+
+    public static NodeItem getNearestNodeItem(double lat, double lng){
+        ArrayList<NodeItem> items = GlobalApplication.items;
+        double d = DefaultValue.INFINITE_DISTANCE_DOUBLE_VALUE;
+        if(items == null){
+            Log.e("INVALID_PARAM", "ArrayList<NodeItem> items is null. [ValueConverter.java:105]");
+            return null;
+        }
+        NodeItem tmp = items.get(0);
+        for(int i = 0; i < items.size(); i++){
+            NodeItem t = items.get(i);
+            double nodeLat = items.get(i).getNodeLatitude();
+            double nodeLng = items.get(i).getNodeLongitude();
+
+            double dist = distance(lat, nodeLat, lng, nodeLng);
+            if(d >= dist){
+                d = dist;
+                tmp = items.get(i);
+            }
+        }
+        return tmp;
     }
 }

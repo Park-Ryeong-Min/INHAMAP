@@ -75,7 +75,7 @@ public class FindMyLocationButton extends AppCompatButton implements View.OnClic
         this.longitude = location.getLongitude();
         float[] pos = ValueConverter.latlngToDip(this.latitude, this.longitude, items);
         Log.e("DIP", Float.toString(pos[0]) + " , " + Float.toString(pos[1]));
-        drawingView.drawLocation(pos[0], pos[1]);
+        //drawingView.drawLocation(pos[0], pos[1]);
     }
 
     @Override

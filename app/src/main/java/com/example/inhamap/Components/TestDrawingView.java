@@ -15,11 +15,13 @@ import android.util.Log;
 import android.util.TypedValue;
 import android.view.View;
 
+import com.example.inhamap.Activities.MainActivity;
 import com.example.inhamap.Commons.GlobalApplication;
 import com.example.inhamap.Models.AdjacentEdge;
 import com.example.inhamap.Models.EdgeList;
 import com.example.inhamap.Models.NodeItem;
 import com.example.inhamap.R;
+import com.example.inhamap.Utils.ValueConverter;
 
 /**
  * Created by myown on 2018. 4. 29..
@@ -93,9 +95,21 @@ public class TestDrawingView extends View {
             Log.e("TEST_VIEW", "Clear paths.");
         }
         if(drawLocation){
-            canvas.drawBitmap(locationIcon, locationX, locationY, new Paint());
+            //canvas.drawBitmap(locationIcon, locationX, locationY, new Paint());
         }else{
+            //canvas.drawBitmap(locationIcon, dipToPixels(this.context, GlobalApplication.myLocationLeft), dipToPixels(this.context, GlobalApplication.myLocationTop), new Paint());
+            //NodeItem tmp = ValueConverter.getNearestNodeItem(GlobalApplication.myLocationLatitude, GlobalApplication.myLocationLongitude);
+            //float l = tmp.getMarginLeft();
+            //float t = tmp.getMarginTop();
+            Log.e("DRAWING_VIEW", Float.toString(GlobalApplication.myLocationLeft) + " , " + Float.toString(GlobalApplication.myLocationTop));
             canvas.drawBitmap(locationIcon, dipToPixels(this.context, GlobalApplication.myLocationLeft), dipToPixels(this.context, GlobalApplication.myLocationTop), new Paint());
+            for(int i = 0; i < MainActivity.imageButtons.size(); i++){
+                NodeImageButton btn = MainActivity.imageButtons.get(i);
+                if(btn.getNodeID() == GlobalApplication.myLocationNodeID){
+                    Log.e("FOCUS","request focus");
+                    btn.requestFocus();
+                }
+            }
         }
     }
 

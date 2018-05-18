@@ -69,6 +69,7 @@ public class CustomMapFragment extends Fragment implements View.OnTouchListener{
         this.view = view;
         this.view.setWillNotDraw(false);
         initSetting();
+
         return view;
     }
 
@@ -82,6 +83,8 @@ public class CustomMapFragment extends Fragment implements View.OnTouchListener{
 
         vScroll = (ScrollView)view.findViewById(R.id.map_fragment_vertical_scroll);
         hScroll = (HorizontalScrollView)view.findViewById(R.id.map_fragment_horizontal_scroll);
+
+        hScroll.fullScroll(HorizontalScrollView.FOCUS_RIGHT);
 
         vScroll.setFadingEdgeLength(0);
         hScroll.setFadingEdgeLength(0);
