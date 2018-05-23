@@ -24,6 +24,7 @@ import android.widget.HorizontalScrollView;
 import android.widget.RelativeLayout;
 import android.widget.ScrollView;
 
+import com.example.inhamap.Commons.GlobalApplication;
 import com.example.inhamap.Components.FindMyLocationButton;
 import com.example.inhamap.Components.LocationDrawingSurfaceView;
 import com.example.inhamap.Components.PathDrawingSurfaceView;
@@ -84,7 +85,8 @@ public class CustomMapFragment extends Fragment implements View.OnTouchListener{
         vScroll = (ScrollView)view.findViewById(R.id.map_fragment_vertical_scroll);
         hScroll = (HorizontalScrollView)view.findViewById(R.id.map_fragment_horizontal_scroll);
 
-        hScroll.fullScroll(HorizontalScrollView.FOCUS_RIGHT);
+        //hScroll.fullScroll(HorizontalScrollView.FOCUS_RIGHT);
+        //hScroll.invalidate();
 
         vScroll.setFadingEdgeLength(0);
         hScroll.setFadingEdgeLength(0);
@@ -97,6 +99,7 @@ public class CustomMapFragment extends Fragment implements View.OnTouchListener{
 
         //layout.setWillNotDraw(false);
         drawingView = (TestDrawingView)view.findViewById(R.id.map_fragment_surface_view);
+        GlobalApplication.view = drawingView;
         //myLocationButton = (FindMyLocationButton) view.findViewById(R.id.map_fragment_find_my_location_button);
         //myLocationButton.setDrawingView(drawingView);
         //LocationDrawingSurfaceView locationSurfaceView = (LocationDrawingSurfaceView)view.findViewById(R.id.map_fragment_location_surface_view);
@@ -171,6 +174,7 @@ public class CustomMapFragment extends Fragment implements View.OnTouchListener{
             }
         Xpos = (int) event.getRawX();
         Ypos = (int) event.getRawY();
+        //Log.e("SCROLL", Integer.toString(Xpos) + " , " + Integer.toString(Ypos));
         v.invalidate();
         return true;
     }

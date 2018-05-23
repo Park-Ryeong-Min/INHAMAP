@@ -12,6 +12,10 @@ import com.example.inhamap.Commons.GlobalApplication;
 import com.example.inhamap.Models.AdjacentEdge;
 import com.example.inhamap.Models.EdgeList;
 import com.example.inhamap.Models.NodeItem;
+import com.example.inhamap.Models.VoicePathElement;
+import com.example.inhamap.PathFindings.GuideOutput;
+import com.example.inhamap.PathFindings.GuidePath;
+import com.example.inhamap.PathFindings.PassingNodeListMaker;
 import com.example.inhamap.Utils.ValueConverter;
 
 import java.util.ArrayList;
@@ -20,13 +24,16 @@ import java.util.List;
 public class VoiceNavigatingThread extends Thread {
 
     private Context context;
-    private ArrayList<NodeItem> nodes;
+    private ArrayList<NodeItem> nodes; // passing nodes
     private EdgeList edges;
     private LocationManager locationManager;
+    private ArrayList<VoicePathElement> voice;
 
     private double lat;
     private double lng;
     private String provider;
+    private long destNodeID;
+    private boolean flag;
 
     public VoiceNavigatingThread(Context context){
         // default constructor
@@ -34,11 +41,15 @@ public class VoiceNavigatingThread extends Thread {
         init();
     }
 
-    public VoiceNavigatingThread(Context context, ArrayList<NodeItem> node, EdgeList edge){
+    public VoiceNavigatingThread(Context context, ArrayList<NodeItem> node, EdgeList edge, ArrayList<VoicePathElement> voice){
         this.context = context;
         this.nodes = node;
         this.edges = edge;
         init();
+    }
+
+    public VoiceNavigatingThread(Context context, ArrayList<NodeItem> node, EdgeList edge, long dest){
+
     }
 
     private void init(){
@@ -46,21 +57,24 @@ public class VoiceNavigatingThread extends Thread {
         lat = 0.0D;
         lng = 0.0D;
         this.provider = "gps";
+        this.flag = false;
         try {
             this.locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 1000, 0.3f, listener);
         }catch (SecurityException ex){
             ex.printStackTrace();
         }
+
     }
 
     @Override
     public void run() {
         super.run();
         // 먼저 도착 노드의 ID를 얻어낸다.
-        long destNodeID;
+        // 도착 노드의 ID는 생성자로부터 받아낸다.
 
         // 리스트를 돌린다
         // -> 언제까지? -> isArrivalDestination 값이 true 일 때까지
+        GuidePath guide = new GuidePath(edges, nodes, destNodeID, voice);
         while(true){
             // 현재 위치를 검색하면 3가지 경우가 나온다.
             // case 1: 출발 위치와 나의 위치가 근접한 경우 (출발)
@@ -69,8 +83,22 @@ public class VoiceNavigatingThread extends Thread {
             // -> 다음 Edge 로 값을 이동함
             // case 3: 경우 1과 경우 2 둘 중에 어느 것도 해당되지 않는 경우
             // -> 일단 기다린다 + 경로 이탈 등의 상황에 대해서 검출하고 핸들링한다.
+            //Log.e("GPS", Double.toString(lat) + " , " + Double.toString(lng));
+            //Log.e("GPS", Double.toString(GlobalApplication.myLocationLatitude) + " , " + Double.toString(GlobalApplication.myLocationLongitude));
+            boolean endFlag = false;
+            while (GlobalApplication.navigationLock){
+                GuideOutput output = guide.getResult(GlobalApplication.myLocationLatitude, GlobalApplication.myLocationLongitude);
+                Log.e("GUIDE", output.getText() + " , " + Long.toString(nodes.get(output.getEdgeNumber()).getNodeID()));
+                if(nodes.get(output.getEdgeNumber() + 1).getNodeID() == destNodeID){
+                    endFlag = true;
+                }
+                GlobalApplication.navigationLock = false;
+            }
 
-            Log.d("THREAD", "Infinity loop test.");
+            if(endFlag){
+                break;
+            }
+            //Log.d("THREAD", "Infinity loop test.");
         }
     }
 
@@ -79,6 +107,7 @@ public class VoiceNavigatingThread extends Thread {
         public void onLocationChanged(Location location) {
             lng = location.getLongitude();
             lat = location.getLatitude();
+            flag = true;
         }
 
         @Override

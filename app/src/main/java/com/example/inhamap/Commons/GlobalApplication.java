@@ -10,7 +10,10 @@ import android.util.Log;
 import android.widget.Toast;
 
 import com.example.inhamap.Components.NodeImageButton;
+import com.example.inhamap.Components.TestDrawingView;
 import com.example.inhamap.Models.NodeItem;
+import com.example.inhamap.Models.VoicePathElement;
+import com.example.inhamap.PathFindings.PassingNodeListMaker;
 import com.example.inhamap.Utils.JSONFileParser;
 import com.example.inhamap.Utils.NodeListMaker;
 import com.example.inhamap.Utils.ValueConverter;
@@ -34,8 +37,12 @@ public class GlobalApplication extends Application implements LocationListener{
     public static float myLocationLeft;
     public static float myLocationTop;
     public static long myLocationNodeID;
+    public static TestDrawingView view;
+    public static boolean navigationLock;
 
     public static ArrayList<NodeItem> items;
+
+    public LocationManager locationManager;
 
     // 어플리케이션이 최초 실행되면 호출되는 함수
     // 사용 전 AndroidManifest.xml 에 등록해서 (android:name) 사용해야함.
@@ -57,9 +64,10 @@ public class GlobalApplication extends Application implements LocationListener{
     @Override
     public void onLocationChanged(Location location) {
         Log.e("GLOBAL", "Location changed.");
+        location = getBestLocation(locationManager);
         myLocationLatitude = location.getLatitude();
         myLocationLongitude = location.getLongitude();
-        //Toast.makeText(getApplicationContext(), "Location Changed." + Double.toString(myLocationLatitude) + " , " + Double.toString(myLocationLongitude), Toast.LENGTH_LONG).show();
+        //
 
         double d = DefaultValue.INFINITE_DISTANCE_DOUBLE_VALUE;
         int left = -1;
@@ -84,7 +92,12 @@ public class GlobalApplication extends Application implements LocationListener{
         if(id != -1){
             myLocationNodeID = id;
         }
-        //Log.e("GLOBAL", Float.toString(myLocationLeft) + " , " + Float.toString(myLocationTop));
+        if(view != null){
+            Toast.makeText(getApplicationContext(), "Location Changed." + Float.toString(myLocationLeft) + " , " + Float.toString(myLocationTop), Toast.LENGTH_LONG).show();
+            //Log.e("CHANGE", Float.toString(myLocationLeft) + " , " + Float.toString(myLocationTop));
+            view.drawLocation(myLocationLeft, myLocationTop);
+        }
+        navigationLock = true;
     }
 
     @Override
@@ -106,7 +119,7 @@ public class GlobalApplication extends Application implements LocationListener{
     public void onCreate() {
         super.onCreate();
         Log.e("GLOBAL", "Global Application is on created.");
-        LocationManager locationManager = (LocationManager)getApplicationContext().getSystemService(Context.LOCATION_SERVICE);
+        locationManager = (LocationManager)getApplicationContext().getSystemService(Context.LOCATION_SERVICE);
         Location myLocation;
         try{
             myLocation = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);

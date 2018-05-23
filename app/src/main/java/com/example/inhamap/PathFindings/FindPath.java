@@ -119,7 +119,7 @@ public class FindPath {
 
     private void findRoute(int x){
         // build path by reverse recursive search to destination node until start node.
-        Log.e("FIND_ROUTE", Long.toString(this.memo[x].nodeID));
+        //Log.e("FIND_ROUTE", Long.toString(this.memo[x].nodeID));
         this.passingNodes.add(findByNodeID(this.memo[x].nodeID));
         if(this.memo[x].nodeID == startNodeID){
             return;

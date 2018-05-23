@@ -95,7 +95,7 @@ public class TestDrawingView extends View {
             Log.e("TEST_VIEW", "Clear paths.");
         }
         if(drawLocation){
-            //canvas.drawBitmap(locationIcon, locationX, locationY, new Paint());
+            canvas.drawBitmap(locationIcon, locationX, locationY, new Paint());
         }else{
             //canvas.drawBitmap(locationIcon, dipToPixels(this.context, GlobalApplication.myLocationLeft), dipToPixels(this.context, GlobalApplication.myLocationTop), new Paint());
             //NodeItem tmp = ValueConverter.getNearestNodeItem(GlobalApplication.myLocationLatitude, GlobalApplication.myLocationLongitude);
