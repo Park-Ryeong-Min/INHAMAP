@@ -8,6 +8,8 @@
             "longitude": 126.65646743551514,
             "screenLeftPosition": 1167,
             "screenTopPosition": 50,
+            "elevator" : 0,
+            "slope" : 0,
             "adjacent": [
                 {
                     "nodeID": 1378,
@@ -29,6 +31,8 @@
             "longitude": 126.65682960301638,
             "screenLeftPosition": 1271,
             "screenTopPosition": 105,
+            "elevator" : 1,
+            "slope" : 1,
             "adjacent": [
                 {
                     "nodeID": 1374,
@@ -60,6 +64,8 @@
             "longitude": 126.65737867,
             "screenLeftPosition": 1380,
             "screenTopPosition": 132,
+            "elevator" : 1,
+            "slope" : 1,
             "adjacent": [
                 {
                     "nodeID": 1373,
@@ -81,6 +87,8 @@
             "longitude": 126.65727441286957,
             "screenLeftPosition": 1410,
             "screenTopPosition": 167,
+            "elevator" : 1,
+            "slope" : 1,
             "adjacent": [
                 {
                     "nodeID": 1375,
@@ -102,6 +110,8 @@
             "longitude": 126.65591424,
             "screenLeftPosition": 1104,
             "screenTopPosition": 134,
+            "elevator" : 1,
+            "slope" : 1,
             "adjacent": [
                 {
                     "nodeID": 991,
@@ -123,6 +133,8 @@
             "longitude": 126.65537988,
             "screenLeftPosition": 996,
             "screenTopPosition": 134,
+            "elevator" : 0,
+            "slope" : 0,
             "adjacent": [
                 {
                     "nodeID": 1383,
@@ -144,6 +156,8 @@
             "longitude": 126.65486722,
             "screenLeftPosition": 917,
             "screenTopPosition": 173,
+            "elevator" : 0,
+            "slope" : 0,
             "adjacent": [
                 {
                     "nodeID": 1385,
@@ -165,6 +179,8 @@
             "longitude": 126.65495004504919,
             "screenLeftPosition": 952,
             "screenTopPosition": 211,
+            "elevator" : 0,
+            "slope" : 0,
             "adjacent": [
                 {
                     "nodeID": 1387,
@@ -186,6 +202,8 @@
             "longitude": 126.65580498,
             "screenLeftPosition": 1097,
             "screenTopPosition": 173,
+            "elevator" : 0,
+            "slope" : 0,
             "adjacent": [
                 {
                     "nodeID": 1390,
@@ -207,6 +225,8 @@
             "longitude": 126.65558867,
             "screenLeftPosition": 1097,
             "screenTopPosition": 248,
+            "elevator" : 0,
+            "slope" : 0,
             "adjacent": [
                 {
                     "nodeID": 1390,
@@ -228,6 +248,8 @@
             "longitude": 126.65533053763683,
             "screenLeftPosition": 1044,
             "screenTopPosition": 253,
+            "elevator" : 0,
+            "slope" : 0,
             "adjacent": [
                 {
                     "nodeID": 1389,
@@ -249,6 +271,8 @@
             "longitude": 126.65492588720456,
             "screenLeftPosition": 1012,
             "screenTopPosition": 348,
+            "elevator" : 0,
+            "slope" : 0,
             "adjacent": [
                 {
                     "nodeID": 1388,
@@ -270,6 +294,8 @@
             "longitude": 126.65437213484779,
             "screenLeftPosition": 920,
             "screenTopPosition": 374,
+            "elevator" : 0,
+            "slope" : 0,
             "adjacent": [
                 {
                     "nodeID": 1391,
@@ -291,6 +317,8 @@
             "longitude": 126.65482056192268,
             "screenLeftPosition": 1030,
             "screenTopPosition": 405,
+            "elevator" : 0,
+            "slope" : 0,
             "adjacent": [
                 {
                     "nodeID": 1393,
@@ -312,6 +340,8 @@
             "latitude": 37.44986153122323,
             "screenLeftPosition": 1139,
             "screenTopPosition": 379,
+            "elevator" : 0,
+            "slope" : 0,
             "adjacent": [
                 {
                     "nodeID": 1395,
@@ -333,6 +363,8 @@
             "latitude": 37.450174568830285,
             "screenLeftPosition": 1141,
             "screenTopPosition": 301,
+            "elevator" : 0,
+            "slope" : 0,
             "adjacent": [
                 {
                     "nodeID": 1396,

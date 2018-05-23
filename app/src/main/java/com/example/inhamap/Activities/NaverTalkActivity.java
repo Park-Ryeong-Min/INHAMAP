@@ -66,6 +66,7 @@ public class NaverTalkActivity extends Activity {
     private EdgeList edges;
     private NodeListMaker list;
     private ArrayList<NodeItem> allNode;
+    private long[] findNoId = new long[2];
 
     // Handle speech recognition Messages.
     private void handleMessage(Message msg) {
@@ -104,17 +105,17 @@ public class NaverTalkActivity extends Activity {
                 mResult = strBuf.toString();
                 //btnConfirm.setText(mResult);
             	String temp1 = cutTalk(mResult, 0);
-            	String temp2 = cutTalk(mResult, 1);
+            	//String temp2 = cutTalk(mResult, 1);
 
                 if(statFlag==1){
-            	    destId = findNodeId(temp1, temp2);
-            	    dest = findDoorName(destId);
+            	    findNoId = findNodeId(temp1);
+            	    dest = findDoorName(findNoId[0]);
                     btnStart2.setText(dest);
-                    informPoint(dest);
+                    informPoint(dest, findNoId[1]);
                 }
 
                 btnConfirm.setText(mResult);
-                if(destId!=0){
+                if(findNoId[0]!=0){
                     btnConfirm.setEnabled(true);
                 }
 
@@ -379,45 +380,78 @@ public class NaverTalkActivity extends Activity {
         myTTS.speak(askDoor1, TextToSpeech.QUEUE_FLUSH, null);
     }
 
-    public void informPoint(String point){
+    public void informPoint(String point, long flag){
         String askDoor1 = "으로 인식했습니다. 잘못 인식되었다면 다시 인식시켜 주십시오.";
+        String askElevSlp="은 엘레베이터와 경사로가 있어 추천합니다.";
+        String askElev = "은 엘레베이터가 있어 추천합니다.";
+        String askSlp = "은 경사로가 있어 추천합니다.";
         String ask2 = "인식하지 못하였습니다. 다시 확인하여 주십시오.";
         if(point.equals("")){
             myTTS.speak(ask2, TextToSpeech.QUEUE_FLUSH, null);
         }
         else{
-            myTTS.speak(point+askDoor1, TextToSpeech.QUEUE_FLUSH,null);
+            if(flag==3){
+                myTTS.speak(point+askElevSlp, TextToSpeech.QUEUE_FLUSH,null);
+            }
+            else if(flag==2){
+                myTTS.speak(point+askElev, TextToSpeech.QUEUE_FLUSH,null);
+            }
+            else if(flag==1){
+                myTTS.speak(point+askSlp, TextToSpeech.QUEUE_FLUSH,null);
+            }
+            else{
+                myTTS.speak(point+askDoor1, TextToSpeech.QUEUE_FLUSH,null);
+            }
         }
     }
 
-    public long findNodeId(String build, String door){
+    public long[] findNodeId(String build){
         long result = 0;
         ArrayList<NodeItem> items = list.getItems();
         ArrayList<NodeItem> tempList = new ArrayList<>();
         for(int i = 0; i < items.size(); i++){
             if(items.get(i).getNodeName().contains(build)&&items.get(i).getNodeStatus()==0){
-                result = items.get(i).getNodeID();
                 tempList.add(items.get(i));
             }
         }
-
-        char[] defDoor;
-        defDoor = door.toCharArray();
-
-        int set;
-        for(int i = 0; i < tempList.size(); i++){
-            set = 0;
-            for(int j = 0; j<door.length(); j++){
-                if(tempList.get(i).getNodeName().contains(defDoor[j]+"")){
-                    set++;
-                }
-            }
-            if(set==door.length()){
-                result = tempList.get(i).getNodeID();
-                break;
+        ArrayList<NodeItem> recElevList = new ArrayList<>();
+        for(int i=0;i < tempList.size();i++){
+            if(tempList.get(i).getNodeElev()==1){
+                recElevList.add(tempList.get(i));
             }
         }
-        return result;
+
+        ArrayList<NodeItem> recSlpList = new ArrayList<>();
+        for(int i=0;i < tempList.size();i++){
+            if(tempList.get(i).getNodeSlp()==1){
+                recSlpList.add(tempList.get(i));
+            }
+        }
+
+        ArrayList<NodeItem> recList = new ArrayList<>();
+        for(int i=0;i < recElevList.size();i++){
+            if(recElevList.get(i).getNodeSlp()==1){
+                recList.add(recElevList.get(i));
+            }
+        }
+        long flag=0;
+        if(recList.size()>0){
+            result = recList.get(0).getNodeID();
+            flag=3;
+        }
+        else if(recElevList.size()>0){
+            result = recElevList.get(0).getNodeID();
+            flag=2;
+        }
+        else if(recSlpList.size()>0){
+            result = recSlpList.get(0).getNodeID();
+            flag=1;
+        }
+        else{
+            result = tempList.get(1).getNodeID();
+        }
+
+        return new long[]{result, flag};
     }
 
     public String findDoorName(long nodeId){
