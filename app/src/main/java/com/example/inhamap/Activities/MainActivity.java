@@ -30,7 +30,9 @@ import com.example.inhamap.Fragments.CustomMapFragment;
 import com.example.inhamap.Models.AdjacentEdge;
 import com.example.inhamap.Models.EdgeList;
 import com.example.inhamap.Models.NodeItem;
+import com.example.inhamap.Models.VoicePathElement;
 import com.example.inhamap.PathFindings.FindPath;
+import com.example.inhamap.PathFindings.PassingNodeListMaker;
 import com.example.inhamap.R;
 import com.example.inhamap.Threads.VoiceNavigatingThread;
 import com.example.inhamap.Utils.EdgeListMaker;
@@ -46,6 +48,7 @@ public class MainActivity extends AppCompatActivity {
     Toolbar myToolbar;
     ImageButton voiceBtn;
 
+    private long source;
     private long dest;
     private boolean voiceFlag;
 
@@ -173,11 +176,15 @@ public class MainActivity extends AppCompatActivity {
             ArrayList<NodeItem> node = addNodes(edges);
             FindPath find = new FindPath(node, edges, source, dest);
             EdgeList path = find.getPaths();
-            getNodeImageButtonByID(source).setBackgroundImageByStatus(3);
+            if(getNodeImageButtonByID(source) != null){
+                getNodeImageButtonByID(source).setBackgroundImageByStatus(3);
+            }
             getNodeImageButtonByID(dest).setBackgroundImageByStatus(4);
+            ArrayList<NodeItem> passingNodes = find.getPassingNodes();
+            ArrayList<VoicePathElement> voices = new PassingNodeListMaker(getApplicationContext(), passingNodes).getVoiceElements();
             view.drawEdges(path);
             voiceFlag = false;
-            VoiceNavigatingThread thread = new VoiceNavigatingThread(getApplicationContext(), node, path);
+            VoiceNavigatingThread thread = new VoiceNavigatingThread(getApplicationContext(), find.getPassingNodes(), path, voices);
             thread.start();
         }
     }
