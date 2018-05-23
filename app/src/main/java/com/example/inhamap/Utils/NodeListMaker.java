@@ -28,7 +28,9 @@ public class NodeListMaker {
                 double lng = tmp.getDouble("longitude");
                 int left = tmp.getInt("screenLeftPosition");
                 int top = tmp.getInt("screenTopPosition");
-                this.items.add(new NodeItem(status, left, top, name, lat, lng, id));
+                int elev = tmp.getInt("elevator");
+                int slp = tmp.getInt("slope");
+                this.items.add(new NodeItem(status, left, top, name, lat, lng, id, elev, slp));
             }
         }catch (JSONException jsonEx){
             jsonEx.printStackTrace();
