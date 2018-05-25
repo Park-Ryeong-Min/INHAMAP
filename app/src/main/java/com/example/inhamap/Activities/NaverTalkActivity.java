@@ -55,9 +55,8 @@ public class NaverTalkActivity extends Activity {
 
     private AudioWriterPCM writer;
 
-    private int statFlag;//0일시에는 출발지, 1일시에는 목적지 인식
-    private String source="";
     private String dest="";
+    private int status;
 
     private TextToSpeech myTTS;
 
@@ -67,6 +66,11 @@ public class NaverTalkActivity extends Activity {
     private NodeListMaker list;
     private ArrayList<NodeItem> allNode;
     private long[] findNoId = new long[2];
+    private ArrayList<NodeItem> items;
+    private ArrayList<NodeItem> tempList;
+    private ArrayList<NodeItem> recElevList;
+    private ArrayList<NodeItem> recSlpList;
+    private ArrayList<NodeItem> recList;
 
     // Handle speech recognition Messages.
     private void handleMessage(Message msg) {
@@ -74,9 +78,8 @@ public class NaverTalkActivity extends Activity {
             case R.id.clientReady:
                 // Now an user can speak.
                 //txtResult.setText("Connected");
-                if(statFlag==1){
-                    btnStart2.setText("Connected");
-                }
+                btnStart2.setText("Connected");
+
                 writer = new AudioWriterPCM(
                         Environment.getExternalStorageDirectory().getAbsolutePath() + "/NaverSpeechTest");
                 writer.open("Test");
@@ -107,12 +110,11 @@ public class NaverTalkActivity extends Activity {
             	String temp1 = cutTalk(mResult, 0);
             	//String temp2 = cutTalk(mResult, 1);
 
-                if(statFlag==1){
-            	    findNoId = findNodeId(temp1);
-            	    dest = findDoorName(findNoId[0]);
-                    btnStart2.setText(dest);
-                    informPoint(dest, findNoId[1]);
-                }
+
+          	    findNoId = findNodeId(temp1);
+           	    dest = findDoorName(findNoId[0]);
+                btnStart2.setText(dest);
+                informPoint(dest, findNoId[1]);
 
                 btnConfirm.setText(mResult);
                 if(findNoId[0]!=0){
@@ -130,10 +132,10 @@ public class NaverTalkActivity extends Activity {
 
                 //txtResult.setText(mResult);
 
-                if(statFlag==1){
-                    btnStart2.setText("목적지");
-                    btnStart2.setEnabled(true);
-                }
+
+                btnStart2.setText("목적지");
+                btnStart2.setEnabled(true);
+
                 btnConfirm.setText("확인");
                 break;
 
@@ -142,13 +144,12 @@ public class NaverTalkActivity extends Activity {
                     writer.close();
                 }
 
-                if(statFlag==1){
-                    btnStart2.setText(dest);
-                    if(dest.equals("")){
-                        btnStart2.setText("목적지");
-                    }
-                    btnStart2.setEnabled(true);
+                btnStart2.setText(dest);
+                if(dest.equals("")){
+                    btnStart2.setText("목적지");
                 }
+                btnStart2.setEnabled(true);
+
                 btnConfirm.setText("확인");
                 break;
         }
@@ -162,6 +163,7 @@ public class NaverTalkActivity extends Activity {
         //txtResult = (TextView) findViewById(R.id.txt_result);
         btnStart2 = (Button) findViewById(R.id.btn_start2);
         btnConfirm = (Button) findViewById(R.id.btn_confirm);
+        status=0;
 
         JSONFileParser json = new JSONFileParser(this, "node_data");
         this.mapData = json.getJSON();
@@ -189,7 +191,6 @@ public class NaverTalkActivity extends Activity {
                     // Start button is pushed when SpeechRecognizer's state is inactive.
                     // Run SpeechRecongizer by calling recognize().
                     mResult = "";
-                    statFlag=1;
                     btnStart2.setText("Connecting...");
                     //txtResult.setText("Connecting...");
                     //btnStart2.setText(R.string.str_stop);
@@ -208,7 +209,7 @@ public class NaverTalkActivity extends Activity {
             @Override
             public void onClick(View v){
                 Intent reIntent = new Intent();
-                reIntent.putExtra("resultId", destId);
+                reIntent.putExtra("resultId", findNoId[0]);
                 setResult(Activity.RESULT_OK, reIntent);
                 finish();
             }
@@ -381,7 +382,7 @@ public class NaverTalkActivity extends Activity {
     }
 
     public void informPoint(String point, long flag){
-        String askDoor1 = "으로 인식했습니다. 잘못 인식되었다면 다시 인식시켜 주십시오.";
+        String askDoor1 = "으로 인식했습니다. 이 건물은 엘레베이터 및 경사로가 존재하지 않습니다.";
         String askElevSlp="은 엘레베이터와 경사로가 있어 추천합니다.";
         String askElev = "은 엘레베이터가 있어 추천합니다.";
         String askSlp = "은 경사로가 있어 추천합니다.";
@@ -407,28 +408,28 @@ public class NaverTalkActivity extends Activity {
 
     public long[] findNodeId(String build){
         long result = 0;
-        ArrayList<NodeItem> items = list.getItems();
-        ArrayList<NodeItem> tempList = new ArrayList<>();
+        items = list.getItems();
+        tempList = new ArrayList<>();
         for(int i = 0; i < items.size(); i++){
             if(items.get(i).getNodeName().contains(build)&&items.get(i).getNodeStatus()==0){
                 tempList.add(items.get(i));
             }
         }
-        ArrayList<NodeItem> recElevList = new ArrayList<>();
+        recElevList = new ArrayList<>();
         for(int i=0;i < tempList.size();i++){
             if(tempList.get(i).getNodeElev()==1){
                 recElevList.add(tempList.get(i));
             }
         }
 
-        ArrayList<NodeItem> recSlpList = new ArrayList<>();
+        recSlpList = new ArrayList<>();
         for(int i=0;i < tempList.size();i++){
             if(tempList.get(i).getNodeSlp()==1){
                 recSlpList.add(tempList.get(i));
             }
         }
 
-        ArrayList<NodeItem> recList = new ArrayList<>();
+        recList = new ArrayList<>();
         for(int i=0;i < recElevList.size();i++){
             if(recElevList.get(i).getNodeSlp()==1){
                 recList.add(recElevList.get(i));
@@ -466,41 +467,5 @@ public class NaverTalkActivity extends Activity {
                 }
             }}
         return result;
-    }
-
-    private ArrayList<NodeItem> addNodes(EdgeList edges){
-        ArrayList<NodeItem> list = new ArrayList<NodeItem>();
-        for(int i = 0; i < edges.size(); i++){
-            AdjacentEdge e = edges.getEdge(i);
-            long n1 = e.getNodes()[0].getNodeID();
-            long n2 = e.getNodes()[1].getNodeID();
-            boolean c1 = false;
-            boolean c2 = false;
-            for(int j = 0; j < list.size(); j++){
-                if(list.get(j).getNodeID() == n1){
-                    c1 = true;
-                }
-            }
-            for(int j = 0; j < list.size(); j++){
-                if(list.get(j).getNodeID() == n2){
-                    c2 = true;
-                }
-            }
-            if(!c1){
-                for(int j = 0; j < allNode.size(); j++){
-                    if(allNode.get(j).getNodeID() == n1){
-                        list.add(allNode.get(j));
-                    }
-                }
-            }
-            if(!c2){
-                for(int j = 0; j < allNode.size(); j++){
-                    if(allNode.get(j).getNodeID() == n2){
-                        list.add(allNode.get(j));
-                    }
-                }
-            }
-        }
-        return list;
     }
 }
