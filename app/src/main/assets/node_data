@@ -88,7 +88,7 @@
             "screenLeftPosition": 1410,
             "screenTopPosition": 167,
             "elevator" : 1,
-            "slope" : 1,
+            "slope" : 0,
             "adjacent": [
                 {
                     "nodeID": 1375,
