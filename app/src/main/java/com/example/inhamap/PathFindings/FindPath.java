@@ -59,12 +59,12 @@ public class FindPath {
 
         for(int i = 0; i < this.size; i++){
             for(int j = 0; j < this.size; j++){
-                adj[i][j] = DefaultValue.INFINITE_DISTANCE_DOUBLE_VALUE;
+                adj[i][j] = DefaultValue.INFINITE_DISTANCE_DOUBLE_VALUE - 1.0D;
             }
         }
 
         for(int i = 0; i < this.size; i++){
-            this.dist[i] = DefaultValue.INFINITE_DISTANCE_DOUBLE_VALUE;
+            this.dist[i] = DefaultValue.INFINITE_DISTANCE_DOUBLE_VALUE - 1.0D;
             this.check[i] = 0;
             this.track[i] = -1;
         }
@@ -105,6 +105,9 @@ public class FindPath {
                 }
             }
             //Log.e("CHECK", Integer.toString(x));
+            if(x == -1){
+                Log.e("ERROR", "Error Point");
+            }
             this.check[x] = 1;
             for(int i = 0; i < this.size; i++){
                 //Log.e("DIST", "dist[i] : " + Double.toString(this.dist[i]) + " , dist[x] : " + Double.toString(this.dist[x]) + " , adj[x][i] : " + Double.toString(this.adj[x][i]) + " , ressult : " + Double.toString(this.dist[x] + this.adj[x][i]));
