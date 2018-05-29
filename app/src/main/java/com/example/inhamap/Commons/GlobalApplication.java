@@ -11,9 +11,12 @@ import android.widget.Toast;
 
 import com.example.inhamap.Components.NodeImageButton;
 import com.example.inhamap.Components.TestDrawingView;
+import com.example.inhamap.Models.AdjacentEdge;
+import com.example.inhamap.Models.EdgeList;
 import com.example.inhamap.Models.NodeItem;
 import com.example.inhamap.Models.VoicePathElement;
 import com.example.inhamap.PathFindings.PassingNodeListMaker;
+import com.example.inhamap.Utils.EdgeListMaker;
 import com.example.inhamap.Utils.JSONFileParser;
 import com.example.inhamap.Utils.NodeListMaker;
 import com.example.inhamap.Utils.ValueConverter;
@@ -41,6 +44,9 @@ public class GlobalApplication extends Application implements LocationListener{
     public static boolean navigationLock;
 
     public static ArrayList<NodeItem> items;
+    public static ArrayList<NodeItem> nodesExceptStairs;
+    public static EdgeList edgesExceptStairs;
+    private ArrayList<NodeItem> allNodes;
 
     public LocationManager locationManager;
 
@@ -93,7 +99,7 @@ public class GlobalApplication extends Application implements LocationListener{
             myLocationNodeID = id;
         }
         if(view != null){
-            Toast.makeText(getApplicationContext(), "Location Changed." + Float.toString(myLocationLeft) + " , " + Float.toString(myLocationTop), Toast.LENGTH_LONG).show();
+            //Toast.makeText(getApplicationContext(), "Location Changed." + Float.toString(myLocationLeft) + " , " + Float.toString(myLocationTop), Toast.LENGTH_LONG).show();
             //Log.e("CHANGE", Float.toString(myLocationLeft) + " , " + Float.toString(myLocationTop));
             view.drawLocation(myLocationLeft, myLocationTop);
         }
@@ -131,6 +137,13 @@ public class GlobalApplication extends Application implements LocationListener{
         JSONObject json = new JSONFileParser(getApplicationContext(), "node_data").getJSON();
         this.items = new NodeListMaker(json).getItems();
         myLocationNodeID = 0;
+        NodeListMaker list = new NodeListMaker(json);
+        edgesExceptStairs = new EdgeListMaker(json, 1).getEdges();
+        allNodes = new ArrayList<NodeItem>();
+        for(int i = 0; i < list.getItems().size(); i++){
+            allNodes.add(list.getItems().get(i));
+        }
+        nodesExceptStairs = addNodes(edgesExceptStairs);
     }
 
     private Location getBestLocation(LocationManager lm){
@@ -150,6 +163,42 @@ public class GlobalApplication extends Application implements LocationListener{
             }
         }
         return bestLocation;
+    }
+
+    private ArrayList<NodeItem> addNodes(EdgeList edges){
+        ArrayList<NodeItem> items = new ArrayList<NodeItem>();
+        for(int i = 0; i < edges.size(); i++){
+            AdjacentEdge e = edges.getEdge(i);
+            long n1 = e.getNodes()[0].getNodeID();
+            long n2 = e.getNodes()[1].getNodeID();
+            boolean c1 = false;
+            boolean c2 = false;
+            for(int j = 0; j < items.size(); j++){
+                if(items.get(j).getNodeID() == n1){
+                    c1 = true;
+                }
+            }
+            for(int j = 0; j < items.size(); j++){
+                if(items.get(j).getNodeID() == n2){
+                    c2 = true;
+                }
+            }
+            if(!c1){
+                for(int j = 0; j < allNodes.size(); j++){
+                    if(allNodes.get(j).getNodeID() == n1){
+                        items.add(allNodes.get(j));
+                    }
+                }
+            }
+            if(!c2){
+                for(int j = 0; j < allNodes.size(); j++){
+                    if(allNodes.get(j).getNodeID() == n2){
+                        items.add(allNodes.get(j));
+                    }
+                }
+            }
+        }
+        return items;
     }
 
 }

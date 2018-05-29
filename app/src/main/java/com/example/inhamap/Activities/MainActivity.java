@@ -184,7 +184,8 @@ public class MainActivity extends AppCompatActivity {
             ArrayList<VoicePathElement> voices = new PassingNodeListMaker(getApplicationContext(), passingNodes).getVoiceElements();
             view.drawEdges(path);
             voiceFlag = false;
-            VoiceNavigatingThread thread = new VoiceNavigatingThread(getApplicationContext(), find.getPassingNodes(), path, voices);
+            //VoiceNavigatingThread thread = new VoiceNavigatingThread(getApplicationContext(), find.getPassingNodes(), path, voices, source, dest);
+            VoiceNavigatingThread thread = new VoiceNavigatingThread(getApplicationContext(), source, dest);
             thread.start();
         }
     }

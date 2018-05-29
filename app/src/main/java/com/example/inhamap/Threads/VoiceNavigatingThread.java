@@ -5,7 +5,9 @@ import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
+import android.speech.tts.TextToSpeech;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.example.inhamap.Activities.MainActivity;
 import com.example.inhamap.Commons.GlobalApplication;
@@ -13,13 +15,16 @@ import com.example.inhamap.Models.AdjacentEdge;
 import com.example.inhamap.Models.EdgeList;
 import com.example.inhamap.Models.NodeItem;
 import com.example.inhamap.Models.VoicePathElement;
+import com.example.inhamap.PathFindings.FindPath;
 import com.example.inhamap.PathFindings.GuideOutput;
 import com.example.inhamap.PathFindings.GuidePath;
+import com.example.inhamap.PathFindings.NavigatePath;
 import com.example.inhamap.PathFindings.PassingNodeListMaker;
 import com.example.inhamap.Utils.ValueConverter;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 public class VoiceNavigatingThread extends Thread {
 
@@ -33,7 +38,9 @@ public class VoiceNavigatingThread extends Thread {
     private double lng;
     private String provider;
     private long destNodeID;
+    private long startNodeID;
     private boolean flag;
+    private TextToSpeech tts;
 
     public VoiceNavigatingThread(Context context){
         // default constructor
@@ -41,10 +48,19 @@ public class VoiceNavigatingThread extends Thread {
         init();
     }
 
-    public VoiceNavigatingThread(Context context, ArrayList<NodeItem> node, EdgeList edge, ArrayList<VoicePathElement> voice){
+    public VoiceNavigatingThread(Context context, long start, long dest){
+        this.context = context;
+        this.startNodeID = start;
+        this.destNodeID = dest;
+        init();
+    }
+
+    public VoiceNavigatingThread(Context context, ArrayList<NodeItem> node, EdgeList edge, ArrayList<VoicePathElement> voice, long start, long dest){
         this.context = context;
         this.nodes = node;
         this.edges = edge;
+        this.startNodeID = start;
+        this.destNodeID = dest;
         init();
     }
 
@@ -63,7 +79,14 @@ public class VoiceNavigatingThread extends Thread {
         }catch (SecurityException ex){
             ex.printStackTrace();
         }
-
+        tts = new TextToSpeech(context, new TextToSpeech.OnInitListener() {
+            @Override
+            public void onInit(int status) {
+                if(status != TextToSpeech.ERROR) {
+                    tts.setLanguage(Locale.KOREAN);
+                }
+            }
+        });
     }
 
     @Override
@@ -74,8 +97,10 @@ public class VoiceNavigatingThread extends Thread {
 
         // 리스트를 돌린다
         // -> 언제까지? -> isArrivalDestination 값이 true 일 때까지
-        GuidePath guide = new GuidePath(edges, nodes, destNodeID, voice);
-        while(true){
+        //GuidePath guide = new GuidePath(edges, nodes, destNodeID, voice);
+        NavigatePath navigate = new NavigatePath(startNodeID, destNodeID);
+        boolean finish = true;
+        while(finish){
             // 현재 위치를 검색하면 3가지 경우가 나온다.
             // case 1: 출발 위치와 나의 위치가 근접한 경우 (출발)
             // -> 어떻게 가야하는 지에 대해서 음성 안내를 실시함
@@ -87,11 +112,43 @@ public class VoiceNavigatingThread extends Thread {
             //Log.e("GPS", Double.toString(GlobalApplication.myLocationLatitude) + " , " + Double.toString(GlobalApplication.myLocationLongitude));
             boolean endFlag = false;
             while (GlobalApplication.navigationLock){
-                GuideOutput output = guide.getResult(GlobalApplication.myLocationLatitude, GlobalApplication.myLocationLongitude);
-                Log.e("GUIDE", output.getText() + " , " + Long.toString(nodes.get(output.getEdgeNumber()).getNodeID()));
-                if(nodes.get(output.getEdgeNumber() + 1).getNodeID() == destNodeID){
-                    endFlag = true;
+                Log.e("EVENT", "Find event");
+                double myLat = GlobalApplication.myLocationLatitude;
+                double myLng = GlobalApplication.myLocationLongitude;
+                AdjacentEdge e = navigate.whichEdgeUserOn(myLat, myLng);
+                if(navigate.isUserOnPath(e, myLat, myLng)){
+                    // 현재 위치가 navigate 객체에 있는 path 위에 있으면?
+                    AdjacentEdge ptr = navigate.getPtr(e);
+                    if(navigate.isPtrArrivedAtDestination(ptr)){
+                        tts.speak("목적지에 도착하였습니다. 안내를 종료합니다.", TextToSpeech.QUEUE_FLUSH, null);
+                        finish = false;
+                    }else{
+                        int status = navigate.getStatusOnEdge(ptr, myLat, myLng);
+                        switch (status){
+                            case -1:{
+                                tts.speak("교차점에서 출발합니다.", TextToSpeech.QUEUE_FLUSH, null);
+                                break;
+                            }
+                            case 0:{
+                                tts.speak("전방으로 진행하십시오." , TextToSpeech.QUEUE_FLUSH, null);
+                                break;
+                            }
+                            case 1:{
+                                tts.speak("교차점에 도착하였습니다.", TextToSpeech.QUEUE_FLUSH, null);
+                                break;
+                            }
+                            default:{
+                                tts.speak("경로 탐색 중 오류가 발생하였습니다. 안내를 종료합니다.", TextToSpeech.QUEUE_FLUSH, null);
+                                break;
+                            }
+                        }
+                    }
+                }else{
+                    // 아니면?
+                    navigate.reFindPathMyLocationToDestination(myLat, myLng);
+                    tts.speak("탐색 경로를 이탈하였습니다. 경로를 재탐색합니다.", TextToSpeech.QUEUE_FLUSH, null);
                 }
+
                 GlobalApplication.navigationLock = false;
             }
 

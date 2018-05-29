@@ -89,4 +89,24 @@ public class AdjacentEdge {
     public void setDistance(double distance) {
         this.distance = distance;
     }
+
+    public boolean isEqual(AdjacentEdge e){
+        if(this.getDistance() != e.getDistance()){
+            return false;
+        }
+
+        NodeItem n1 = this.getNodes()[0];
+        NodeItem n2 = this.getNodes()[1];
+
+        NodeItem n3 = e.getNodes()[0];
+        NodeItem n4 = e.getNodes()[1];
+
+        if((n1.getNodeID() == n3.getNodeID()) && (n2.getNodeID() == n4.getNodeID())){
+            return true;
+        }else if((n1.getNodeID() == n4.getNodeID()) && (n2.getNodeID() == n3.getNodeID())){
+            return true;
+        }else{
+            return false;
+        }
+    }
 }
