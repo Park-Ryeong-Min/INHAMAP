@@ -110,6 +110,7 @@ public class NaverTalkActivity extends Activity {
                     voiceStatus = 1;
                     String temp1 = cutTalk(mResult, 0);
                     String build = buildingSpeak(temp1);
+                    btnConfirm.setEnabled(true);
                     informOption(build);
                     findNodeId(temp1);
                     if(tempList.size()==1){
@@ -123,6 +124,7 @@ public class NaverTalkActivity extends Activity {
                     confirmOption(temp1);
                     while (myTTS.isSpeaking()) ;
                     informPoint(optionPicked);//어떤 것이 있는지 알려주어야 함
+
                 } else if (voiceStatus == 2) {
                     voiceStatus = 3;
                     String temp1 = cutTalk(mResult, 1);
@@ -130,9 +132,10 @@ public class NaverTalkActivity extends Activity {
                 }
                 //btnStart2.setText(dest);
                 //btnConfirm.setText(mResult);
-                if (voiceStatus == 3) {
+                if (voiceStatus == 3||voiceStatus==1) {
                     btnConfirm.setEnabled(true);
-                } else {
+                }
+                else {
                     btnConfirm.setEnabled(false);
                 }
 
@@ -256,10 +259,19 @@ public class NaverTalkActivity extends Activity {
 
             @Override
             public void onClick(View v) {
-                Intent reIntent = new Intent();
-                reIntent.putExtra("resultId", findNoId);
-                setResult(Activity.RESULT_OK, reIntent);
-                finish();
+                if(voiceStatus==3) {
+                    Intent reIntent = new Intent();
+                    reIntent.putExtra("resultId", findNoId);
+                    setResult(Activity.RESULT_OK, reIntent);
+                    finish();
+                }
+                else if(voiceStatus==1){
+                    btnConfirm.setEnabled(false);
+                    voiceStatus=2;
+                    optionPicked=0;
+                    informPoint(optionPicked);
+                    naverRecognizer.recognize();
+                }
             }
         });
 
@@ -484,7 +496,7 @@ public class NaverTalkActivity extends Activity {
     }
 
     public int informPoint(int option) {
-        String askDoor1 = "만족하는 문이 없습니다. 이 건물의 문은";
+        String askDoor1 = "이 건물의 모든 문은";
         String askElevSlp = "경사로와 엘레베이터가 있는 문은";
         String askElev = "엘레베이터가 있는 문은";
         String askSlp = "경사로가 있는 문은";
