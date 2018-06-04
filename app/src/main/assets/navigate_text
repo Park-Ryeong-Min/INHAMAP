@@ -1,0 +1,253 @@
+{
+  "nodeList" : [
+    {
+      "nodeID" : 1,
+      "voiceText" : [
+        {
+          "prevNodeID" : 0,
+          "nextNodeID" : 100,
+          "text" : "음성 안내를 시작합니다. 현재 위치는 인하대학교 후문입니다. 플랜카드 방향으로 직진하십시오."
+        },
+        {
+          "prevNodeID" : 100,
+          "nextNodeID" : 0,
+          "text" : "목적지인 후문에 도착하였습니다. 안내를 종료합니다."
+        }
+      ]
+    },
+    {
+      "nodeID" : 2,
+      "voiceText" : [
+        {
+          "prevNodeID" : 0,
+          "nextNodeID" : 106,
+          "text" : "음성 안내를 시작합니다. 현재 위치는 하이테크 센터 저층부 문입니다. 흡연장 방향으로 직진하십시오."
+        },
+        {
+          "prevNodeID" : 106,
+          "nextNodeID" : 0,
+          "text" : "목적지인 하이테크 센터 저층부 문에 도착하였습니다. 문을 지나면 계단과 맞은 편에 엘리베이터가 있습니다. 안내를 종료합니다."
+        }
+      ]
+    },
+    {
+      "nodeID" : 3,
+      "voiceText" : [
+        {
+          "prevNodeID" : 0,
+          "nextNodeID" : 107,
+          "text" : "음성 안내를 시작합니다. 현재 위치는 하이테크 센터 고층부 문입니다. 전방으로 이동하십시오."
+        },
+        {
+          "prevNodeID" : 107,
+          "nextNodeID" : 0,
+          "text" : "목적지인 하이테크 센터 고층부 문에 도착하였습니다. 건물 내부 왼편에 엘리베이터가 있습니다. 안내를 종료합니다."
+        }
+      ]
+    },
+    {
+      "nodeID": 4,
+      "voiceText": [
+        {
+          "prevNodeID": 0,
+          "nextNodeID": 111,
+          "text": "음성안내를 시작합니다. 현재 위치는 하이테크 센터 지하 문입니다. 전방 공원으로 이동하십시오."
+        },
+        {
+          "prevNodeID" : 111,
+          "nextNodeID" : 0,
+          "text" : "목적지인 하이테크 센터 지하 문에 도착하였습니다. 건물 안쪽의 강당 오른편에 엘리베이터가 있습니다. 안내를 종료합니다."
+        }
+      ]
+    },
+    {
+      "nodeID" : 5,
+      "voiceText" : [
+        {
+          "prevNodeID" : 0,
+          "nextNodeID" : 138,
+          "text" : "음성 안내를 시작합니다. 현재 위치는 2호관 북쪽 문입니다. 계단 아래로 이동하십시오."
+        },
+        {
+          "prevNodeID" : 138,
+          "nextNodeID" : 0,
+          "text" : "목적지인 2호관 북쪽 문에 도착하였습니다. 건물 문을 지나면 전방에 엘리베이터가 있습니다. 안내를 종료합니다."
+        }
+      ]
+    },
+    {
+      "nodeID" : 6,
+      "voiceText" : [
+        {
+          "prevNodeID" : 0,
+          "nextNodeID" : 135,
+          "text" : "음성 안내를 시작합니다. 현재 위치는 2호관 북쪽 문입니다. 전방 큰길로 이동하십시오."
+        },
+        {
+          "prevNodeID" : 135,
+          "nextNodeID" : 0,
+          "text" : "목적지인 2호관 북쪽 문에 도착하였습니다. 엘리베이터가 없습니다. 안내를 종료합니다."
+        }
+      ]
+    },
+    {
+      "nodeID" : 7,
+      "voiceText" : [
+        {
+          "prevNodeID" : 0,
+          "nextNodeID" : 132,
+          "text" : "음성 안내를 시작합니다. 현재 위치는 2호관 북쪽 문입니다. 전방 60주년 기념관 앞 길로 이동하십시오."
+        },
+        {
+          "prevNodeID" : 132,
+          "nextNodeID" : 0,
+          "text" : "목적지인 2호관 북동쪽 분에 도착하였습니다. 엘리베이터가 없습니다. 안내를 종료합니다."
+        }
+      ]
+    },
+    {
+      "nodeID" : 8,
+      "voiceText" : [
+        {
+          "prevNodeID" : 0,
+          "nextNodeID" : 140,
+          "text" : "음성 안내를 시작합니다. 현재 위치는 2호관 북쪽 문입니다. 전방 벤치 및 쉼터 방향으로 이동하십시오."
+        },
+        {
+          "prevNodeID" : 140,
+          "nextNodeID" : 
+        }
+      ]
+    },
+    {
+      "nodeID" : 100,
+      "voiceText" : [
+        {
+          "prevNodeID" : 0,
+          "nextNodeID" : 1,
+          "text" : "안내를 시작합니다. 현재 위치는 인하대학교 후문 앞 교차로입니다."
+        },
+        {
+          "prevNodeID" : 0,
+          "nextNodeID" : 101,
+          "text" : ""
+        },
+        {
+          "prevNodeID" : 0,
+          "nextNodeID" : 102,
+          "text" : ""
+        },
+        {
+          "prevNodeID" : 0,
+          "nextNodeID" : 103,
+          "text" : ""
+        },
+        {
+          "prevNodeID" : 0,
+          "nextNodeID" : 104,
+          "text" : ""
+        },
+        {
+          "prevNodeID" : 1,
+          "nextNodeID" : 101,
+          "text" : "9시 방향 약한 오르막 길 입니다."
+        },
+        {
+          "prevNodeID" : 1,
+          "nextNodeID" : 102,
+          "text" : "11시 방향 길 입니다."
+        },
+        {
+          "prevNodeID" : 1,
+          "nextNodeID" : 103,
+          "text" : "1시방향 오르막 길 입니다."
+        },
+        {
+          "prevNodeID" : 1,
+          "nextNodeID" : 104,
+          "text" : "3시방향 길 입니다."
+        },
+        {
+          "prevNodeID" : 104,
+          "nextNodeID" : 1,
+          "text" : ""
+        },
+        {
+          "prevNodeID" : 104,
+          "nextNodeID" : 103,
+          "text" : ""
+        },
+        {
+          "prevNodeID" : 104,
+          "nextNodeID" : 102,
+          "text" : ""
+        },
+        {
+          "prevNodeID" : 104,
+          "nextNodeID" : 101,
+          "text" : ""
+        },
+        {
+          "prevNodeID" : 103,
+          "nextNodeID" : 104,
+          "text" : ""
+        },
+        {
+          "prevNodeID" : 103,
+          "nextNodeID" : 1,
+          "text" : ""
+        },
+        {
+          "prevNodeID" : 103,
+          "nextNodeID" : 101,
+          "text" : ""
+        },
+        {
+          "prevNodeID" : 103,
+          "nextNodeID" : 102,
+          "text" : ""
+        },
+        {
+          "prevNodeID" : 102,
+          "nextNodeID" : 103,
+          "text" : ""
+        },
+        {
+          "prevNodeID" : 102,
+          "nextNodeID" : 104,
+          "text" : ""
+        },
+        {
+          "prevNodeID" : 102,
+          "nextNodeID" : 1,
+          "text" : ""
+        },
+        {
+          "prevNodeID" : 102,
+          "nextNodeID" : 101,
+          "text" : ""
+        },
+        {
+          "prevNodeID" : 101,
+          "nextNodeID" : 102,
+          "text" : ""
+        },
+        {
+          "prevNodeID" : 101,
+          "nextNodeID" : 103,
+          "text" : ""
+        },
+        {
+          "prevNodeID" : 101,
+          "nextNodeID" : 104,
+          "text" : ""
+        },
+        {
+          "prevNodeID" : 101,
+          "nextNodeID" : 1,
+          "text" : ""
+        }
+      ]
+    }
+  ]
+}

@@ -91,9 +91,11 @@ public class AdjacentEdge {
     }
 
     public boolean isEqual(AdjacentEdge e){
+        /*
         if(this.getDistance() != e.getDistance()){
             return false;
         }
+        */
 
         NodeItem n1 = this.getNodes()[0];
         NodeItem n2 = this.getNodes()[1];

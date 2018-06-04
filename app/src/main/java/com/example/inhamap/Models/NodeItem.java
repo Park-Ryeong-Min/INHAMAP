@@ -101,4 +101,12 @@ public class NodeItem {
     public int getNodeSlp(){return nodeSlp;}
 
     public void setNodeSlp(int slp){this.nodeSlp = slp;}
+
+    public boolean isEqual(NodeItem n){
+        if(n.getNodeID() == this.getNodeID() && n.getNodeLatitude() == this.getNodeLatitude() && n.getNodeLongitude() == this.getNodeLongitude()){
+            return true;
+        }else{
+            return false;
+        }
+    }
 }

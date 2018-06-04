@@ -1,5 +1,7 @@
 package com.example.inhamap.PathFindings;
 
+import android.util.Log;
+
 import com.example.inhamap.Commons.DefaultValue;
 import com.example.inhamap.Commons.GlobalApplication;
 import com.example.inhamap.Models.AdjacentEdge;
@@ -21,6 +23,9 @@ public class NavigatePath {
     private ArrayList<NodeItem> passingNodes;
     private FindPath pathFinding;
     private long destNodeID;
+
+    // 네비게이션 알고리즘 개선 v1.2
+    private NodeItem ptr;
 
     // constructor
     public NavigatePath(){
@@ -73,6 +78,7 @@ public class NavigatePath {
     // 현재 사용자가 설정된 경로 위에 있는가?
     public boolean isUserOnPath(AdjacentEdge user, double lat, double lng){
         AdjacentEdge e = user;
+        Log.e("IS_ON_PATH", Long.toString(e.getNodes()[0].getNodeID()) + " - " + Long.toString(e.getNodes()[1].getNodeID()));
         for(int i = 0; i < this.pathEdges.size(); i++){
             AdjacentEdge tmp = this.pathEdges.getEdge(i);
             if(e.isEqual(tmp)){
@@ -155,5 +161,88 @@ public class NavigatePath {
         NodeItem nearestNode = ValueConverter.getNearestNodeItem(lat, lng);
         long startNodeID = nearestNode.getNodeID();
         findPath(startNodeID, destNodeID);
+        printPassingNode();
     }
+
+    public FindPath getPathFinding(){
+        return this.pathFinding;
+    }
+
+    // 현재 어느 노드에 있는가?
+    // required params : NodeItem n
+    // 현재 사용자가 위치한 Node 가 경로위에 있지 않으면 null 을 리턴함.
+    public NodeItem getNodePtr(NodeItem n){
+        for(int i = 0; i < this.passingNodes.size(); i++){
+            if(this.passingNodes.get(i).isEqual(n)){
+                return this.passingNodes.get(i);
+            }
+        }
+        return null;
+    }
+
+    // 현재 위치한 노드가 도착 노드인가?
+    // return 0 : 현재 위치한 노드는 진행중인 노드이다.
+    // return 1 : 현재 위치한 노드는 도착 노드이다.
+    public int getPtrStatus(NodeItem n){
+        NodeItem destNode = this.passingNodes.get(this.passingNodes.size() - 1);
+        if(destNode.isEqual(n)){
+            return 1;
+        }else{
+            return 0;
+        }
+    }
+
+    // ptr 변수를 따로 만들어냄
+    // 그리고 get, set 함수도 따로 만들어버림
+    public void setPtr(NodeItem n){
+        this.ptr = n;
+    }
+
+    // method overriding
+    public void setPtr(double lat, double lng){
+        this.ptr = ValueConverter.getNearestNodeItem(lat, lng);
+    }
+
+    public NodeItem getPtr() {
+        return this.ptr;
+    }
+
+    public NodeItem getNextNode(){
+        int idx = -1;
+        for(int i = 0; i < this.passingNodes.size(); i++){
+            if(this.ptr.isEqual(this.passingNodes.get(i))){
+                idx = i;
+                break;
+            }
+        }
+        if(idx == -1){
+            return null;
+        }
+        Log.e("GET_NEXT", Integer.toString(idx) + " , " + Integer.toString(this.passingNodes.size()));
+        if(idx == this.passingNodes.size() - 1){
+            return null;
+        }
+        return this.passingNodes.get(idx + 1);
+    }
+
+    public boolean isPtrArrived(){
+        if(this.ptr.isEqual(this.passingNodes.get(this.passingNodes.size() - 1))){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+    // for Log
+    private void printPassingNode(){
+        String logText = "";
+        for(int i = 0; i < this.passingNodes.size(); i++){
+            logText += Long.toString(this.passingNodes.get(i).getNodeID());
+            if(i != this.passingNodes.size() - 1){
+                logText += " -> ";
+            }
+        }
+        Log.e("REFIND", logText);
+    }
+
 }

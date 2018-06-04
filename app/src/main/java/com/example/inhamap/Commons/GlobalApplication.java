@@ -6,6 +6,7 @@ import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
+import android.speech.tts.TextToSpeech;
 import android.util.Log;
 import android.widget.Toast;
 
@@ -28,6 +29,7 @@ import org.json.JSONObject;
 import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 /**
  * Created by myown on 2018. 4. 18..
@@ -46,7 +48,8 @@ public class GlobalApplication extends Application implements LocationListener{
     public static ArrayList<NodeItem> items;
     public static ArrayList<NodeItem> nodesExceptStairs;
     public static EdgeList edgesExceptStairs;
-    private ArrayList<NodeItem> allNodes;
+    public static ArrayList<NodeItem> allNodes;
+    //public static TextToSpeech TTS;
 
     public LocationManager locationManager;
 
@@ -129,12 +132,12 @@ public class GlobalApplication extends Application implements LocationListener{
         Location myLocation;
         try{
             myLocation = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
-            locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER,1000, 0.3f, this);
-            locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 1000, 30f, this);
+            locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER,1000, 5f, this);
+            locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 1000, 5f, this);
         }catch (SecurityException ex){
             ex.printStackTrace();
         }
-        JSONObject json = new JSONFileParser(getApplicationContext(), "node_data").getJSON();
+        JSONObject json = new JSONFileParser(getApplicationContext(), "node_data_v2").getJSON();
         this.items = new NodeListMaker(json).getItems();
         myLocationNodeID = 0;
         NodeListMaker list = new NodeListMaker(json);
@@ -144,6 +147,16 @@ public class GlobalApplication extends Application implements LocationListener{
             allNodes.add(list.getItems().get(i));
         }
         nodesExceptStairs = addNodes(edgesExceptStairs);
+        /*
+        TTS = new TextToSpeech(getApplicationContext(), new TextToSpeech.OnInitListener() {
+            @Override
+            public void onInit(int status) {
+                if(status != TextToSpeech.ERROR) {
+                    TTS.setLanguage(Locale.KOREAN);
+                }
+            }
+        });
+        */
     }
 
     private Location getBestLocation(LocationManager lm){
