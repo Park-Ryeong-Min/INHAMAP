@@ -8,6 +8,7 @@ import com.example.inhamap.Models.EdgeList;
 import com.example.inhamap.Models.NodeItem;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 /**
  * Created by myown on 2018. 4. 28..
@@ -118,6 +119,7 @@ public class FindPath {
             }
         }
         findRoute(nodeID2Index(destinationNodeID));
+        Collections.reverse(this.passingNodes);
     }
 
     private void findRoute(int x){
@@ -165,5 +167,17 @@ public class FindPath {
 
     public void setPassingNodes(ArrayList<NodeItem> passingNodes) {
         this.passingNodes = passingNodes;
+    }
+
+    public void logPath(){
+        if(this.passingNodes.size() <= 0){
+            return;
+        }else{
+            String text = "";
+            for(int i = 0; i < this.passingNodes.size(); i++){
+                text += Long.toString(this.passingNodes.get(i).getNodeID()) + " -> ";
+            }
+            Log.e("FIND_PATH", text);
+        }
     }
 }

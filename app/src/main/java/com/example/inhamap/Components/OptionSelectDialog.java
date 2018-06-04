@@ -52,7 +52,7 @@ public class OptionSelectDialog extends Dialog {
         this.list = new ArrayList<NodeItem>();
         this.allNodes = new ArrayList<NodeItem>();
 
-        JSONFileParser json = new JSONFileParser(context, "node_data");
+        JSONFileParser json = new JSONFileParser(context, "node_data_v2");
         this.mapData = json.getJSON();
         NodeListMaker list = new NodeListMaker(this.mapData);
         //EdgeListMaker edges = new EdgeListMaker(this.mapData);

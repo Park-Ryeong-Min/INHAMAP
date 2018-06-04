@@ -57,7 +57,7 @@ public class PassingNodeListMaker {
                         long post = tmp3.getLong("postNodeID");
                         String t = tmp3.getString("voiceText");
                         VoiceText e = new VoiceText(post, cur, next, t);
-                        this.voices.add(e);
+                        //this.voices.add(e);
                     }
                 }
             }

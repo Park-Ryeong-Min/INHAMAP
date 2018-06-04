@@ -32,7 +32,7 @@
     <LinearLayout
         android:id="@+id/linearLayout1"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="125dp"
         android:background="@color/common_google_signin_btn_text_light_focused"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -40,6 +40,8 @@
         app:layout_constraintTop_toBottomOf="@+id/photo_view">
 
         <TextView
+            android:textSize="30dp"
+            android:gravity="center"
             android:id="@+id/textView9"
             android:layout_width="170dp"
             android:layout_height="match_parent"
@@ -48,7 +50,9 @@
             android:textColor="@android:color/white" />
 
         <ImageButton
+            android:layout_margin="10dp"
             android:id="@+id/imageButton"
+            android:background="#e8d393"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
