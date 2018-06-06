@@ -20,6 +20,7 @@ import com.example.inhamap.PathFindings.GuideOutput;
 import com.example.inhamap.PathFindings.GuidePath;
 import com.example.inhamap.PathFindings.NavigatePath;
 import com.example.inhamap.PathFindings.PassingNodeListMaker;
+import com.example.inhamap.Utils.TextSpeaker;
 import com.example.inhamap.Utils.ValueConverter;
 
 import java.util.ArrayList;
@@ -55,6 +56,14 @@ public class VoiceNavigatingThread extends Thread {
         init();
     }
 
+    public VoiceNavigatingThread(Context context, TextToSpeech tts, long start, long dest){
+        this.context = context;
+        this.startNodeID = start;
+        this.destNodeID = dest;
+        this.tts = tts;
+        init();
+    }
+
     public VoiceNavigatingThread(Context context, ArrayList<NodeItem> node, EdgeList edge, ArrayList<VoicePathElement> voice, long start, long dest){
         this.context = context;
         this.nodes = node;
@@ -79,19 +88,11 @@ public class VoiceNavigatingThread extends Thread {
         }catch (SecurityException ex){
             ex.printStackTrace();
         }
-        tts = new TextToSpeech(context, new TextToSpeech.OnInitListener() {
-            @Override
-            public void onInit(int status) {
-                if(status != TextToSpeech.ERROR) {
-                    tts.setLanguage(Locale.KOREAN);
-                }
-            }
-        });
     }
 
     @Override
     public void run() {
-        super.run();
+        //super.run();
         // 먼저 도착 노드의 ID를 얻어낸다.
         // 도착 노드의 ID는 생성자로부터 받아낸다.
 
@@ -100,7 +101,31 @@ public class VoiceNavigatingThread extends Thread {
         //GuidePath guide = new GuidePath(edges, nodes, destNodeID, voice);
         NavigatePath navigate = new NavigatePath(startNodeID, destNodeID);
         boolean finish = true;
+        boolean first = true;
+
+        Log.e("THREAD", "Navigation start.");
+        while(first) {
+            tts.speak("경로 안내를 시작합니다.", TextToSpeech.QUEUE_FLUSH, null);
+            while (tts.isSpeaking());
+            //new TextSpeaker(context, "경로 안내를 시작합니다.");
+            first = false;
+        }
+
+
         while(finish){
+            /*
+            if(tts == null){
+                Log.e("TTS", "tts object is null.");
+            }
+            if(first){
+                tts.speak("경로 안내를 시작합니다.", TextToSpeech.QUEUE_FLUSH, null);
+                while(tts.isSpeaking()){
+                    Log.e("TTS", "TTS is speaking");
+                }
+                first = false;
+            }
+            */
+
             // 현재 위치를 검색하면 3가지 경우가 나온다.
             // case 1: 출발 위치와 나의 위치가 근접한 경우 (출발)
             // -> 어떻게 가야하는 지에 대해서 음성 안내를 실시함
@@ -110,45 +135,39 @@ public class VoiceNavigatingThread extends Thread {
             // -> 일단 기다린다 + 경로 이탈 등의 상황에 대해서 검출하고 핸들링한다.
             //Log.e("GPS", Double.toString(lat) + " , " + Double.toString(lng));
             //Log.e("GPS", Double.toString(GlobalApplication.myLocationLatitude) + " , " + Double.toString(GlobalApplication.myLocationLongitude));
+
             boolean endFlag = false;
             while (GlobalApplication.navigationLock){
                 Log.e("EVENT", "Find event");
                 double myLat = GlobalApplication.myLocationLatitude;
                 double myLng = GlobalApplication.myLocationLongitude;
-                AdjacentEdge e = navigate.whichEdgeUserOn(myLat, myLng);
-                if(navigate.isUserOnPath(e, myLat, myLng)){
-                    // 현재 위치가 navigate 객체에 있는 path 위에 있으면?
-                    AdjacentEdge ptr = navigate.getPtr(e);
-                    if(navigate.isPtrArrivedAtDestination(ptr)){
-                        tts.speak("목적지에 도착하였습니다. 안내를 종료합니다.", TextToSpeech.QUEUE_FLUSH, null);
-                        finish = false;
-                    }else{
-                        int status = navigate.getStatusOnEdge(ptr, myLat, myLng);
-                        switch (status){
-                            case -1:{
-                                tts.speak("교차점에서 출발합니다.", TextToSpeech.QUEUE_FLUSH, null);
-                                break;
-                            }
-                            case 0:{
-                                tts.speak("전방으로 진행하십시오." , TextToSpeech.QUEUE_FLUSH, null);
-                                break;
-                            }
-                            case 1:{
-                                tts.speak("교차점에 도착하였습니다.", TextToSpeech.QUEUE_FLUSH, null);
-                                break;
-                            }
-                            default:{
-                                tts.speak("경로 탐색 중 오류가 발생하였습니다. 안내를 종료합니다.", TextToSpeech.QUEUE_FLUSH, null);
-                                break;
-                            }
+
+                navigate.setPtr(myLat, myLng);
+                if(navigate.getNodePtr(navigate.getPtr()) != null){
+                    // 헌재 위치한 노드가 경로에 있는 거임
+                    NodeItem next = navigate.getNextNode();
+                    if(next == null) {
+                        // 다음 노드가 없는 경우?
+                        // 다음 노드가 null 이면
+                        if(navigate.isPtrArrived()){
+                            // 도착했음.
+                            tts.speak("목적지에 도착하였습니다. 안내를 종료합니다.", TextToSpeech.QUEUE_FLUSH, null);
+                            while(tts.isSpeaking());
+                            endFlag = true;
+                        }else{
+                            tts.speak("경로 탐색 중 문제가 발생하였습니다.", TextToSpeech.QUEUE_FLUSH, null);
+                            while(tts.isSpeaking());
                         }
+                    }else{
+                        tts.speak("전방으로 진행하십시오.", TextToSpeech.QUEUE_FLUSH, null);
+                        while(tts.isSpeaking());
                     }
                 }else{
-                    // 아니면?
+                    // 현재 위치한 노드가 경로에 없는 거임
+                    tts.speak("경로를 이탈하였습니다. 경로를 재탐색합니다.", TextToSpeech.QUEUE_FLUSH, null);
+                    while(tts.isSpeaking());
                     navigate.reFindPathMyLocationToDestination(myLat, myLng);
-                    tts.speak("탐색 경로를 이탈하였습니다. 경로를 재탐색합니다.", TextToSpeech.QUEUE_FLUSH, null);
                 }
-
                 GlobalApplication.navigationLock = false;
             }
 

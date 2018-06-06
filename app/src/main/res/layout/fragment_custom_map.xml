@@ -34,7 +34,7 @@
                 <!-- 라인 그리기 위해 사용하는 SurfaceView -->
                 <com.example.inhamap.Components.TestDrawingView
                     android:id="@+id/map_fragment_surface_view"
-                    android:background="@drawable/inhamap"
+                    android:background="@drawable/inhamap_v2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"/>
 

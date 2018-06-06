@@ -8,6 +8,7 @@ import android.content.pm.PackageManager;
 import android.media.Image;
 import android.os.Build;
 import android.os.health.PackageHealthStats;
+import android.speech.tts.TextToSpeech;
 import android.support.annotation.NonNull;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -42,6 +43,7 @@ import com.example.inhamap.Utils.ValueConverter;
 import com.github.chrisbanes.photoview.PhotoView;
 
 import java.util.ArrayList;
+import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -60,6 +62,8 @@ public class MainActivity extends AppCompatActivity {
     public static NodeImageButton startButton;
     public static NodeImageButton destinationButton;
 
+    public TextToSpeech tts;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -69,6 +73,8 @@ public class MainActivity extends AppCompatActivity {
         dest = 0;
         voiceFlag = false;
 
+        this.allNodes = GlobalApplication.nodesExceptStairs;
+        /*
         allNodes = new ArrayList<NodeItem>();
         JSONFileParser json = new JSONFileParser(getApplicationContext(), "node_data");
         NodeListMaker list = new NodeListMaker(json.getJSON());
@@ -79,6 +85,7 @@ public class MainActivity extends AppCompatActivity {
         for(int i = 0; i < items.size(); i++){
             this.allNodes.add(items.get(i));
         }
+        */
         imageButtons = new ArrayList<NodeImageButton>();
 
         // 지도 Fragment 불러오기
@@ -147,6 +154,14 @@ public class MainActivity extends AppCompatActivity {
         photoView.setImageResource(R.drawable.test3);
         */
 
+        tts = new TextToSpeech(getApplicationContext(), new TextToSpeech.OnInitListener() {
+            @Override
+            public void onInit(int status) {
+                if(status != TextToSpeech.ERROR) {
+                    tts.setLanguage(Locale.KOREAN);
+                }
+            }
+        });
     }
 
     @Override
@@ -181,11 +196,11 @@ public class MainActivity extends AppCompatActivity {
             }
             getNodeImageButtonByID(dest).setBackgroundImageByStatus(4);
             ArrayList<NodeItem> passingNodes = find.getPassingNodes();
-            ArrayList<VoicePathElement> voices = new PassingNodeListMaker(getApplicationContext(), passingNodes).getVoiceElements();
+            //ArrayList<VoicePathElement> voices = new PassingNodeListMaker(getApplicationContext(), passingNodes).getVoiceElements();
             view.drawEdges(path);
             voiceFlag = false;
             //VoiceNavigatingThread thread = new VoiceNavigatingThread(getApplicationContext(), find.getPassingNodes(), path, voices, source, dest);
-            VoiceNavigatingThread thread = new VoiceNavigatingThread(getApplicationContext(), source, dest);
+            VoiceNavigatingThread thread = new VoiceNavigatingThread(getApplicationContext(), tts, source, dest);
             thread.start();
         }
     }

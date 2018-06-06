@@ -1,0 +1,1332 @@
+{
+  "nodeList" : [
+    {
+      "nodeID": 1,
+      "nodeStatus": 0,
+      "nodeName": "후문",
+      "latitude": 37.45115760452928,
+      "longitude": 126.65647834232925,
+      "screenLeftPosition": 338,
+      "screenTopPosition": 46,
+      "elevator" : 0,
+      "slope" : 0,
+      "adjacent": [
+        {
+          "nodeID" : 100,
+          "edgeStatus" : 0
+        }
+      ]
+    },
+    {
+      "nodeID": 2,
+      "nodeStatus": 0,
+      "nodeName": "하이테크 센터 저층부 문",
+      "latitude": 37.450719852321896,
+      "longitude": 126.65682780931706,
+      "screenLeftPosition": 442,
+      "screenTopPosition": 99,
+      "elevator" : 1,
+      "slope" : 1,
+      "adjacent": [
+
+      ]
+    },
+    {
+      "nodeID": 3,
+      "nodeStatus": 0,
+      "nodeName": "하이테크 센터 고층부 문",
+      "latitude": 37.45039406211989,
+      "longitude": 126.65734815786595,
+      "screenLeftPosition": 553,
+      "screenTopPosition": 131,
+      "elevator" : 1,
+      "slope" : 1,
+      "adjacent": [
+        {
+          "nodeID" : 107,
+          "edgeStatus" : 0
+        }
+      ]
+    },
+    {
+      "nodeID": 4,
+      "nodeStatus": 0,
+      "nodeName": "하이테크 센터 지하 문",
+      "latitude": 37.45017899722211,
+      "longitude": 126.65742594192739,
+      "screenLeftPosition": 584,
+      "screenTopPosition": 166,
+      "elevator" : 1,
+      "slope" : 0,
+      "adjacent": [
+        {
+          "nodeID" : 111,
+          "edgeStatus" : 0
+        }
+      ]
+    },
+    {
+      "nodeID": 5,
+      "nodeStatus": 0,
+      "nodeName": "2호관 북쪽 1문",
+      "latitude": 37.450911659305426,
+      "longitude": 126.65594130258137,
+      "screenLeftPosition": 273,
+      "screenTopPosition": 132,
+      "elevator" : 1,
+      "slope" : 1,
+      "adjacent": [
+        {
+          "nodeID" : 138,
+          "edgeStatus" : 0
+        }
+      ]
+    },
+    {
+      "nodeID": 6,
+      "nodeStatus": 0,
+      "nodeName": "2호관 북쪽 2문",
+      "latitude": 37.451122463433606,
+      "longitude": 126.65516882638508,
+      "screenLeftPosition": 135,
+      "screenTopPosition": 155,
+      "elevator" : 0,
+      "slope" : 0,
+      "adjacent": [
+        {
+          "nodeID" : 135,
+          "edgeStatus" : 0
+        }
+      ]
+    },
+    {
+      "nodeID": 7,
+      "nodeStatus": 0,
+      "nodeName": "2호관 북쪽 3문",
+      "latitude": 37.45114375674686,
+      "longitude": 126.65490060548359,
+      "screenLeftPosition": 86,
+      "screenTopPosition": 178,
+      "elevator" : 0,
+      "slope" : 0,
+      "adjacent": [
+        {
+          "nodeID" : 132,
+          "edgeStatus" : 0
+        }
+      ]
+    },
+    {
+      "nodeID": 8,
+      "nodeStatus": 0,
+      "nodeName": "2호관 북쪽 4문",
+      "latitude": 37.4509393406895,
+      "longitude": 126.65496229629093,
+      "screenLeftPosition": 124,
+      "screenTopPosition": 220,
+      "elevator" : 0,
+      "slope" : 0,
+      "adjacent": [
+        {
+          "nodeID" : 140,
+          "edgeStatus" : 0
+        }
+      ]
+    },
+    {
+      "nodeID": 9,
+      "nodeStatus": 0,
+      "nodeName": "2호관 북쪽 5문",
+      "latitude": 37.4507945456442,
+      "longitude": 126.65579914550358,
+      "screenLeftPosition": 265,
+      "screenTopPosition": 174,
+      "elevator" : 0,
+      "slope" : 0,
+      "adjacent": [
+        {
+          "nodeID" : 146,
+          "edgeStatus" : 0
+        }
+      ]
+    },
+    {
+      "nodeID": 10,
+      "nodeStatus": 0,
+      "nodeName": "4호관 북쪽 1문",
+      "latitude": 37.4504687557675,
+      "longitude": 126.6556221197086,
+      "screenLeftPosition": 267,
+      "screenTopPosition": 244,
+      "elevator" : 0,
+      "slope" : 0,
+      "adjacent": [
+        {
+          "nodeID" : 145,
+          "edgeStatus" : 0
+        }
+      ]
+    },
+    {
+      "nodeID": 11,
+      "nodeStatus": 0,
+      "nodeName": "4호관 북쪽 2문",
+      "latitude": 37.45056670581425,
+      "longitude": 126.65526538590962,
+      "screenLeftPosition": 210,
+      "screenTopPosition": 260,
+      "elevator" : 0,
+      "slope" : 0,
+      "adjacent": [
+        {
+          "nodeID" : 144,
+          "edgeStatus" : 0
+        }
+      ]
+    },
+    {
+      "nodeID": 12,
+      "nodeStatus": 0,
+      "nodeName": "4호관 북쪽 3문",
+      "latitude": 37.45023452687481,
+      "longitude": 126.65490060548359,
+      "screenLeftPosition": 186,
+      "screenTopPosition": 350,
+      "elevator" : 0,
+      "slope" : 0,
+      "adjacent": [
+        {
+          "nodeID" : 143,
+          "edgeStatus" : 0
+        }
+      ]
+    },
+    {
+      "nodeID": 13,
+      "nodeStatus": 0,
+      "nodeName": "2호관 남쪽 1문",
+      "latitude": 37.45032395981129,
+      "longitude": 126.6543802569347,
+      "screenLeftPosition": 91,
+      "screenTopPosition": 377,
+      "elevator" : 0,
+      "slope" : 0,
+      "adjacent": [
+        {
+          "nodeID" : 128,
+          "edgeStatus" : 0
+        }
+      ]
+    },
+    {
+      "nodeID": 14,
+      "nodeStatus": 0,
+      "nodeName": "2호관 남쪽 2문",
+      "latitude": 37.45000455597567,
+      "longitude": 126.65483623246723,
+      "screenLeftPosition": 200,
+      "screenTopPosition": 405,
+      "elevator" : 0,
+      "slope" : 0,
+      "adjacent": [
+        {
+          "nodeID" : 125,
+          "edgeStatus" : 0
+        }
+      ]
+    },
+    {
+      "nodeID": 15,
+      "nodeStatus": 0,
+      "nodeName": "2호관 남쪽 3문",
+      "longitude": 126.65541290740543,
+      "latitude": 37.44985124165016,
+      "screenLeftPosition": 311,
+      "screenTopPosition": 372,
+      "elevator" : 0,
+      "slope" : 0,
+      "adjacent": [
+        {
+          "nodeID" : 122,
+          "edgeStatus" : 0
+        }
+      ]
+    },
+    {
+      "nodeID": 16,
+      "nodeStatus": 0,
+      "nodeName": "2호관 남쪽 4문",
+      "longitude": 126.65570526818806,
+      "latitude": 37.450249432371635,
+      "screenLeftPosition": 315,
+      "screenTopPosition": 280,
+      "elevator" : 0,
+      "slope" : 0,
+      "adjacent": [
+        {
+          "nodeID" : 120,
+          "edgeStatus" : 0
+        }
+      ]
+    },
+    {
+      "nodeID": 100,
+      "nodeStatus": 1,
+      "nodeName": "후문 앞",
+      "longitude": 126.65642207140456,
+      "latitude": 37.45102503283912,
+      "screenLeftPosition": 344,
+      "screenTopPosition": 76,
+      "elevator" : 0,
+      "slope" : 0,
+      "adjacent": [
+        {
+          "nodeID" : 1,
+          "edgeStatus" : 0
+        },
+        {
+          "nodeID" : 101,
+          "edgeStatus" : 0
+        },
+        {
+          "nodeID" : 102,
+          "edgeStatus" : 0
+        },
+        {
+          "nodeID" : 103,
+          "edgeStatus" : 0
+        },
+        {
+          "nodeID" : 104,
+          "edgeStatus" : 0
+        }
+      ]
+    },
+    {
+      "nodeID": 101,
+      "nodeStatus": 1,
+      "nodeName": "하이테크 센터 - 후문 사이",
+      "longitude": 126.65663396591674,
+      "latitude": 37.450944118088096,
+      "screenLeftPosition": 391,
+      "screenTopPosition": 75,
+      "elevator" : 0,
+      "slope" : 0,
+      "adjacent": [
+        {
+          "nodeID" : 100,
+          "edgeStatus" : 0
+        },
+        {
+          "nodeID" : 105,
+          "edgeStatus" : 0
+        }
+      ]
+    },
+    {
+      "nodeID" : 102,
+      "nodeStatus" : 1,
+      "nodeName" : "후문교차로 - 학생회관 방향",
+      "longitude" : 126.65644352907668,
+      "latitude" : 37.450875979282515,
+      "screenLeftPosition" : 369,
+      "screenTopPosition" : 101,
+      "elevator" : 0,
+      "slope" : 0,
+      "adjacent" : [
+        {
+          "nodeID" : 100,
+          "edgeStatus" : 0
+        },
+        {
+          "nodeID" : 114,
+          "edgeStatus" : 0
+        }
+      ]
+    },
+    {
+      "nodeID" : 103,
+      "nodeStatus" : 1,
+      "nodeName" : "후문 교차로 - 2호관 동편 방향",
+      "longitude" : 126.65627991432677,
+      "latitude" : 37.450914307368286,
+      "screenLeftPosition" : 334,
+      "screenTopPosition" : 108,
+      "elevator" : 0,
+      "slope" : 0,
+      "adjacent" : [
+        {
+          "nodeID" : 100,
+          "edgeStatus" : 0
+        },
+        {
+          "nodeID" : 119,
+          "edgeStatus" : 0
+        }
+      ]
+    },
+    {
+      "nodeID" : 104,
+      "nodeStatus" : 1,
+      "nodeName" : "후문 교차로 - 5호관 방향",
+      "longitude" : 126.65623968119155,
+      "latitude" : 37.45104206751237,
+      "screenLeftPosition" : 311,
+      "screenTopPosition" : 86,
+      "elevator" : 0,
+      "slope" : 0,
+      "adjacent" :[
+        {
+          "nodeID" : 100,
+          "edgeStatus" : 0
+        },
+        {
+          "nodeID" : 138,
+          "edgeStatus" : 0
+        }
+      ]
+    },
+    {
+      "nodeID" : 105,
+      "nodeStatus" : 1,
+      "nodeName" : "하이테크 저층부 입구 근처 흡연장",
+      "longitude" : 126.65662055487167,
+      "latitude" : 37.450703502653504,
+      "screenLeftPosition" : 418,
+      "screenTopPosition" : 124,
+      "elevator" : 0,
+      "slope" : 0,
+      "adjacent" : [
+        {
+          "nodeID" : 101,
+          "edgeStatus" : 0
+        },
+        {
+          "nodeID" : 106,
+          "edgeStatus" : 0
+        }
+      ]
+    },
+    {
+      "nodeID" : 106,
+      "nodeStatus" : 1,
+      "nodeName" : "하이테크 저층부 입구 교차로",
+      "longitude" : 126.65676271194945,
+      "latitude" : 37.45063962231961,
+      "screenLeftPosition" : 442,
+      "screenTopPosition" : 127,
+      "elevator" : 0,
+      "slope" : 0,
+      "adjacent" : [
+        {
+          "nodeID" : 2,
+          "edgeStatus" : 0
+        },
+        {
+          "nodeID" : 105,
+          "edgeStatus" : 0
+        },
+        {
+          "nodeID" : 107,
+          "edgeStatus" : 0
+        },
+        {
+          "nodeID" : 108,
+          "edgeStatus" : 0
+        }
+      ]
+    },
+    {
+      "nodeID" : 107,
+      "nodeStatus" : 1,
+      "nodeName" : "하이테크 고층부 앞 공터 1",
+      "longitude" : 126.6571677255107,
+      "latitude" : 37.450477791896276,
+      "screenLeftPosition" : 513,
+      "screenTopPosition" :126,
+      "elevator" : 0,
+      "slope" : 0,
+      "adjacent" : [
+        {
+          "nodeID" : 106,
+          "edgeStatus" : 0
+        },
+        {
+          "nodeID" : 3,
+          "edgeStatus" : 0
+        }
+      ]
+    },
+    {
+      "nodeID" : 108,
+      "nodeStatus" : 1,
+      "nodeName" : "하이테크 저층부 문 앞 경사로",
+      "longitude" : 126.65665542358886,
+      "latitude" : 37.450430946182074,
+      "screenLeftPosition" : 442,
+      "screenTopPosition" : 174,
+      "elevator" : 0,
+      "slope" : 0,
+      "adjacent" : [
+        {
+          "nodeID" : 106,
+          "edgeStatus" : 0
+        },
+        {
+          "nodeID" : 109,
+          "edgeStatus" : 0
+        }
+      ]
+    },
+    {
+      "nodeID" : 109,
+      "nodeStatus" : 1,
+      "nodeName" : "하이테크 저층부 올라가는 경사로 달린 교차로",
+      "longitude" : 126.65654813522826,
+      "latitude" : 37.45024569238847,
+      "screenLeftPosition" : 449,
+      "screenTopPosition" : 221,
+      "elevator" : 0,
+      "slope" : 0,
+      "adjacent" : [
+        {
+          "nodeID" : 108,
+          "edgeStatus" : 0
+        },
+        {
+          "nodeID" : 110,
+          "edgeStatus" : 0
+        },
+        {
+          "nodeID" : 112,
+          "edgeStatus" : 0
+        }
+      ]
+    },
+    {
+      "nodeID" : 110,
+      "nodeStatus" : 1,
+      "nodeName" : "하이테크 지하 문 앞 IIAC 공원",
+      "longitude" : 126.65679489845763,
+      "latitude" : 37.45024143367517,
+      "screenLeftPosition" : 492,
+      "screenTopPosition" : 197,
+      "elevator" : 0,
+      "slope" : 0,
+      "adjacent" : [
+        {
+          "nodeID" : 109,
+          "edgeStatus" : 0
+        },
+        {
+          "nodeID" : 111,
+          "edgeStatus" : 0
+        }
+      ]
+    },
+    {
+      "nodeID" : 111,
+      "nodeStatus" : 1,
+      "nodeName" : "하이테크 지하 문 과 IIAC 공원 사이, 입구",
+      "longitude" : 126.65714090342055,
+      "latitude" : 37.450177552946684,
+      "screenLeftPosition" : 555,
+      "screenTopPosition" : 189,
+      "elevator" : 0,
+      "slope" : 0,
+      "adjacent" : [
+        {
+          "nodeID" : 110,
+          "edgeStatus" : 0
+        },
+        {
+          "nodeID" : 4,
+          "edgeStatus" : 0
+        }
+      ]
+    },
+    {
+      "nodeID" : 112,
+      "nodeStatus" : 1,
+      "nodeName" : "IIAC 입구 교차로에서 학관 내려오는 길 만나는 교차로",
+      "longitude" : 126.6564274358226,
+      "latitude" : 37.45019245845488,
+      "screenLeftPosition" : 436,
+      "screenTopPosition" : 239,
+      "elevator" : 0,
+      "slope" : 0,
+      "adjacent" : [
+        {
+          "nodeID" : 109,
+          "edgeStatus" : 0
+        },
+        {
+          "nodeID" : 113,
+          "edgeStatus" : 0
+        },
+        {
+          "nodeID" : 115,
+          "edgeStatus" : 0
+        }
+      ]
+    },
+    {
+      "nodeID" : 113,
+      "nodeStatus" : 1,
+      "nodeName" : "학관 내려가는 경사로 1 - 아랫부분",
+      "longitude" : 126.6564274358226,
+      "latitude" : 37.45039687655331,
+      "screenLeftPosition" : 413,
+      "screenTopPosition" : 192,
+      "elevator" : 0,
+      "slope" : 0,
+      "adjacent" : [
+        {
+          "nodeID" : 112,
+          "edgeStatus" : 0
+        },
+        {
+          "nodeID" : 114,
+          "edgeStatus" : 0
+        }
+      ]
+    },
+    {
+      "nodeID" : 114,
+      "nodeStatus" : 1,
+      "nodeName" : "학관 내려가는 경사로 2 - 윗부분",
+      "longitude" : 126.65643548244964,
+      "latitude" : 37.450688597247165,
+      "screenLeftPosition" : 385,
+      "screenTopPosition" : 135,
+      "elevator" : 0,
+      "slope" : 0,
+      "adjacent" : [
+        {
+          "nodeID" : 113,
+          "edgeStatus" : 0
+        },
+        {
+          "nodeID" : 102,
+          "edgeStatus" : 0
+        }
+      ]
+    },
+    {
+      "nodeID" : 115,
+      "nodeStatus" : 1,
+      "nodeName" : "7호관 앞에서 인경호 공원 꺾어 들어가는 곳 교차로",
+      "longitude" : 126.65640061373244,
+      "latitude" : 37.450062954411386,
+      "screenLeftPosition" : 438,
+      "screenTopPosition" : 262,
+      "elevator" : 0,
+      "slope" : 0,
+      "adjacent" : [
+        {
+          "nodeID" : 112,
+          "edgeStatus" : 0
+        },
+        {
+          "nodeID" : 116,
+          "edgeStatus" : 0
+        }
+      ]
+    },
+    {
+      "nodeID" : 116,
+      "nodeStatus" : 1,
+      "nodeName" : "인경호 공원 한가운데",
+      "longitude" : 126.65617262596618,
+      "latitude" : 37.450143870115554,
+      "screenLeftPosition" : 397,
+      "screenTopPosition" : 261,
+      "elevator" : 0,
+      "slope" : 0,
+      "adjacent" : [
+        {
+          "nodeID" : 115,
+          "edgeStatus" : 0
+        },
+        {
+          "nodeID" : 117,
+          "edgeStatus" : 0
+        }
+      ]
+    },
+    {
+      "nodeID" : 117,
+      "nodeStatus" : 1,
+      "nodeName" : "2호관동편에서 인경호 공원 내려가는 교차로",
+      "longitude" : 126.65584271425735,
+      "latitude" : 37.45025885543933,
+      "screenLeftPosition" : 332,
+      "screenTopPosition" : 260,
+      "elevator" : 0,
+      "slope" : 0,
+      "adjacent" : [
+        {
+          "nodeID" : 116,
+          "edgeStatus" : 0
+        },
+        {
+          "nodeID" : 118,
+          "edgeStatus" : 0
+        },
+        {
+          "nodeID" : 120,
+          "edgeStatus" : 0
+        }
+      ]
+    },
+    {
+      "nodeID" : 118,
+      "nodeStatus" : 1,
+      "nodeName" : "2호관 동편 길 인데 교차로보다 조금 위쪽",
+      "longitude" : 126.65601812961108,
+      "latitude" : 37.45051693252402,
+      "screenLeftPosition" : 333,
+      "screenTopPosition" : 188,
+      "elevator" : 0,
+      "slope" : 0,
+      "adjacent" : [
+        {
+          "nodeID" : 117,
+          "edgeStatus" : 0
+        }
+      ]
+    },
+    {
+      "nodeID" : 119,
+      "nodeStatus" : 1,
+      "nodeName" : "2호관 동편 길에서 살짝 휘어들어가는 샛길",
+      "longitude" : 126.65616028668887,
+      "latitude" : 37.45072347907875,
+      "screenLeftPosition" : 334,
+      "screenTopPosition" : 149,
+      "elevator" : 0,
+      "slope" : 0,
+      "adjacent" : [
+        {
+          "nodeID" : 118,
+          "edgeStatus" : 0
+        },
+        {
+          "nodeID" : 103,
+          "edgeStatus" : 0
+        }
+      ]
+    },
+    {
+      "nodeID" : 120,
+      "nodeStatus" : 1,
+      "nodeName" : "2호관 동편에서 첫번째 큰 문 들어가는 입구 교차로",
+      "longitude" : 126.65575795533664,
+      "latitude" : 37.4501390969128,
+      "screenLeftPosition" : 332,
+      "screenTopPosition" : 290,
+      "elevator" : 0,
+      "slope" : 0,
+      "adjacent" : [
+        {
+          "nodeID" : 117,
+          "edgeStatus" : 0
+        },
+        {
+          "nodeID" : 16,
+          "edgeStatus" : 0
+        },
+        {
+          "nodeID" : 121,
+          "edgeStatus" : 0
+        }
+      ]
+    },
+    {
+      "nodeID" : 121,
+      "nodeStatus" : 1,
+      "nodeName" : "2호관 3문하고 4문 사이",
+      "longitude" : 126.65562652709491,
+      "latitude" : 37.44994958366653,
+      "screenLeftPosition" : 329,
+      "screenTopPosition" : 335,
+      "elevator" : 0,
+      "slope" : 0,
+      "adjacent" : [
+        {
+          "nodeID" : 120,
+          "edgeStatus" : 0
+        },
+        {
+          "nodeID" : 122,
+          "edgeStatus" : 0
+        }
+      ]
+    },
+    {
+      "nodeID" : 122,
+      "nodeStatus" : 1,
+      "nodeName" : "2호관 남쪽 3문 앞",
+      "longitude" : 126.65551387431628,
+      "latitude" : 37.449804786705364,
+      "screenLeftPosition" : 327,
+      "screenTopPosition" : 385,
+      "elevator" : 0,
+      "slope" : 0,
+      "adjacent" : [
+        {
+          "nodeID" : 121,
+          "edgeStatus" : 0
+        },
+        {
+          "nodeID" : 15,
+          "edgeStatus" : 0
+        },
+        {
+          "nodeID" : 123,
+          "edgeStatus" : 0
+        }
+      ]
+    },
+    {
+      "nodeID" : 123,
+      "nodeStatus" : 1,
+      "nodeName" : "인경호랑 비룡탑에서 4호관 올라오는 길",
+      "longitude" : 126.65538781049258,
+      "latitude" : 37.44962804885822,
+      "screenLeftPosition" : 326,
+      "screenTopPosition" : 428,
+      "elevator" : 0,
+      "slope" : 0,
+      "adjacent" : [
+        {
+          "nodeID" : 122,
+          "edgeStatus" : 0
+        },
+        {
+          "nodeID" : 124,
+          "edgeStatus" : 0
+        }
+      ]
+    },
+    {
+      "nodeID" : 124,
+      "nodeStatus" : 1,
+      "nodeName" : "2호관남쪽에 있는 주차장인데 교차로랑 가까운 곳",
+      "longitude" : 126.65513031842715,
+      "latitude" : 37.449730258748446,
+      "screenLeftPosition" : 274,
+      "screenTopPosition" : 427,
+      "elevator" : 0,
+      "slope" : 0,
+      "adjacent" : [
+        {
+          "nodeID" : 123,
+          "edgeStatus" : 0
+        },
+        {
+          "nodeID" : 125,
+          "edgeStatus" : 0
+        }
+      ]
+    },
+    {
+      "nodeID" : 125,
+      "nodeStatus" : 1,
+      "nodeName" : "2호관 남쪽 큰 문 앞 통로 또는 교차로",
+      "longitude" : 126.65477090241916,
+      "latitude" : 37.449881443955,
+      "screenLeftPosition" : 201,
+      "screenTopPosition" : 428,
+      "elevator" : 0,
+      "slope" : 0,
+      "adjacent" : [
+        {
+          "nodeID" : 124,
+          "edgeStatus" : 0
+        },
+        {
+          "nodeID" : 14,
+          "edgeStatus" : 0
+        },
+        {
+          "nodeID" : 126,
+          "edgeStatus" : 0
+        }
+      ]
+    },
+    {
+      "nodeID" : 126,
+      "nodeStatus" : 1,
+      "nodeName" : "2호관 남쪽 큰 문 좀 지나서 그라지에 보이는 방향의 주차장",
+      "longitude" : 126.6543888214436,
+      "latitude" : 37.4500495599194,
+      "screenLeftPosition" : 124,
+      "screenTopPosition" : 424,
+      "elevator" : 0,
+      "slope" : 0,
+      "adjacent" : [
+        {
+          "nodeID" : 125,
+          "edgeStatus" : 0
+        },
+        {
+          "nodeID" : 127,
+          "edgeStatus" : 0
+        }
+      ]
+    },
+    {
+      "nodeID" : 127,
+      "nodeStatus" : 1,
+      "nodeName" : "그라지에 입구 앞의 2호관 내려가는 길 교차로",
+      "longitude" : 126.65410450728803,
+      "latitude" : 37.450181580257386,
+      "screenLeftPosition" : 70,
+      "screenTopPosition" : 423,
+      "elevator" : 0,
+      "slope" : 0,
+      "adjacent" : [
+        {
+          "nodeID" : 126,
+          "edgeStatus" : 0
+        },
+        {
+          "nodeID" : 128,
+          "edgeStatus" : 0
+        }
+      ]
+    },
+    {
+      "nodeID" : 128,
+      "nodeStatus" : 1,
+      "nodeName" : "2호관 남쪽 1문 들어가는 입구 앞",
+      "longitude" : 126.6542091134396,
+      "latitude" : 37.45036257550338,
+      "screenLeftPosition" : 69,
+      "screenTopPosition" : 379,
+      "elevator" : 0,
+      "slope" : 0,
+      "adjacent" : [
+        {
+          "nodeID" : 127,
+          "edgeStatus" : 0
+        },
+        {
+          "nodeID" : 13,
+          "edgeStatus" : 0
+        },
+        {
+          "nodeID" : 129,
+          "edgeStatus" : 0
+        }
+      ]
+    },
+    {
+      "nodeID" : 129,
+      "nodeStatus" : 1,
+      "nodeName" : "2호관하고 60주년 사이 길 중 남쪽 1문과 가까운 중간 지점",
+      "longitude" : 126.65436736377148,
+      "latitude" : 37.45056699313691,
+      "screenLeftPosition" : 69,
+      "screenTopPosition" : 325,
+      "elevator" : 0,
+      "slope" : 0,
+      "adjacent" : [
+        {
+          "nodeID" : 128,
+          "edgeStatus" : 0
+        },
+        {
+          "nodeID" : 130,
+          "edgeStatus" : 0
+        }
+      ]
+    },
+    {
+      "nodeID" : 130,
+      "nodeStatus" : 1,
+      "nodeName" : "2호관이랑 4호관 사이 주차장 올라가는 길 입구",
+      "longitude" : 126.65448806317715,
+      "latitude" : 37.45074372876563,
+      "screenLeftPosition" : 71,
+      "screenTopPosition" : 281,
+      "elevator" : 0,
+      "slope" : 0,
+      "adjacent" : [
+        {
+          "nodeID" : 129,
+          "edgeStatus" : 0
+        },
+        {
+          "nodeID" : 131,
+          "edgeStatus" : 0
+        },
+        {
+          "nodeID" : 139,
+          "edgeStatus" : 0
+        }
+      ]
+    },
+    {
+      "nodeID" : 131,
+      "nodeStatus" : 1,
+      "nodeName" : "60주년관에서 올라오는 계단 앞 교차로",
+      "longitude" : 126.65464631350903,
+      "latitude" : 37.45097795606388,
+      "screenLeftPosition" : 72,
+      "screenTopPosition" : 209,
+      "elevator" : 0,
+      "slope" : 0,
+      "adjacent" : [
+        {
+          "nodeID" : 130,
+          "edgeStatus" : 0
+        },
+        {
+          "nodeID" : 132,
+          "edgeStatus" : 0
+        }
+      ]
+    },
+    {
+      "nodeID" : 132,
+      "nodeStatus" : 1,
+      "nodeName" : "2호관 서쪽 문 앞 교차로",
+      "longitude" : 126.6547482374516,
+      "latitude" : 37.451158949382915,
+      "screenLeftPosition" : 72,
+      "screenTopPosition" : 173,
+      "elevator" : 0,
+      "slope" : 0,
+      "adjacent" : [
+        {
+          "nodeID" : 131,
+          "edgeStatus" : 0
+        },
+        {
+          "nodeID" : 7,
+          "edgeStatus" : 0
+        },
+        {
+          "nodeID" : 133,
+          "edgeStatus" : 0
+        }
+      ]
+    },
+    {
+      "nodeID" : 133,
+      "nodeStatus" : 1,
+      "nodeName" : "2호관이랑 60주년관 사이 삼거리 교차로",
+      "longitude" : 126.65488771232037,
+      "latitude" : 37.451352718215546,
+      "screenLeftPosition" : 73,
+      "screenTopPosition" : 129,
+      "elevator" : 0,
+      "slope" : 0,
+      "adjacent" : [
+        {
+          "nodeID" : 132,
+          "edgeStatus" : 0
+        },
+        {
+          "nodeID" : 134,
+          "edgeStatus" : 0
+        }
+      ]
+    },
+    {
+      "nodeID" : 134,
+      "nodeStatus" : 1,
+      "nodeName" : "2호관이랑 60주년관 사이 삼거리 앞",
+      "longitude" : 126.65514252217679,
+      "latitude" : 37.45133142496181,
+      "screenLeftPosition" : 106,
+      "screenTopPosition" : 121,
+      "elevator" : 0,
+      "slope" : 0,
+      "adjacent" : [
+        {
+          "nodeID" : 133,
+          "edgeStatus" : 0
+        }
+      ]
+    },
+    {
+      "nodeID" : 135,
+      "nodeStatus" : 1,
+      "nodeName" : "2호관 북쪽 2문 앞 교차로",
+      "longitude" : 126.65529272588162,
+      "latitude" : 37.451301614396364,
+      "screenLeftPosition" : 135,
+      "screenTopPosition" : 115,
+      "elevator" : 0,
+      "slope" : 0,
+      "adjacent" : [
+        {
+          "nodeID" : 134,
+          "edgeStatus" : 0
+        },
+        {
+          "nodeID" : 6,
+          "edgeStatus" : 0
+        },
+        {
+          "nodeID" : 136,
+          "edgeStatus" : 0
+        }
+      ]
+    },
+    {
+      "nodeID" : 136,
+      "nodeStatus" : 1,
+      "nodeName" : "2호관 북쪽 5호관하고 후문 가는 길 1",
+      "longitude" : 126.65557435782819,
+      "latitude" : 37.45124838121422,
+      "screenLeftPosition" : 181,
+      "screenTopPosition" : 108,
+      "elevator" : 0,
+      "slope" : 0,
+      "adjacent" : [
+        {
+          "nodeID" : 135,
+          "edgeStatus" : 0
+        },
+        {
+          "nodeID" : 137,
+          "edgeStatus" : 0
+        }
+      ]
+    },
+    {
+      "nodeID" : 137,
+      "nodeStatus" : 1,
+      "nodeName" : "2호관 북쪽 5호관하고 후문 가는 길 2",
+      "longitude" : 126.65571534523701,
+      "latitude" : 37.45123051406531,
+      "screenLeftPosition" : 254,
+      "screenTopPosition" : 96,
+      "elevator" : 0,
+      "slope" : 0,
+      "adjacent" : [
+        {
+          "nodeID" : 136,
+          "edgeStatus" : 0
+        },
+        {
+          "nodeID" : 138,
+          "edgeStatus" : 0
+        }
+      ]
+    },
+    {
+      "nodeID" : 138,
+      "nodeStatus" : 1,
+      "nodeName" : "2호관 북쪽 1문 들어가는 계단 앞",
+      "longitude" : 126.65602379927373,
+      "latitude" : 37.451107012907336,
+      "screenLeftPosition" : 279,
+      "screenTopPosition" : 92,
+      "elevator" : 0,
+      "slope" : 0,
+      "adjacent" : [
+        {
+          "nodeID" : 137,
+          "edgeStatus" : 0
+        },
+        {
+          "nodeID" : 5,
+          "edgeStatus" : 0
+        },
+        {
+          "nodeID" : 104,
+          "edgeStatus" : 0
+        }
+      ]
+    },
+    {
+      "nodeID" : 139,
+      "nodeStatus" : 1,
+      "nodeName" : "4호관 안쪽 주차장으로 올라가는 길",
+      "longitude" : 126.65468534840329,
+      "latitude" : 37.45072796815651,
+      "screenLeftPosition" : 109,
+      "screenTopPosition" : 270,
+      "elevator" : 0,
+      "slope" : 0,
+      "adjacent" : [
+        {
+          "nodeID" : 130,
+          "edgeStatus" : 0
+        },
+        {
+          "nodeID" : 140,
+          "edgeStatus" : 0
+        }
+      ]
+    },
+    {
+      "nodeID" : 140,
+      "nodeStatus" : 1,
+      "nodeName" : "2호관 북쪽 4문 들어가는 교차로, 벤치같은거 앞에",
+      "longitude" : 126.65485969198926,
+      "latitude" : 37.45072158012766,
+      "screenLeftPosition" : 126,
+      "screenTopPosition" : 258,
+      "elevator" : 0,
+      "slope" : 0,
+      "adjacent" : [
+        {
+          "nodeID" : 139,
+          "edgeStatus" : 0
+        },
+        {
+          "nodeID" : 8,
+          "edgeStatus" : 0
+        },
+        {
+          "nodeID" : 141,
+          "edgeStatus" : 0
+        }
+      ]
+    },
+    {
+      "nodeID" : 141,
+      "nodeStatus" : 1,
+      "nodeName" : "4호관 쪽 안쪽 입구랑 겹치는 교차로",
+      "longitude" : 126.65509840859158,
+      "latitude" : 37.45063853570305,
+      "screenLeftPosition" : 177,
+      "screenTopPosition" : 253,
+      "elevator" : 0,
+      "slope" : 0,
+      "adjacent" : [
+        {
+          "nodeID" : 140,
+          "edgeStatus" : 0
+        },
+        {
+          "nodeID" : 142,
+          "edgeStatus" : 0
+        },
+        {
+          "nodeID" : 144,
+          "edgeStatus" : 0
+        }
+      ]
+    },
+    {
+      "nodeID" : 142,
+      "nodeStatus" : 1,
+      "nodeName" : "4호관 쪽 안쪽 입구로 들어가는 길 1",
+      "longitude" : 126.65505281103833,
+      "latitude" : 37.45053419770553,
+      "screenLeftPosition" : 181,
+      "screenTopPosition" : 300,
+      "elevator" : 0,
+      "slope" : 0,
+      "adjacent" : [
+        {
+          "nodeID" : 141,
+          "edgeStatus" : 0
+        },
+        {
+          "nodeID" : 143,
+          "edgeStatus" : 0
+        }
+      ]
+    },
+    {
+      "nodeID" : 143,
+      "nodeStatus" : 1,
+      "nodeName" : "4호관 쪽 안쪽 입구 앞",
+      "longitude" : 126.6549750269769,
+      "latitude" : 37.45040004863772,
+      "screenLeftPosition" : 180,
+      "screenTopPosition" : 326,
+      "elevator" : 0,
+      "slope" : 0,
+      "adjacent" : [
+        {
+          "nodeID" : 142,
+          "edgeStatus" : 0
+        },
+        {
+          "nodeID" : 12,
+          "edgeStatus" : 0
+        }
+      ]
+    },
+    {
+      "nodeID" : 144,
+      "nodeStatus" : 1,
+      "nodeName" : "4호관 화장실 딸린 입구 앞",
+      "longitude" : 126.65530225647672,
+      "latitude" : 37.45067260522177,
+      "screenLeftPosition" : 210,
+      "screenTopPosition" : 239,
+      "elevator" : 0,
+      "slope" : 0,
+      "adjacent" : [
+        {
+          "nodeID" : 141,
+          "edgeStatus" : 0
+        },
+        {
+          "nodeID" : 11,
+          "edgeStatus" : 0
+        },
+        {
+          "nodeID" : 145,
+          "edgeStatus" : 0
+        }
+      ]
+    },
+    {
+      "nodeID" : 145,
+      "nodeStatus" : 1,
+      "nodeName" : "4호관 가장 구석진 곳 문 앞 입구",
+      "longitude" : 126.65554901970609,
+      "latitude" : 37.450619371592005,
+      "screenLeftPosition" : 269,
+      "screenTopPosition" : 230,
+      "elevator" : 0,
+      "slope" : 0,
+      "adjacent" : [
+        {
+          "nodeID" : 144,
+          "edgeStatus" : 0
+        },
+        {
+          "nodeID" : 10,
+          "edgeStatus" : 0
+        },
+        {
+          "nodeID" : 146,
+          "edgeStatus" : 0
+        }
+      ]
+    },
+    {
+      "nodeID" : 146,
+      "nodeStatus" : 1,
+      "nodeName" : "2호관 북쪽 5문 입구",
+      "longitude" : 126.6556777657388,
+      "latitude" : 37.45073435618486,
+      "screenLeftPosition" : 271,
+      "screenTopPosition" : 193,
+      "elevator" : 0,
+      "slope" : 0,
+      "adjacent" : [
+        {
+          "nodeID" : 145,
+          "edgeStatus" : 0
+        },
+        {
+          "nodeID" : 9,
+          "edgeStatus" : 0
+        }
+      ]
+    }
+  ]
+}

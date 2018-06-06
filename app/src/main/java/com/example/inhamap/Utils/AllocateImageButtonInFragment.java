@@ -101,6 +101,8 @@ public class AllocateImageButtonInFragment {
 
                     // test code
                     final TestDrawingView test = (TestDrawingView)layout.findViewById(R.id.map_fragment_surface_view);
+                    //test.drawEdges(edges);
+
                     //final LocationDrawingSurfaceView surfaceView = (LocationDrawingSurfaceView)layout.findViewById(R.id.map_fragment_location_surface_view);
 
                     // 팝업 뷰에 배치된 컴포넌트(버튼) 등록
@@ -208,10 +210,10 @@ public class AllocateImageButtonInFragment {
 
 
     private void initList(){
-        JSONFileParser json = new JSONFileParser(this.context, "node_data");
+        JSONFileParser json = new JSONFileParser(this.context, "node_data_v2");
         NodeListMaker list = new NodeListMaker(json.getJSON());
-        //EdgeListMaker edges = new EdgeListMaker(json.getJSON());
-        //this.edges = edges.getEdges();
+        EdgeListMaker edges = new EdgeListMaker(json.getJSON(), 0);
+        this.edges = edges.getEdges();
         ArrayList<NodeItem> items = list.getItems();
         for(int i = 0; i < items.size(); i++){
             this.list.add(items.get(i));
