@@ -553,7 +553,14 @@ public class NaverTalkActivity extends Activity {
         tempList = new ArrayList<>();
         for (int i = 0; i < items.size(); i++) {
             if (items.get(i).getNodeName().contains(build) && items.get(i).getNodeStatus() == 0) {
-                tempList.add(items.get(i));
+                if(build.equals("2호")){
+                    if(items.get(i).getNodeName().contains("1문")){
+                        tempList.add(items.get(i));
+                    }
+                }
+                else {
+                    tempList.add(items.get(i));
+                }
             }
         }
         return result;
