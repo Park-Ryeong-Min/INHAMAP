@@ -14,11 +14,13 @@ import com.example.inhamap.Components.NodeImageButton;
 import com.example.inhamap.Components.TestDrawingView;
 import com.example.inhamap.Models.AdjacentEdge;
 import com.example.inhamap.Models.EdgeList;
+import com.example.inhamap.Models.NavigateText;
 import com.example.inhamap.Models.NodeItem;
 import com.example.inhamap.Models.VoicePathElement;
 import com.example.inhamap.PathFindings.PassingNodeListMaker;
 import com.example.inhamap.Utils.EdgeListMaker;
 import com.example.inhamap.Utils.JSONFileParser;
+import com.example.inhamap.Utils.NavigateTextListMaker;
 import com.example.inhamap.Utils.NodeListMaker;
 import com.example.inhamap.Utils.ValueConverter;
 import com.github.nkzawa.socketio.client.IO;
@@ -49,6 +51,7 @@ public class GlobalApplication extends Application implements LocationListener{
     public static ArrayList<NodeItem> nodesExceptStairs;
     public static EdgeList edgesExceptStairs;
     public static ArrayList<NodeItem> allNodes;
+    public static ArrayList<NavigateText> navigateTexts;
     //public static TextToSpeech TTS;
 
     public LocationManager locationManager;
@@ -157,6 +160,9 @@ public class GlobalApplication extends Application implements LocationListener{
             }
         });
         */
+
+        JSONObject naviTxt = new JSONFileParser(getApplicationContext(), "navigate_text").getJSON();
+        navigateTexts = new NavigateTextListMaker(naviTxt).getTexts();
     }
 
     private Location getBestLocation(LocationManager lm){

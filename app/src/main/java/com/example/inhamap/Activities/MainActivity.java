@@ -74,9 +74,10 @@ public class MainActivity extends AppCompatActivity {
         voiceFlag = false;
 
         this.allNodes = GlobalApplication.nodesExceptStairs;
+        this.edges = GlobalApplication.edgesExceptStairs;
         /*
         allNodes = new ArrayList<NodeItem>();
-        JSONFileParser json = new JSONFileParser(getApplicationContext(), "node_data");
+        JSONFileParser json = new JSONFileParser(getApplicationContext(), "node_data_v2");
         NodeListMaker list = new NodeListMaker(json.getJSON());
         edges = new EdgeListMaker(json.getJSON(), 1).getEdges();
         //EdgeListMaker edges = new EdgeListMaker(this.mapData);
@@ -189,11 +190,15 @@ public class MainActivity extends AppCompatActivity {
 
             // Re - drawing
             ArrayList<NodeItem> node = addNodes(edges);
+            // 나중에 dest 값을 변경해서 실행해야함
+            // NaverTalkActivity 에서 검색하는 대상 파일을 바꿔야함
+            dest = 1;
             FindPath find = new FindPath(node, edges, source, dest);
             EdgeList path = find.getPaths();
             if(getNodeImageButtonByID(source) != null){
                 getNodeImageButtonByID(source).setBackgroundImageByStatus(3);
             }
+            // 이것도 나중에 변경해야함
             getNodeImageButtonByID(dest).setBackgroundImageByStatus(4);
             ArrayList<NodeItem> passingNodes = find.getPassingNodes();
             //ArrayList<VoicePathElement> voices = new PassingNodeListMaker(getApplicationContext(), passingNodes).getVoiceElements();
