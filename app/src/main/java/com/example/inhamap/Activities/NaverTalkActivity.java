@@ -192,7 +192,7 @@ public class NaverTalkActivity extends Activity {
         btnConfirm = (Button) findViewById(R.id.btn_confirm);
         voiceStatus = 0;
 
-        JSONFileParser json = new JSONFileParser(this, "node_data");
+        JSONFileParser json = new JSONFileParser(this, "node_data_v2");
         this.mapData = json.getJSON();
         list = new NodeListMaker(this.mapData);
         allNode = new ArrayList<NodeItem>();
@@ -439,35 +439,35 @@ public class NaverTalkActivity extends Activity {
     }
 
     public String buildingCheck(String s) {
-        if (s.contains("1") | s.contains("본") | s.contains("일")) return "본";
-        else if (s.contains("테") | s.contains("텍") | s.contains("택") | s.contains("핫") | s.contains("합") | s.contains("팩"))
+//        if (s.contains("1") | s.contains("본") | s.contains("일")) return "본";
+        if (s.contains("테") | s.contains("텍") | s.contains("택") | s.contains("핫") | s.contains("합") | s.contains("팩"))
             return "테";
         else if (s.contains("2") | s.contains("이") | s.contains("유") | s.contains("요") | s.contains("보"))
             return "2호";
-        else if (s.contains("주") | s.contains("년")) return "주";
+//        else if (s.contains("주") | s.contains("년")) return "주";
         else if (s.contains("4") | s.contains("사")) return "4호";
-        else if (s.contains("5") | s.contains("오")) return "5호";
-        else if (s.contains("6") | s.contains("육")) return "6호";
-        else if (s.contains("7") | s.contains("칠")) return "7호";
-        else if (s.contains("9") | s.contains("구")) return "9호";
-        else if (s.contains("학") | s.contains("비")) return "학";
-        else if (s.contains("정")) return "정";
+//        else if (s.contains("5") | s.contains("오")) return "5호";
+//        else if (s.contains("6") | s.contains("육")) return "6호";
+//        else if (s.contains("7") | s.contains("칠")) return "7호";
+//        else if (s.contains("9") | s.contains("구")) return "9호";
+//        else if (s.contains("학") | s.contains("비")) return "학";
+//        else if (s.contains("정")) return "정";
         else if (s.contains("후")) return "후";
         else return "";
     }
 
     public String buildingSpeak(String s) {
-        if (s.equals("본")) return "본관 1호관";
-        else if (s.equals("테")) return "하이테크";
+//        if (s.equals("본")) return "본관 1호관";
+        if (s.equals("테")) return "하이테크";
         else if (s.equals("2호")) return "2호관";
-        else if (s.equals("주")) return "60주년 기념관";
+//        else if (s.equals("주")) return "60주년 기념관";
         else if (s.equals("4호")) return "4호관";
-        else if (s.equals("5호")) return "5호관";
-        else if (s.equals("6호")) return "6호관";
-        else if (s.equals("7호")) return "7호관";
-        else if (s.equals("9호")) return "9호관";
-        else if (s.equals("학")) return "학생회관";
-        else if (s.equals("정")) return "정문";
+//        else if (s.equals("5호")) return "5호관";
+//        else if (s.equals("6호")) return "6호관";
+//        else if (s.equals("7호")) return "7호관";
+//        else if (s.equals("9호")) return "9호관";
+//        else if (s.equals("학")) return "학생회관";
+//        else if (s.equals("정")) return "정문";
         else if (s.equals("후")) return "후문";
         else return "";
     }
@@ -524,40 +524,7 @@ public class NaverTalkActivity extends Activity {
         String ask2 = "인식하지 못하였습니다. 다시 확인하여 주십시오.";
         String endSpeech = "이 있습니다. 이 문 중에 선택하여 주십시오.";
         String result="";
-//        if (option == 3) {
-//            if (recList.size() > 0) {
-//                for (int a = 0; a < recList.size(); a++) {
-//                    result+=recList.get(a).getNodeName()+", ";
-//                }
-//                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-//                    myTTS.speak(askElevSlp+result+endSpeech, TextToSpeech.QUEUE_FLUSH, null, String.valueOf(TTSMap));
-//                    while (myTTS.isSpeaking()) ;
-//                }
-//                return 0;
-//            }
-//        } else if (option == 2) {
-//            if (recSlpList.size() > 0) {
-//                for (int a = 0; a < recSlpList.size(); a++) {
-//                    result+=recSlpList.get(a).getNodeName()+", ";
-//                }
-//                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-//                    myTTS.speak(askSlp+result+endSpeech, TextToSpeech.QUEUE_FLUSH, null, String.valueOf(TTSMap));
-//                    while (myTTS.isSpeaking()) ;
-//                }
-//                return 0;
-//            }
-//        } else if (option == 1) {
-//            if (recElevList.size() > 0) {
-//                for (int a = 0; a < recElevList.size(); a++) {
-//                    result+=recElevList.get(a).getNodeName()+", ";
-//                }
-//                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-//                    myTTS.speak(askElev+result+endSpeech, TextToSpeech.QUEUE_FLUSH, null, String.valueOf(TTSMap));
-//                    while (myTTS.isSpeaking()) ;
-//                }
-//                return 0;
-//            }
-//        }
+
         for (int a = 0; a < tempList.size(); a++) {
             result+=tempList.get(a).getNodeName();
             if(tempList.get(a).getNodeElev()==1&&tempList.get(a).getNodeSlp()==1){
@@ -570,7 +537,7 @@ public class NaverTalkActivity extends Activity {
                 result+="은 경사로가 있습니다 ";
             }
             else{
-                result+="이 있습니다 ";
+                result+="은 편의시설이 없습니다 ";
             }
         }
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
@@ -589,26 +556,6 @@ public class NaverTalkActivity extends Activity {
                 tempList.add(items.get(i));
             }
         }
-//        recElevList = new ArrayList<>();
-//        for (int i = 0; i < tempList.size(); i++) {
-//            if (tempList.get(i).getNodeElev() == 1) {
-//                recElevList.add(tempList.get(i));
-//            }
-//        }
-//
-//        recSlpList = new ArrayList<>();
-//        for (int i = 0; i < tempList.size(); i++) {
-//            if (tempList.get(i).getNodeSlp() == 1) {
-//                recSlpList.add(tempList.get(i));
-//            }
-//        }
-//
-//        recList = new ArrayList<>();
-//        for (int i = 0; i < recElevList.size(); i++) {
-//            if (recElevList.get(i).getNodeSlp() == 1) {
-//                recList.add(recElevList.get(i));
-//            }
-//        }
         return result;
     }
 
