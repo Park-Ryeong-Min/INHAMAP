@@ -6,8 +6,14 @@ import com.example.inhamap.Commons.DefaultValue;
 import com.example.inhamap.Commons.GlobalApplication;
 import com.example.inhamap.Models.AdjacentEdge;
 import com.example.inhamap.Models.EdgeList;
+import com.example.inhamap.Models.NavigateText;
 import com.example.inhamap.Models.NodeItem;
+import com.example.inhamap.Models.TupleLong;
+import com.example.inhamap.Utils.JSONFileParser;
+import com.example.inhamap.Utils.NavigateTextListMaker;
 import com.example.inhamap.Utils.ValueConverter;
+
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 
@@ -23,6 +29,8 @@ public class NavigatePath {
     private ArrayList<NodeItem> passingNodes;
     private FindPath pathFinding;
     private long destNodeID;
+    private ArrayList<NavigateText> texts;
+    private ArrayList<NavigateText> naviTexts;
 
     // 네비게이션 알고리즘 개선 v1.2
     private NodeItem ptr;
@@ -41,13 +49,50 @@ public class NavigatePath {
     private void init(){
         this.allEdges = GlobalApplication.edgesExceptStairs;
         this.allNodes = GlobalApplication.nodesExceptStairs;
+        this.texts = GlobalApplication.navigateTexts;
     }
 
     public void findPath(long start, long dest){
         this.pathFinding = new FindPath(this.allNodes, this.allEdges, start, dest);
         this.pathEdges = this.pathFinding.getPaths();
         this.passingNodes = this.pathFinding.getPassingNodes();
+        getNavigateTextList();
     }
+
+    private void getNavigateTextList(){
+        this.naviTexts = new ArrayList<NavigateText>();
+        ArrayList<TupleLong> tuples = new ArrayList<TupleLong>();
+        long prev = 0;
+        long cur = this.passingNodes.get(0).getNodeID();
+        for(int i = 0; i < this.passingNodes.size(); i++){
+            cur = this.passingNodes.get(i).getNodeID();
+            if(i + 1 < this.passingNodes.size()){
+                long next = this.passingNodes.get(i+1).getNodeID();
+                tuples.add(new TupleLong(prev, cur, next));
+                prev = cur;
+            }
+        }
+        tuples.add(new TupleLong(prev, cur, 0));
+
+        for(int i = 0; i < tuples.size(); i++){
+            //Log.e("TUPLE", Long.toString(tuples.get(i).getPrev()) + " -> " + Long.toString(tuples.get(i).getCur()) + " -> " + Long.toString(tuples.get(i).getNext()));
+            TupleLong t = tuples.get(i);
+            this.naviTexts.add(getNavigateText(t.getPrev(), t.getCur(), t.getNext()));
+        }
+
+    }
+
+    private NavigateText getNavigateText(long p, long c, long n){
+        for(int i = 0; i < texts.size(); i++){
+            NavigateText tmp = texts.get(i);
+            if(tmp.getPrevNodeID() == p && tmp.getCurNodeID() == c && tmp.getNextNodeID() == n){
+                return tmp;
+            }
+        }
+        return null;
+    }
+
+
 
     // 현재 어느 Edge 위에 있는가?
     public AdjacentEdge whichEdgeUserOn(double lat, double lng){
@@ -203,6 +248,26 @@ public class NavigatePath {
         this.ptr = ValueConverter.getNearestNodeItem(lat, lng);
     }
 
+    public String getNavigateText(){
+        for(int i = 0 ; i < naviTexts.size(); i++){
+            if(ptr.getNodeID() == naviTexts.get(i).getCurNodeID()){
+                return naviTexts.get(i).getText();
+            }
+        }
+        return "오류가 발생하였습니다.";
+    }
+
+    public boolean isPtrOnPath(){
+        for(int i = 0; i < passingNodes.size(); i++){
+            long tmp = passingNodes.get(i).getNodeID();
+            if(tmp == ptr.getNodeID()){
+                return true;
+            }
+
+        }
+        return false;
+    }
+
     public NodeItem getPtr() {
         return this.ptr;
     }
@@ -245,4 +310,7 @@ public class NavigatePath {
         Log.e("REFIND", logText);
     }
 
+    public ArrayList<NavigateText> getNaviTexts() {
+        return naviTexts;
+    }
 }

@@ -112,6 +112,7 @@ public class VoiceNavigatingThread extends Thread {
         }
 
 
+
         while(finish){
             /*
             if(tts == null){
@@ -142,6 +143,7 @@ public class VoiceNavigatingThread extends Thread {
                 double myLat = GlobalApplication.myLocationLatitude;
                 double myLng = GlobalApplication.myLocationLongitude;
 
+                /*
                 navigate.setPtr(myLat, myLng);
                 if(navigate.getNodePtr(navigate.getPtr()) != null){
                     // 헌재 위치한 노드가 경로에 있는 거임
@@ -164,6 +166,22 @@ public class VoiceNavigatingThread extends Thread {
                     }
                 }else{
                     // 현재 위치한 노드가 경로에 없는 거임
+                    tts.speak("경로를 이탈하였습니다. 경로를 재탐색합니다.", TextToSpeech.QUEUE_FLUSH, null);
+                    while(tts.isSpeaking());
+                    navigate.reFindPathMyLocationToDestination(myLat, myLng);
+                }
+                */
+                navigate.setPtr(myLat, myLng);
+                if(navigate.isPtrOnPath()){
+                    // 경로 위에 있는 거임
+                    tts.speak(navigate.getNavigateText(), TextToSpeech.QUEUE_FLUSH, null);
+                    while(tts.isSpeaking());
+                    if(navigate.isPtrArrived()){
+                        finish = false;
+                        GlobalApplication.view.clearEdges();
+                    }
+                }else{
+                    // 경로를 이탈한 거임
                     tts.speak("경로를 이탈하였습니다. 경로를 재탐색합니다.", TextToSpeech.QUEUE_FLUSH, null);
                     while(tts.isSpeaking());
                     navigate.reFindPathMyLocationToDestination(myLat, myLng);

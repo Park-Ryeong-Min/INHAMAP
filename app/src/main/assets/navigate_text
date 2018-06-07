@@ -390,7 +390,8 @@
         },
         {
           "prevNodeID" : 105,
-          "nextNodeID" : 100
+          "nextNodeID" : 100,
+          "text" : ""
         }
       ]
     },
@@ -699,7 +700,8 @@
         },
         {
           "prevNodeID" : 111,
-          "nextNodeID" : 109
+          "nextNodeID" : 109,
+          "text" : ""
         }
       ]
     },
@@ -1484,22 +1486,22 @@
         {
           "prevNodeID" : 0,
           "nextNodeID" : 133,
-          "text" : ""
+          "text" : "현재 위치는 2호관 북쪽 입니다. 2호관 건물과 60주년 기념관 사이 삼거리로 이동하십시오."
         },
         {
           "prevNodeID" : 0,
           "nextNodeID" : 135,
-          "text" : ""
+          "text" : "현재 위치는 2호관 북쪽 입니다. 2호관을 따라 먼 곳의 높은 건물이 있는 방향으로 이동하십시오."
         },
         {
           "prevNodeID" : 133,
           "nextNodeID" : 135,
-          "text" : ""
+          "text" : "주황색 도보를 따라 직진하십시오."
         },
         {
           "prevNodeID" : 135,
           "nextNodeID" : 133,
-          "text" : ""
+          "text" : "주황색 도보를 따라 직진하십시오."
         }
       ]
     },
@@ -1509,47 +1511,47 @@
         {
           "prevNodeID" : 0,
           "nextNodeID" : 134,
-          "text" : ""
+          "text" : "현재 위치는 2호관 북쪽 입니다."
         },
         {
           "prevNodeID" : 0,
           "nextNodeID" : 136,
-          "text" : ""
+          "text" : "현재 위치는 2호관 북쪽 입니다."
         },
         {
           "prevNodeID" : 0,
           "nextNodeID" : 6,
-          "text" : ""
+          "text" : "현재 위치는 2호관 북쪽 입니다."
         },
         {
           "prevNodeID" : 6,
           "nextNodeID" : 134,
-          "text" : ""
+          "text" : "왼쪽 방향입니다. 왼쪽으로 이동하십시오."
         },
         {
           "prevNodeID" : 6,
           "nextNodeID" : 136,
-          "text" : ""
+          "text" : "오른쪽 방향입니다. 오른쪽으로 이동하십시오."
         },
         {
           "prevNodeID" : 134,
           "nextNodeID" : 6,
-          "text" : ""
+          "text" : "오른쪽 방향의 문으로 이동하십시오."
         },
         {
           "prevNodeID" : 134,
           "nextNodeID" : 136,
-          "text" : ""
+          "text" : "주황색 도보를 따라 직진하십시오."
         },
         {
           "prevNodeID" : 136,
           "nextNodeID" : 6,
-          "text" : ""
+          "text" : "왼쪽 방향의 문으로 이동하십시오."
         },
         {
           "prevNodeID" : 136,
           "nextNodeID" : 134,
-          "text" : ""
+          "text" : "주황색 도보를 따라 직진하십시오."
         }
       ]
     },
