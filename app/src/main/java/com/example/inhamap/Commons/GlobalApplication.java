@@ -8,6 +8,7 @@ import android.location.LocationManager;
 import android.os.Bundle;
 import android.speech.tts.TextToSpeech;
 import android.util.Log;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.inhamap.Components.NodeImageButton;
@@ -46,6 +47,7 @@ public class GlobalApplication extends Application implements LocationListener{
     public static long myLocationNodeID;
     public static TestDrawingView view;
     public static boolean navigationLock;
+    public static TextView mainLowerTextView;
 
     public static ArrayList<NodeItem> items;
     public static ArrayList<NodeItem> nodesExceptStairs;
