@@ -22,6 +22,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.inhamap.Commons.GlobalApplication;
@@ -72,6 +73,8 @@ public class MainActivity extends AppCompatActivity {
         source = 0;
         dest = 0;
         voiceFlag = false;
+
+        GlobalApplication.mainLowerTextView = (TextView)findViewById(R.id.main_lower_bar_text_view);
 
         this.allNodes = GlobalApplication.nodesExceptStairs;
         this.edges = GlobalApplication.edgesExceptStairs;
