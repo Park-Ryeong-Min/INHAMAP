@@ -174,6 +174,7 @@ public class VoiceNavigatingThread extends Thread {
                 navigate.setPtr(myLat, myLng);
                 if(navigate.isPtrOnPath()){
                     // 경로 위에 있는 거임
+                    GlobalApplication.mainLowerTextView.setText(navigate.getNavigateText());
                     tts.speak(navigate.getNavigateText(), TextToSpeech.QUEUE_FLUSH, null);
                     while(tts.isSpeaking());
                     if(navigate.isPtrArrived()){
@@ -182,6 +183,7 @@ public class VoiceNavigatingThread extends Thread {
                     }
                 }else{
                     // 경로를 이탈한 거임
+                    GlobalApplication.mainLowerTextView.setText(navigate.getNavigateText());
                     tts.speak("경로를 이탈하였습니다. 경로를 재탐색합니다.", TextToSpeech.QUEUE_FLUSH, null);
                     while(tts.isSpeaking());
                     navigate.reFindPathMyLocationToDestination(myLat, myLng);

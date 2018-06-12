@@ -628,7 +628,7 @@
           "edgeStatus" : 0
         },
         {
-          "nodeID" : 116,
+          "nodeID" : 147,
           "edgeStatus" : 0
         }
       ]
@@ -639,13 +639,13 @@
       "nodeName" : "인경호 공원 한가운데",
       "longitude" : 126.65617262596618,
       "latitude" : 37.450143870115554,
-      "screenLeftPosition" : 397,
-      "screenTopPosition" : 261,
+      "screenLeftPosition" : 366,
+      "screenTopPosition" : 276,
       "elevator" : 0,
       "slope" : 0,
       "adjacent" : [
         {
-          "nodeID" : 115,
+          "nodeID" : 147,
           "edgeStatus" : 0
         },
         {
@@ -1324,6 +1324,27 @@
         },
         {
           "nodeID" : 9,
+          "edgeStatus" : 0
+        }
+      ]
+    },
+    {
+      "nodeID" : 147,
+      "nodeStatus" : 1,
+      "nodeName" : "인경호 위쪽으로 가는 길",
+      "longitude" : 37.45013857632465,
+      "latitude" : 126.65624759509546,
+      "screenLeftPosition" : 410,
+      "screenTopPosition" : 265,
+      "elevator" : 0,
+      "slope" : 0,
+      "adjacent" : [
+        {
+          "nodeID" : 116,
+          "edgeStatus" : 0
+        },
+        {
+          "nodeID" : 115,
           "edgeStatus" : 0
         }
       ]

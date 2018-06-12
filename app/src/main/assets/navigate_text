@@ -840,16 +840,16 @@
         },
         {
           "prevNodeID" : 0,
-          "nextNodeID" : 116,
+          "nextNodeID" : 147,
           "text" : ""
         },
         {
           "prevNodeID" : 112,
-          "nextNodeID" : 116,
+          "nextNodeID" : 147,
           "text" : ""
         },
         {
-          "prevNodeID" : 116,
+          "prevNodeID" : 147,
           "nextNodeID" : 112,
           "text" : "왼쪽으로 꺾으신 후 직진해 주십시오."
         }
@@ -860,7 +860,7 @@
       "voiceText": [
         {
           "prevNodeID": 0,
-          "nextNodeID": 115,
+          "nextNodeID": 147,
           "text": ""
         },
         {
@@ -869,13 +869,13 @@
           "text": ""
         },
         {
-          "prevNodeID": 115,
+          "prevNodeID": 147,
           "nextNodeID": 117,
           "text": ""
         },
         {
           "prevNodeID": 117,
-          "nextNodeID": 115,
+          "nextNodeID": 147,
           "text": "오른쪽으로 꺾으신 후 직진해 주십시오. 바닥의 턱에 주의하시기 바랍니다."
         }
       ]
@@ -1952,6 +1952,30 @@
           "prevNodeID" : 9,
           "nextNodeID" : 145,
           "text" : ""
+        }
+      ]
+    },
+    {
+      "nodeID" : 147,
+      "voiceText" : [
+        {
+          "prevNodeID" : 0,
+          "nextNodeID" : 116,
+          "text" : ""
+        },
+        {
+          "prevNodeID" : 0,
+          "nextNodeID" : 115,
+          "text" : ""
+        },
+        {
+          "prevNodeID" : 115,
+          "nextNodeID" : 116,
+          "text" : ""
+        },
+        {
+          "prevNodeID" : 116,
+          "nextNodeID" : 115
         }
       ]
     }
