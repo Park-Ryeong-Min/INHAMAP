@@ -134,10 +134,19 @@ public class NaverTalkActivity extends Activity {
 
                 } else if (voiceStatus == 2) {
                     voiceStatus = 3;
+                    //myTTS.speak(mResult, TextToSpeech.QUEUE_FLUSH, null);
                     String temp1 = cutTalk(mResult, 1);
-                    String output = findDoorName(temp1, optionPicked);
-                    dest=output;
-                    btnStart2.setText(dest);
+                    if(temp1.equals("")){
+                        voiceStatus = 2;
+                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) { //롤리팝 이상부터 지원
+                            myTTS.speak("다시 말씀해주세요.", TextToSpeech.QUEUE_FLUSH, null, String.valueOf(TTSMap));
+                        }
+                    }
+                    else{
+                        String output = findDoorName(temp1, optionPicked);
+                        dest=output;
+                        btnStart2.setText(dest);
+                    }
                 }
                 //btnStart2.setText(dest);
                 //btnConfirm.setText(mResult);
@@ -275,6 +284,7 @@ public class NaverTalkActivity extends Activity {
                 if(voiceStatus==3) {
                     Intent reIntent = new Intent();
                     reIntent.putExtra("resultId", findNoId);
+                    reIntent.putExtra("option", optionPicked);
                     setResult(Activity.RESULT_OK, reIntent);
                     finish();
                 }
@@ -409,22 +419,9 @@ public class NaverTalkActivity extends Activity {
         return finresult;
     }
 
-
     public void confirmOption(String s) {
         String speech = "";
-//        if (s.contains("경") && s.contains("엘")) {
-//            optionPicked = 3;
-//            speech = "경사로와 엘레베이터 옵션을 선택하셨습니다.";
-//        } else if (s.contains("경")) {
-//            speech = "경사로 옵션을 선택하셨습니다.";
-//            optionPicked = 2;
-//        } else if (s.contains("엘")) {
-//            speech = "엘레베이터 옵션을 선택하셨습니다.";
-//            optionPicked = 1;
-//        } else {
-//            speech = "옵션을 선택하지 않으셨습니다.";
-//            optionPicked = 0;
-//        }
+
         if (s.contains("제")) {
             optionPicked = 1;
             speech = "계단 제외 옵션을 선택하셨습니다.";
@@ -458,7 +455,7 @@ public class NaverTalkActivity extends Activity {
 
     public String buildingSpeak(String s) {
 //        if (s.equals("본")) return "본관 1호관";
-        if (s.equals("테")) return "하이테크";
+        if (s.equals("테")) return "하이테크 센터";
         else if (s.equals("2호")) return "2호관";
 //        else if (s.equals("주")) return "60주년 기념관";
         else if (s.equals("4호")) return "4호관";
@@ -475,7 +472,7 @@ public class NaverTalkActivity extends Activity {
 
     public String doorCheck(String s) {
         String result = "";
-        if (s.contains("동")) result += "동쪽 ";
+        if (s.contains("동")|s.contains("통")) result += "동쪽 ";
         else if (s.contains("서")) result += "서쪽 ";
         else if (s.contains("남")) result += "남쪽 ";
         else if (s.contains("북")|s.contains("부")) result += "북쪽 ";
