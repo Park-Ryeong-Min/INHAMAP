@@ -53,6 +53,7 @@ public class MainActivity extends AppCompatActivity {
 
     private long source;
     private long dest;
+    private long option;
     private boolean voiceFlag;
 
     private ArrayList<NodeItem> allNodes;
@@ -72,6 +73,7 @@ public class MainActivity extends AppCompatActivity {
 
         source = 0;
         dest = 0;
+        option = 0;
         voiceFlag = false;
 
         GlobalApplication.mainLowerTextView = (TextView)findViewById(R.id.main_lower_bar_text_view);
@@ -98,6 +100,8 @@ public class MainActivity extends AppCompatActivity {
         fragment = new CustomMapFragment();
         fragmentTransaction.replace(R.id.main_map_view, fragment);
         fragmentTransaction.commit();
+
+        GlobalApplication.view = fragment.getDrawingView();
 
         /* toolbar */
         myToolbar = (Toolbar) findViewById(R.id.my_toolbar);
@@ -175,6 +179,7 @@ public class MainActivity extends AppCompatActivity {
         if(requestCode==111){
             if(resultCode==RESULT_OK){
                 dest = data.getLongExtra("resultId", 0);
+                option = data.getLongExtra("option", 0);
                 voiceFlag = true;
             }
         }
@@ -186,16 +191,25 @@ public class MainActivity extends AppCompatActivity {
         Log.e("MAIN", "On Resume.");
         if(voiceFlag){
             Log.e("MAIN", Long.toString(source) + " , " + Long.toString(dest));
-            TestDrawingView view = fragment.getDrawingView();
+            //TestDrawingView view = fragment.getDrawingView();
+
             // Find my location to start.
             NodeItem cur = ValueConverter.getNearestNodeItem(GlobalApplication.myLocationLatitude, GlobalApplication.myLocationLongitude);
             source = cur.getNodeID();
 
             // Re - drawing
-            ArrayList<NodeItem> node = addNodes(edges);
+            if(option == 1){
+                // option 이 1 이면 평지 만
+                this.edges = GlobalApplication.edgesExceptStairs;
+            }else{
+                this.edges = GlobalApplication.edgesIncludeStairs;
+            }
+            ArrayList<NodeItem> node = addNodes(this.edges);
+
             // 나중에 dest 값을 변경해서 실행해야함
             // NaverTalkActivity 에서 검색하는 대상 파일을 바꿔야함
-            dest = 1;
+            //dest = 1;
+
             FindPath find = new FindPath(node, edges, source, dest);
             EdgeList path = find.getPaths();
             if(getNodeImageButtonByID(source) != null){
@@ -205,7 +219,8 @@ public class MainActivity extends AppCompatActivity {
             getNodeImageButtonByID(dest).setBackgroundImageByStatus(4);
             ArrayList<NodeItem> passingNodes = find.getPassingNodes();
             //ArrayList<VoicePathElement> voices = new PassingNodeListMaker(getApplicationContext(), passingNodes).getVoiceElements();
-            view.drawEdges(path);
+            GlobalApplication.view.drawEdges(path);
+
             voiceFlag = false;
             //VoiceNavigatingThread thread = new VoiceNavigatingThread(getApplicationContext(), find.getPassingNodes(), path, voices, source, dest);
             VoiceNavigatingThread thread = new VoiceNavigatingThread(getApplicationContext(), tts, source, dest);
@@ -244,9 +259,14 @@ public class MainActivity extends AppCompatActivity {
                 return true;
                 */
             case R.id.action_settings2:
-                Toast.makeText(getApplicationContext(), "항목 1 버튼 클릭됨", Toast.LENGTH_LONG).show();
-                Intent intent2 = new Intent(this, NoiseDetectActivity.class);
-                startActivity(intent2);
+                Toast.makeText(getApplicationContext(), "경로 초기화", Toast.LENGTH_LONG).show();
+                //Intent intent2 = new Intent(this, NoiseDetectActivity.class);
+                //startActivity(intent2);
+                GlobalApplication.view.clearEdges();
+                GlobalApplication.startNodeImageButton.setBackgroundImageByStatus(0);
+                GlobalApplication.destinationNodeImageButton.setBackgroundImageByStatus(0);
+                GlobalApplication.startNodeImageButton = null;
+                GlobalApplication.destinationNodeImageButton = null;
                 return true;
             default:
                 // If we got here, the user's action was not recognized.

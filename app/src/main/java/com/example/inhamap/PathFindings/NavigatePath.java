@@ -299,7 +299,7 @@ public class NavigatePath {
     }
 
     // for Log
-    private void printPassingNode(){
+    public void printPassingNode(){
         String logText = "";
         for(int i = 0; i < this.passingNodes.size(); i++){
             logText += Long.toString(this.passingNodes.get(i).getNodeID());
@@ -312,5 +312,9 @@ public class NavigatePath {
 
     public ArrayList<NavigateText> getNaviTexts() {
         return naviTexts;
+    }
+
+    public EdgeList getPathEdges() {
+        return pathEdges;
     }
 }

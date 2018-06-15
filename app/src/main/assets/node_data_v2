@@ -629,7 +629,7 @@
         },
         {
           "nodeID" : 147,
-          "edgeStatus" : 0
+          "edgeStatus" : 1
         }
       ]
     },
@@ -637,8 +637,8 @@
       "nodeID" : 116,
       "nodeStatus" : 1,
       "nodeName" : "인경호 공원 한가운데",
-      "longitude" : 126.65617262596618,
-      "latitude" : 37.450143870115554,
+      "longitude" : 126.656067985694,
+      "latitude" : 37.45019460897225,
       "screenLeftPosition" : 366,
       "screenTopPosition" : 276,
       "elevator" : 0,
@@ -646,11 +646,11 @@
       "adjacent" : [
         {
           "nodeID" : 147,
-          "edgeStatus" : 0
+          "edgeStatus" : 1
         },
         {
           "nodeID" : 117,
-          "edgeStatus" : 0
+          "edgeStatus" : 1
         }
       ]
     },
@@ -667,7 +667,7 @@
       "adjacent" : [
         {
           "nodeID" : 116,
-          "edgeStatus" : 0
+          "edgeStatus" : 1
         },
         {
           "nodeID" : 118,
@@ -692,6 +692,10 @@
       "adjacent" : [
         {
           "nodeID" : 117,
+          "edgeStatus" : 0
+        },
+        {
+          "nodeID" : 119,
           "edgeStatus" : 0
         }
       ]
@@ -1332,8 +1336,8 @@
       "nodeID" : 147,
       "nodeStatus" : 1,
       "nodeName" : "인경호 위쪽으로 가는 길",
-      "longitude" : 37.45013857632465,
-      "latitude" : 126.65624759509546,
+      "longitude" : 126.65624769369799,
+      "latitude" : 37.45014989244002,
       "screenLeftPosition" : 410,
       "screenTopPosition" : 265,
       "elevator" : 0,
@@ -1341,11 +1345,11 @@
       "adjacent" : [
         {
           "nodeID" : 116,
-          "edgeStatus" : 0
+          "edgeStatus" : 1
         },
         {
           "nodeID" : 115,
-          "edgeStatus" : 0
+          "edgeStatus" : 1
         }
       ]
     }

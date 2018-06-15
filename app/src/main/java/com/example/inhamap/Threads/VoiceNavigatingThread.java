@@ -5,27 +5,22 @@ import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
+import android.os.Handler;
 import android.speech.tts.TextToSpeech;
 import android.util.Log;
-import android.widget.Toast;
 
-import com.example.inhamap.Activities.MainActivity;
 import com.example.inhamap.Commons.GlobalApplication;
-import com.example.inhamap.Models.AdjacentEdge;
 import com.example.inhamap.Models.EdgeList;
 import com.example.inhamap.Models.NodeItem;
 import com.example.inhamap.Models.VoicePathElement;
-import com.example.inhamap.PathFindings.FindPath;
-import com.example.inhamap.PathFindings.GuideOutput;
-import com.example.inhamap.PathFindings.GuidePath;
 import com.example.inhamap.PathFindings.NavigatePath;
-import com.example.inhamap.PathFindings.PassingNodeListMaker;
-import com.example.inhamap.Utils.TextSpeaker;
+import com.example.inhamap.Runnables.DrawControlFromOtherThread;
+import com.example.inhamap.Runnables.StringPassBetweenThread;
+import com.example.inhamap.Runnables.ToastMessageFromOtherThread;
 import com.example.inhamap.Utils.ValueConverter;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Locale;
 
 public class VoiceNavigatingThread extends Thread {
 
@@ -100,8 +95,17 @@ public class VoiceNavigatingThread extends Thread {
         // -> 언제까지? -> isArrivalDestination 값이 true 일 때까지
         //GuidePath guide = new GuidePath(edges, nodes, destNodeID, voice);
         NavigatePath navigate = new NavigatePath(startNodeID, destNodeID);
+        navigate.printPassingNode();
+
         boolean finish = true;
         boolean first = true;
+
+        StringPassBetweenThread runnable = new StringPassBetweenThread("경로 안내를 시작합니다.");
+        GlobalApplication.mainLowerTextView.post(runnable);
+
+        DrawControlFromOtherThread controlRunnable = new DrawControlFromOtherThread();
+
+        ToastMessageFromOtherThread toastRunnable = new ToastMessageFromOtherThread(context);
 
         Log.e("THREAD", "Navigation start.");
         while(first) {
@@ -172,22 +176,43 @@ public class VoiceNavigatingThread extends Thread {
                 }
                 */
                 navigate.setPtr(myLat, myLng);
+
+                // test code : 현재 위치한 ptr 의 상태를 토스트 메시지로 보기 위함
+                postToMainUIThread(toastRunnable, Long.toString(navigate.getPtr().getNodeID()));
+
                 if(navigate.isPtrOnPath()){
                     // 경로 위에 있는 거임
-                    GlobalApplication.mainLowerTextView.setText(navigate.getNavigateText());
+
+                    //GlobalApplication.mainLowerTextView.setText(navigate.getNavigateText());
+                    runnable.setText(navigate.getNavigateText());
+                    GlobalApplication.mainLowerTextView.post(runnable);
                     tts.speak(navigate.getNavigateText(), TextToSpeech.QUEUE_FLUSH, null);
                     while(tts.isSpeaking());
                     if(navigate.isPtrArrived()){
                         finish = false;
-                        GlobalApplication.view.clearEdges();
+                        controlRunnable.allEdgeClearOnView();
+                        GlobalApplication.view.post(controlRunnable);
                     }
                 }else{
-                    // 경로를 이탈한 거임
-                    GlobalApplication.mainLowerTextView.setText(navigate.getNavigateText());
+                    // 경로를 이탈한 경우
+                    //GlobalApplication.mainLowerTextView.setText(navigate.getNavigateText());
+                    runnable.setText("경로를 이탈하였습니다. 경로를 재탐색합니다.");
+                    GlobalApplication.mainLowerTextView.post(runnable);
                     tts.speak("경로를 이탈하였습니다. 경로를 재탐색합니다.", TextToSpeech.QUEUE_FLUSH, null);
+
+                    // 기존 경로 제거하기
+                    //GlobalApplication.view.clearEdges();
+                    controlRunnable.allEdgeClearOnView();
+                    GlobalApplication.view.post(controlRunnable);
                     while(tts.isSpeaking());
                     navigate.reFindPathMyLocationToDestination(myLat, myLng);
+
+                    // 경로 다시 그리기
+                    //GlobalApplication.view.drawEdges(navigate.getPathEdges());
+                    controlRunnable.redrawEdgesOnView(navigate.getPathEdges());
+                    GlobalApplication.view.post(controlRunnable);
                 }
+
                 GlobalApplication.navigationLock = false;
             }
 
@@ -252,4 +277,11 @@ public class VoiceNavigatingThread extends Thread {
             return false;
         }
     }
+
+    private void postToMainUIThread(ToastMessageFromOtherThread toast, String text){
+        Handler mainHandler = new Handler(context.getMainLooper());
+        toast.setToastMessage(text);
+        mainHandler.post(toast);
+    }
+
 }

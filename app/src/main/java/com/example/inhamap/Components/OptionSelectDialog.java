@@ -28,6 +28,8 @@ public class OptionSelectDialog extends Dialog {
     private String title;
     private String content;
 
+    private Context context;
+
     private TextView titleTextView;
     private TextView contentTextView;
     private Button basicRouteSelectButton;
@@ -44,11 +46,29 @@ public class OptionSelectDialog extends Dialog {
 
     public OptionSelectDialog(Context context, String title, String content, TestDrawingView view, long start, long dest){
         super(context, android.R.style.Theme_Translucent_NoTitleBar);
+        this.context = context;
         this.title = title;
         this.content = content;
         this.mapDrawingView = view;
         this.startNodeID = start;
         this.destinationNodeID = dest;
+
+        initData();
+    }
+
+    public OptionSelectDialog(Context context, TestDrawingView view, long start, long dest){
+        super(context, android.R.style.Theme_Translucent_NoTitleBar);
+        this.context = context;
+        this.title = "경로 탐색 옵션";
+        this.content = "경로를 탐색할 때,\n 계단을 제외한 평지를 선택하려면 오른쪽 버튼을\n 계단을 포함하려면 왼쪽 버튼을 선택하십시오.";
+        this.mapDrawingView = view;
+        this.startNodeID = start;
+        this.destinationNodeID = dest;
+
+        initData();
+    }
+
+    private void initData(){
         this.list = new ArrayList<NodeItem>();
         this.allNodes = new ArrayList<NodeItem>();
 
@@ -94,6 +114,13 @@ public class OptionSelectDialog extends Dialog {
                 EdgeList path = find.getPaths();
                 //mapDrawingView.drawingPath(path);
                 mapDrawingView.drawEdges(path);
+
+                /*
+                find.logPath();
+                find.logDistance();
+                find.logSumOfDistance();
+                */
+
                 dismiss();
             }
         });
@@ -110,6 +137,13 @@ public class OptionSelectDialog extends Dialog {
                 EdgeList path = find.getPaths();
                 //mapDrawingView.drawingPath(path);
                 mapDrawingView.drawEdges(path);
+
+                /*
+                find.logPath();
+                find.logDistance();
+                find.logSumOfDistance();
+                */
+
                 dismiss();
             }
         });

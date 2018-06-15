@@ -10,15 +10,21 @@
         android:layout_height="wrap_content" />
 
     <LinearLayout
+        android:layout_marginTop="300dp"
+        android:gravity="center_vertical"
+        android:background="@color/colorPopupBackground"
+        android:layout_marginLeft="100dp"
         android:orientation="vertical"
         android:layout_centerInParent="true"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent">
 
         <TextView
             android:layout_gravity="center_horizontal"
             android:layout_marginBottom="30dp"
-            android:text="내용"
+            android:textColor="#000000"
+            android:textSize="20dp"
+            android:text="경로를 탐색할 때,\n 계단을 제외한 평지를 선택하려면 계단 제외를\n 계단을 포함하려면 일반 버튼을 선택하십시오."
             android:id="@+id/option_select_dialog_content"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
@@ -30,17 +36,17 @@
 
             <Button
                 android:id="@+id/option_button_basic"
-                android:text="일반"
+                android:background="@drawable/stairs_icon_cc"
                 android:layout_width="0dp"
                 android:layout_weight="1"
-                android:layout_height="wrap_content" />
+                android:layout_height="150dp" />
 
             <Button
                 android:id="@+id/option_button_except_stair"
-                android:text="계단 제외"
+                android:background="@drawable/except_stairs_icon_cc"
                 android:layout_width="0dp"
                 android:layout_weight="1"
-                android:layout_height="wrap_content" />
+                android:layout_height="150dp" />
 
         </LinearLayout>
 
