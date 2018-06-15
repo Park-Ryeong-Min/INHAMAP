@@ -105,7 +105,6 @@ public class NaverTalkActivity extends Activity {
                     strBuf.append("\n");
                 }
                 mResult = strBuf.toString();
-                //btnConfirm.setText(mResult);
                 if (voiceStatus == 0) {//건물을 받는다
                     voiceStatus = 1;
                     String temp1 = cutTalk(mResult, 0);
@@ -134,10 +133,13 @@ public class NaverTalkActivity extends Activity {
 
                 } else if (voiceStatus == 2) {
                     voiceStatus = 3;
-                    //myTTS.speak(mResult, TextToSpeech.QUEUE_FLUSH, null);
+                    myTTS.speak(mResult, TextToSpeech.QUEUE_FLUSH, null);
                     String temp1 = cutTalk(mResult, 1);
                     if(temp1.equals("")){
                         voiceStatus = 2;
+                        if (naverRecognizer.getSpeechRecognizer().isRunning()) {
+                            naverRecognizer.getSpeechRecognizer().stop();
+                        }
                         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) { //롤리팝 이상부터 지원
                             myTTS.speak("다시 말씀해주세요.", TextToSpeech.QUEUE_FLUSH, null, String.valueOf(TTSMap));
                         }
@@ -148,8 +150,7 @@ public class NaverTalkActivity extends Activity {
                         btnStart2.setText(dest);
                     }
                 }
-                //btnStart2.setText(dest);
-                //btnConfirm.setText(mResult);
+
                 if (voiceStatus == 3||voiceStatus==1) {
                     btnConfirm.setEnabled(true);
                 }

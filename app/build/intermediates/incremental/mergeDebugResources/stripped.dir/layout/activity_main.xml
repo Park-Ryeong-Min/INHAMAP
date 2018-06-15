@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/coordinatorLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <android.support.v7.widget.Toolbar
+        android:navigationIcon="@drawable/web_hi_res_512"
+        android:id="@+id/my_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/common_google_signin_btn_text_light_focused"
+        android:elevation="4dp"
+        android:theme="@style/ToolbarColored"
+        app:popupTheme="?android:attr/editTextColor"
+        app:titleTextColor="@android:color/white">
+    </android.support.v7.widget.Toolbar>
+
+    <LinearLayout
+        android:layout_marginTop="61dp"
+        android:layout_marginBottom="52dp"
+        android:orientation="vertical"
+        android:id="@+id/main_map_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintTop_toBottomOf="@+id/my_toolbar"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout1"></LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout1"
+        android:layout_width="match_parent"
+        android:layout_height="125dp"
+        android:background="@color/common_google_signin_btn_text_light_focused"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/photo_view">
+
+        <TextView
+            android:textSize="30dp"
+            android:gravity="center"
+            android:id="@+id/main_lower_bar_text_view"
+            android:layout_width="170dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="@string/explainComment"
+            android:textColor="@android:color/white" />
+
+        <ImageButton
+            android:layout_margin="10dp"
+            android:id="@+id/imageButton"
+            android:background="#e8d393"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            app:srcCompat="@drawable/ic_mic_white_24dp" />
+
+    </LinearLayout>
+
+</android.support.constraint.ConstraintLayout>
