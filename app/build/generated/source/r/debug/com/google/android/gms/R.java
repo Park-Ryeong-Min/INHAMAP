@@ -39,17 +39,17 @@ public final class R {
         public static final int zOrderOnTop = 0x7f0301b0;
     }
     public static final class color {
-        public static final int common_google_signin_btn_text_dark = 0x7f050029;
-        public static final int common_google_signin_btn_text_dark_default = 0x7f05002a;
-        public static final int common_google_signin_btn_text_dark_disabled = 0x7f05002b;
-        public static final int common_google_signin_btn_text_dark_focused = 0x7f05002c;
-        public static final int common_google_signin_btn_text_dark_pressed = 0x7f05002d;
-        public static final int common_google_signin_btn_text_light = 0x7f05002e;
-        public static final int common_google_signin_btn_text_light_default = 0x7f05002f;
-        public static final int common_google_signin_btn_text_light_disabled = 0x7f050030;
-        public static final int common_google_signin_btn_text_light_focused = 0x7f050031;
-        public static final int common_google_signin_btn_text_light_pressed = 0x7f050032;
-        public static final int common_google_signin_btn_tint = 0x7f050033;
+        public static final int common_google_signin_btn_text_dark = 0x7f05002a;
+        public static final int common_google_signin_btn_text_dark_default = 0x7f05002b;
+        public static final int common_google_signin_btn_text_dark_disabled = 0x7f05002c;
+        public static final int common_google_signin_btn_text_dark_focused = 0x7f05002d;
+        public static final int common_google_signin_btn_text_dark_pressed = 0x7f05002e;
+        public static final int common_google_signin_btn_text_light = 0x7f05002f;
+        public static final int common_google_signin_btn_text_light_default = 0x7f050030;
+        public static final int common_google_signin_btn_text_light_disabled = 0x7f050031;
+        public static final int common_google_signin_btn_text_light_focused = 0x7f050032;
+        public static final int common_google_signin_btn_text_light_pressed = 0x7f050033;
+        public static final int common_google_signin_btn_tint = 0x7f050034;
     }
     public static final class drawable {
         public static final int common_full_open_on_phone = 0x7f07005d;
@@ -71,8 +71,8 @@ public final class R {
         public static final int common_google_signin_btn_text_light_focused = 0x7f07006d;
         public static final int common_google_signin_btn_text_light_normal = 0x7f07006e;
         public static final int common_google_signin_btn_text_light_normal_background = 0x7f07006f;
-        public static final int googleg_disabled_color_18 = 0x7f07007b;
-        public static final int googleg_standard_color_18 = 0x7f07007c;
+        public static final int googleg_disabled_color_18 = 0x7f07007c;
+        public static final int googleg_standard_color_18 = 0x7f07007d;
     }
     public static final class id {
         public static final int adjust_height = 0x7f08001d;

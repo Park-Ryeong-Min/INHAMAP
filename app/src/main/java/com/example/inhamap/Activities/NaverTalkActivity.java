@@ -50,7 +50,6 @@ public class NaverTalkActivity extends Activity {
     // private TextView txtResult;
     private Button btnStart2;
     private Button btnConfirm;
-    private String mResult;
 
     private AudioWriterPCM writer;
 
@@ -74,8 +73,6 @@ public class NaverTalkActivity extends Activity {
     private void handleMessage(Message msg) {
         switch (msg.what) {
             case R.id.clientReady:
-                // Now an user can speak.
-                //txtResult.setText("Connected");
                 btnStart2.setText("Connected");
                 ToneGenerator toneGen1 = new ToneGenerator(AudioManager.STREAM_MUSIC, 100);
                 toneGen1.startTone(ToneGenerator.TONE_CDMA_ABBR_REORDER, 150);
@@ -90,8 +87,8 @@ public class NaverTalkActivity extends Activity {
 
             case R.id.partialResult:
                 // Extract obj property typed with String.
-                mResult = (String) (msg.obj);
-                //txtResult.setText(mResult);
+                //mResult = (String) (msg.obj);
+
                 break;
 
             case R.id.finalResult:
@@ -99,15 +96,10 @@ public class NaverTalkActivity extends Activity {
                 // The first element is recognition result for speech.
                 SpeechRecognitionResult speechRecognitionResult = (SpeechRecognitionResult) msg.obj;
                 List<String> results = speechRecognitionResult.getResults();
-                StringBuilder strBuf = new StringBuilder();
-                for (String result : results) {
-                    strBuf.append(result);
-                    strBuf.append("\n");
-                }
-                mResult = strBuf.toString();
+
                 if (voiceStatus == 0) {//건물을 받는다
                     voiceStatus = 1;
-                    String temp1 = cutTalk(mResult, 0);
+                    String temp1 = cutTalk(results, 0);
                     if(temp1==""){
                         voiceStatus=0;
                         myTTS.speak("인식하지 못하였습니다. 다시 빨간 버튼을 눌러주세요.", TextToSpeech.QUEUE_FLUSH, null);
@@ -126,22 +118,22 @@ public class NaverTalkActivity extends Activity {
                     }
                 } else if (voiceStatus == 1) {//옵션을 받는다(계단 혹은 이런것)
                     voiceStatus = 2;
-                    String temp1 = cutTalk(mResult, 2);
+                    String temp1 = cutTalk(results, 2);
                     confirmOption(temp1);
                     while (myTTS.isSpeaking()) ;
-                    informPoint(0);//어떤 것이 있는지 알려주어야 함
+                    informPoint();//어떤 것이 있는지 알려주어야 함
 
                 } else if (voiceStatus == 2) {
                     voiceStatus = 3;
-                    myTTS.speak(mResult, TextToSpeech.QUEUE_FLUSH, null);
-                    String temp1 = cutTalk(mResult, 1);
+                    //myTTS.speak(mResult, TextToSpeech.QUEUE_FLUSH, null);
+                    String temp1 = cutTalk(results, 1);
                     if(temp1.equals("")){
                         voiceStatus = 2;
                         if (naverRecognizer.getSpeechRecognizer().isRunning()) {
                             naverRecognizer.getSpeechRecognizer().stop();
                         }
                         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) { //롤리팝 이상부터 지원
-                            myTTS.speak("다시 말씀해주세요.", TextToSpeech.QUEUE_FLUSH, null, String.valueOf(TTSMap));
+                            myTTS.speak(" ", TextToSpeech.QUEUE_FLUSH, null, String.valueOf(TTSMap));
                         }
                     }
                     else{
@@ -165,10 +157,7 @@ public class NaverTalkActivity extends Activity {
                     writer.close();
                 }
 
-                mResult = "Error code : " + msg.obj.toString();
-
-                //txtResult.setText(mResult);
-
+                //mResult = "Error code : " + msg.obj.toString();
 
                 btnStart2.setText("목적지");
                 btnStart2.setEnabled(true);
@@ -218,12 +207,10 @@ public class NaverTalkActivity extends Activity {
                 }
                 boolean isInit = status == TextToSpeech.SUCCESS ? true : false;
                 if (isInit) {
-                    Log.d("TTS", "init 성공");
-
                     myTTS.setOnUtteranceProgressListener(new UtteranceProgressListener() {
                         @Override
                         public void onStart(String s) {
-                            Log.d(TAG, "progress on Start " + s);
+
                         }
 
                         @Override
@@ -241,7 +228,7 @@ public class NaverTalkActivity extends Activity {
 
                         @Override
                         public void onError(String s) {
-                            Log.d(TAG, "progress on Error " + s);
+
                         }
                     });
                 } else {
@@ -261,19 +248,16 @@ public class NaverTalkActivity extends Activity {
                 if (!naverRecognizer.getSpeechRecognizer().isRunning()) {
                     // Start button is pushed when SpeechRecognizer's state is inactive.
                     // Run SpeechRecongizer by calling recognize().
-                    mResult = "";
+                    //mResult = "";
                     voiceStatus = 0;
                     optionPicked = 0;
                     dest = "";
                     btnStart2.setText("Connecting...");
-                    //txtResult.setText("Connecting...");
-                    //btnStart2.setText(R.string.str_stop);
                     naverRecognizer.recognize();
                 } else {
                     Log.d(TAG, "stop and wait Final Result");
                     btnStart2.setEnabled(false);
                     naverRecognizer.getSpeechRecognizer().stop();
-                    //myTTS.speak("취소되었습니다. 다시버튼을 눌러 확인하여 주십시오.", TextToSpeech.QUEUE_FLUSH, null);
                 }
             }
         });
@@ -294,7 +278,7 @@ public class NaverTalkActivity extends Activity {
                     btnConfirm.setEnabled(false);
                     voiceStatus=2;
                     optionPicked=0;
-                    informPoint(optionPicked);
+                    informPoint();
                 }
             }
         });
@@ -312,7 +296,7 @@ public class NaverTalkActivity extends Activity {
     protected void onResume() {
         super.onResume();
 
-        mResult = "";
+        //mResult = "";
         //txtResult.setText("");
         btnStart2.setText("목적지");
         btnStart2.setEnabled(true);
@@ -361,58 +345,35 @@ public class NaverTalkActivity extends Activity {
 * 건물 1호관~9호관까지 각 숫자 return 하이테크는 8, 60주년은 3, 학관은 10
 * 문은 동문계열은 11~19 서문은 21~29 남은 31~39 북은 41~49
 * */
-    public String cutTalk(String s, int mode) {
-        String[] sentence = new String[7];
-        StringTokenizer st = new StringTokenizer(s, "\n");
-        int a = 0;
-        for (; st.hasMoreTokens(); a++) {
-            sentence[a] = st.nextToken();
-        }
-
+    public String cutTalk(List<String> s, int mode) {
         String[] result = new String[7];
+        int listSize = s.size();
+        int d=0;
         if (mode == 0) {
-            for (int d = 0; d < a; d++) {
-                int index = sentence[d].indexOf('관');
-                if (sentence[d].contains("권") && !sentence[d].contains("관")) {
-                    index = sentence[d].indexOf('권');
-                }
-
-                StringBuilder sb = new StringBuilder(sentence[d]);
-                if (index > 0) {
-                    sb.delete(index, sentence[d].length());
-                }
-                sentence[d] = sb.toString();
-                Log.d(TAG + "Build", sb.toString());
-                result[d] = buildingCheck(sentence[d]);
+            for (String results : s) {
+                Log.d(TAG + "Build", results);
+                if(results.equals("")) break;
+                result[d] = buildingCheck(results);
+                d++;
             }
         } else if (mode == 1) {
-            for (int d = 0; d < a; d++) {
-                int index = sentence[d].indexOf('관');
-                if (sentence[d].contains("권") && !sentence[d].contains("관")) {
-                    index = sentence[d].indexOf('권');
-                }
-                if (sentence[d].contains("테")) {
-                    index = sentence[d].indexOf('테');
-                } else if (sentence[d].contains("텍")) {
-                    index = sentence[d].indexOf('텍');
-                }
-                StringBuilder sb = new StringBuilder(sentence[d]);
-                if (index > 0) {
-                    sb.delete(0, index);
-                }
-                sentence[d] = sb.toString();
-                Log.d(TAG + "Door", sb.toString());
-                result[d] = doorCheck(sentence[d]);
+            for (String results : s) {
+                Log.d(TAG + "Door", results);
+                if(results.equals("")) break;
+                result[d] = doorCheck(results);
+                d++;
             }
         } else if (mode == 2) {
-            for (int d = 0; d < a; d++) {
-                result[d] = optionCheck(sentence[d]);
+            for (String results : s) {
+                if(results.equals("")) break;
+                result[d] = optionCheck(results);
+                d++;
             }
         }
         String finresult = "";
-        for (int d = 0; d < a; d++) {
-            if (finresult.equals("") && !result[d].equals("")) {
-                finresult = result[d];
+        for (int a = 0; a < d; a++) {
+            if (finresult.equals("") && !result[a].equals("")) {
+                finresult = result[a];
                 break;
             }
         }
@@ -422,7 +383,6 @@ public class NaverTalkActivity extends Activity {
 
     public void confirmOption(String s) {
         String speech = "";
-
         if (s.contains("제")) {
             optionPicked = 1;
             speech = "계단 제외 옵션을 선택하셨습니다.";
@@ -473,24 +433,30 @@ public class NaverTalkActivity extends Activity {
 
     public String doorCheck(String s) {
         String result = "";
-        if (s.contains("동")|s.contains("통")) result += "동쪽 ";
-        else if (s.contains("서")) result += "서쪽 ";
-        else if (s.contains("남")) result += "남쪽 ";
-        else if (s.contains("북")|s.contains("부")) result += "북쪽 ";
+        if(!dest.equals("하이테크 센터")){
+            if (s.contains("동")|s.contains("통")) result += "동쪽 ";
+            else if (s.contains("서")) result += "서쪽 ";
+            else if (s.contains("남")) result += "남쪽 ";
+            else if (s.contains("북")) result += "북쪽 ";
+        }
 
-        if (s.contains("저") | s.contains("처")| s.contains("자")| s.contains("칠")| s.contains("젖")) result += "저";
-        else if (s.contains("고") | s.contains("친")| s.contains("포") | s.contains("코")| s.contains("굳")| s.contains("칭")) result += "고";
-        else if (s.contains("sia")|s.contains("지") | s.contains("치") | s.contains("시")) result += "지";
+        if(dest.equals("하이테크 센터")){
+            if (s.contains("저") | s.contains("처")| s.contains("자")| s.contains("칠")| s.contains("젖")) result += "저";
+            else if (s.contains("고") | s.contains("친")| s.contains("포") | s.contains("코")| s.contains("굳")| s.contains("칭")) result += "고";
+            else if (s.contains("sia")|s.contains("지") | s.contains("치") | s.contains("시")) result += "지";
+        }
 
-        if (s.contains("1") | s.contains("일") | s.contains("입")|s.contains("길")) result += "1";
-        else if (s.contains("2") | s.contains("이")) result += "2";
-        else if (s.contains("4") | s.contains("사")|s.contains("읍")) result += "4";
-        else if (s.contains("3") | s.contains("삼")| s.contains("산")) result += "3";
-        else if (s.contains("5") | s.contains("오")| s.contains("공")|s.contains("정")) result += "5";
-        else if (s.contains("6") | s.contains("육")) result += "6";
-        else if (s.contains("7") | s.contains("칠")) result += "7";
-        else if (s.contains("8") | s.contains("팔")) result += "8";
-        else if (s.contains("9") | s.contains("칠")) result += "9";
+        if(!dest.equals("하이테크 센터")){
+            if (s.contains("1") | s.contains("일") | s.contains("입")|s.contains("길")) result += "1";
+            else if (s.contains("2") | s.contains("이")) result += "2";
+            else if (s.contains("4") | s.contains("사")|s.contains("읍")) result += "4";
+            else if (s.contains("3") | s.contains("삼")| s.contains("산")) result += "3";
+            else if (s.contains("5") | s.contains("오")| s.contains("공")|s.contains("정")) result += "5";
+            else if (s.contains("6") | s.contains("육")) result += "6";
+            else if (s.contains("7") | s.contains("칠")) result += "7";
+            else if (s.contains("8") | s.contains("팔")) result += "8";
+            else if (s.contains("9") | s.contains("칠")) result += "9";
+        }
 
         return result;
     }
@@ -502,25 +468,17 @@ public class NaverTalkActivity extends Activity {
 
     public void informOption(String build) {
         String askOption = "로 안내합니다. 계단을 제외한 경로를 안내받으시려면 계단 제외 라고 말씀해주세요. 필요없으시다면 확인버튼을 눌러주세요.";
-        //String askOption ="짧음";
         if(!build.isEmpty()){
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) { //롤리팝 이상부터 지원
                 myTTS.speak(build + askOption, TextToSpeech.QUEUE_FLUSH, null, String.valueOf(TTSMap));
             }
         }
         else{
-            mResult="";
             myTTS.speak("빨간 버튼을 다시 눌러 목적지를 말씀하세요.", TextToSpeech.QUEUE_FLUSH, null);
         }
     }
 
-    public int informPoint(int option) {
-        String askDoor1 = "";
-        String askElevSlp = "경사로와 엘레베이터가 있는 문은";
-        String askElev = "엘레베이터가 있는 문은";
-        String askSlp = "경사로가 있는 문은";
-        String ask2 = "인식하지 못하였습니다. 다시 확인하여 주십시오.";
-        String endSpeech = "이 있습니다. 이 문 중에 선택하여 주십시오.";
+    public int informPoint() {
         String result="";
 
         for (int a = 0; a < tempList.size(); a++) {

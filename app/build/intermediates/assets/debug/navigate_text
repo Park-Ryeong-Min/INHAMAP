@@ -1166,7 +1166,7 @@
         {
           "prevNodeID" : 0,
           "nextNodeID" : 124,
-          "text" : ""
+          "text" : "구름다리를 바라보는 방향에서 왼쪽으로 꺾으신 후 직진해 주십시오. 이동 시 차량에 주의하십시오."
         },
         {
           "prevNodeID" : 0,
@@ -1176,7 +1176,7 @@
         {
           "prevNodeID" : 14,
           "nextNodeID" : 124,
-          "text" : "왼쪽으로 꺾으신 후 직진해 주십시오"
+          "text" : "구름다리를 바라보는 방향에서 왼쪽으로 꺾으신 후 직진해 주십시오"
         },
         {
           "prevNodeID" : 14,
@@ -1975,7 +1975,8 @@
         },
         {
           "prevNodeID" : 116,
-          "nextNodeID" : 115
+          "nextNodeID" : 115,
+          "text" : ""
         }
       ]
     }
