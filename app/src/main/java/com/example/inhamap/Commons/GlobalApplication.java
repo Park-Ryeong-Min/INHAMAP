@@ -52,9 +52,18 @@ public class GlobalApplication extends Application implements LocationListener{
     public static ArrayList<NodeItem> items;
     public static ArrayList<NodeItem> nodesExceptStairs;
     public static EdgeList edgesExceptStairs;
+
+    public static ArrayList<NodeItem> nodesIncludeStatirs;
+    public static EdgeList edgesIncludeStairs;
+
     public static ArrayList<NodeItem> allNodes;
     public static ArrayList<NavigateText> navigateTexts;
     //public static TextToSpeech TTS;
+
+    // variables for map fragment on main activity
+    public static NodeImageButton startNodeImageButton;
+    public static NodeImageButton destinationNodeImageButton;
+    public static boolean isPathDrawing = false;
 
     public LocationManager locationManager;
 
@@ -162,6 +171,9 @@ public class GlobalApplication extends Application implements LocationListener{
             }
         });
         */
+
+        edgesIncludeStairs = new EdgeListMaker(json, 0).getEdges();
+        nodesIncludeStatirs = addNodes(edgesIncludeStairs);
 
         JSONObject naviTxt = new JSONFileParser(getApplicationContext(), "navigate_text").getJSON();
         navigateTexts = new NavigateTextListMaker(naviTxt).getTexts();

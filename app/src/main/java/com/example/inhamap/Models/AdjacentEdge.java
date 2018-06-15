@@ -1,6 +1,7 @@
 package com.example.inhamap.Models;
 
 import com.example.inhamap.Commons.DefaultValue;
+import com.example.inhamap.Utils.ValueConverter;
 
 /**
  * Created by myown on 2018. 4. 28..
@@ -23,7 +24,7 @@ public class AdjacentEdge {
         this.nodes = new NodeItem[2];
         this.nodes[0] = n1;
         this.nodes[1] = n2;
-        this.distance = distance(this.nodes[0].getNodeLatitude(), this.nodes[0].getNodeLongitude(), this.nodes[1].getNodeLatitude(), this.nodes[1].getNodeLongitude());
+        this.distance = ValueConverter.distance(this.nodes[0].getNodeLatitude(), this.nodes[0].getNodeLongitude(), this.nodes[1].getNodeLatitude(), this.nodes[1].getNodeLongitude());
     }
 
     // constructor using params two NodeItem and distance between two NodeItems.

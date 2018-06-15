@@ -180,4 +180,30 @@ public class FindPath {
             Log.e("FIND_PATH", text);
         }
     }
+
+    public void logDistance(){
+        if(this.paths.size() <= 0){
+            return;
+        }else{
+            for(int i = 0; i < this.paths.size(); i++){
+                NodeItem n1 = this.paths.getEdge(i).getNodes()[0];
+                NodeItem n2 = this.paths.getEdge(i).getNodes()[1];
+                Log.e("DISTANCE", Long.toString(n1.getNodeID()) + " -> " + Long.toString(n2.getNodeID()) + " : " + Double.toString(this.paths.getEdge(i).getDistance()));
+            }
+        }
+    }
+
+    public void logSumOfDistance(){
+        double sum = 0D;
+        if(this.paths.size() <= 0){
+            return;
+        }else{
+            for(int i = 0; i < this.paths.size(); i++){
+                NodeItem n1 = this.paths.getEdge(i).getNodes()[0];
+                NodeItem n2 = this.paths.getEdge(i).getNodes()[1];
+                sum += this.paths.getEdge(i).getDistance();
+                Log.e("DISTANCE", Long.toString(n1.getNodeID()) + " -> " + Long.toString(n2.getNodeID()) + " sum : " + Double.toString(sum));
+            }
+        }
+    }
 }
